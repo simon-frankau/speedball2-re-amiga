@@ -85,7 +85,7 @@ fn draw_image(
             let bit = bit_at(data, bit_addr + i * plane_size);
             colour >>= 1;
             if bit {
-                colour += 16;
+                colour += 1 << (depth - 1);
             }
         }
         colour
@@ -123,6 +123,10 @@ fn build_palette(data: &[u8]) -> Vec<(u8, u8, u8)> {
 
 
 fn extract_set(data: &[u8], offset: usize, w: usize, h: usize, count: usize, palette: &[u8]) -> Image {
+    let available_bits = (data.len() - offset) * 8;
+    let available = available_bits / (w * h * DEPTH);
+    let count = count.min(available);
+    
     let mut img = Image::new(w, h * count, build_palette(palette));
     let data = &data[offset..];
     for (idx, block) in data.chunks_exact(w * h * DEPTH / 8).enumerate().take(count) {
@@ -132,9 +136,12 @@ fn extract_set(data: &[u8], offset: usize, w: usize, h: usize, count: usize, pal
     img
 }
 
-/* Images (locations in file, not RAM):
-   0x17346-0x1af46: 96 x 64 x 5 - 4 monitor images
+/* Images (locations in RAM, not file):
+0x173ca-0x1beca: 96 x 64 x 5 - 4 monitor images
+0x5ae00-0x5c840: 16x16 font
  */
+
+// Sizes tried: Widths: 96, 32, 48, 320, 256
 
 fn main() -> anyhow::Result<()> {
     let data = fs::read("../unpack/out/unpacked.bin")?;
@@ -145,7 +152,10 @@ fn main() -> anyhow::Result<()> {
     for (palette_addr, palette_name) in PALETTE_ADDRS.iter() {
         println!("Running for palette {}", palette_name);
         let palette = &data[*palette_addr - IMAGE_BASE..];
-        let img = extract_set(img_data, 0x17346, 96, 64, 10, palette);
+	// Monitor images
+//        let img = extract_set(img_data, 0x173CA - IMAGE_BASE, 96, 64, 10, palette);
+	// Font
+	let img = extract_set(img_data, 0x5ae00 - IMAGE_BASE, 16, 16, 42, palette);
         img.save(Path::new(
             format!("{}/extract-{}.png", OUT_DIR, palette_name).as_str(),
         ))?;

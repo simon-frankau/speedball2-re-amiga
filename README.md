@@ -57,7 +57,8 @@ The loader basically ignores whatever memory allocations the OS told
 us about. In short, it skips 22 512 byte sectors (i.e. goes to track
 2, side 1), and reads in 600 sectors (300kB) to addresses
 0x32000-0x7D000 (i.e. starting 200kB into RAM). It then writes
-0x21570d25 to address 0x44 (some magic?) and jumps to 0x32000.
+0x21570d25 to address 0x2c (copy-protection magic?) and jumps to
+0x32000.
 
 It does this without OS help by directly accessing the disk
 hardware. I had no idea that the Amiga did explicit MFM
@@ -69,3 +70,61 @@ Interestingly, the code is quite general, including modes to not just
 read data, but write it out, and the writing mode can either overwrite
 sectors selectively (by reading existing sectors and merging the data)
 or creating fresh tracks. Writes are always whole-track writes.
+
+### Unpacking the main binary
+
+The binary at 0x32000 does a `move #0x2700, SR` and jumps over the
+compressed data to the start of the decompression routine at
+0x7c92a. This disables interrupts and DMA, has a bunch of NOPs
+(presumably disabled copy protection), sets up the stack at 0x7f000,
+and copies 0x03200a-0x07a81e down to 0x000084-0x48898, before
+unpacking it, expanding it from 296980 bytes to 379292
+bytes.
+
+Everything is then checksummed by a routine that places the result in
+D6. This routine adds 0xdeaa4347(l) to address 0x00002c, and writes
+0x3460(w) to 0x000000.
+
+Finally, it jumps to the code entry point at 0x000084.
+
+This leaves 0x07cab8-0x07d00 and 0x07a81e-0x07c900 as unused, but
+aparently not uninitialised...
+
+### Main binary environment
+
+As well as decompressing the binary into 0x000084-0x05ca20, the
+bootstrap system has left various odds-and-ends over the place:
+
+ * First-level loader, 1c, 28, 84 (address where compressed image was initially loaded).
+ * Second-level loader writes 0x21570d25 to address 0x00002c.
+ * Decompressor adds 0xdeaa4347 to address 0x00002c.
+ * Decompressor writes 0x3460(w) to 0x000000.
+ * Decompressor checksums 150,000 bytes into D6, getting value 0xfbef. (*)
+ * D6 gets saved to address 0x000080 by the start of the SB2 binary.
+
+(*) According to my reversing, rather than actually observed...
+
+By the time we're done:
+
+ * 0x00 contains 0x3460.
+ * 0x1c
+ * 0x28 - pointer to scratch space?
+ * 0x2c contains 0x01506c.
+ * 0x80 contains 0xfbef (?)
+ * 0x84 is the entry point.
+ 
+ TODO: Work out how this all fits together...
+
+## Memory structure
+
+Lots to TODO here...
+
+ * Lots of data up to 0x7f94
+ * Code through 0x16994
+ * Monitor images 0x173CA-0x1beca
+ * IFF picture 0x49e5e-0x52d0e - title screen with "Speedball II"
+ * IFF picture 0x52d0e-0x5ae00 - archway
+ * Font 0x5ae00-0x5c840
+ * Ends 0x5ca20
+
+NB: The Disk image has forms from 68e00 onwards
