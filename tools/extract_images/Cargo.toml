@@ -1,0 +1,10 @@
+[package]
+name = "extract_images"
+version = "0.1.0"
+authors = ["Simon Frankau <sgf@arbitrary.name>"]
+edition = "2018"
+
+[dependencies]
+# Old version that doesn't depend on a version of nanorand that depends on edition2021.
+image = "0.23.14"
+anyhow = "1.*"
