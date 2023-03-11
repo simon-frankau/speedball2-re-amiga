@@ -46,9 +46,26 @@ jump to it.
 
 ### Second-level loader
 
+[second-level.asm](boot/second-level.asm)
+
 The first-level loader doesn't seem that opinionated about memory. As
 long as it can grab 100kB of memory it'll load the second
 stage. Moreover, it uses the Amiga's boot ROM code to load the second
 stage. Things start to change at this point.
 
-TODO: Describe
+The loader basically ignores whatever memory allocations the OS told
+us about. In short, it skips 22 512 byte sectors (i.e. goes to track
+2, side 1), and reads in 600 sectors (300kB) to addresses
+0x32000-0x7D000 (i.e. starting 200kB into RAM). It then writes
+0x21570d25 to address 0x44 (some magic?) and jumps to 0x32000.
+
+It does this without OS help by directly accessing the disk
+hardware. I had no idea that the Amiga did explicit MFM
+encoding/decoding in software, and could use the blitter to accelerate
+this process. http://lclevy.free.fr/adflib/adf_info.html was very
+useful for details of MFM decoding.
+
+Interestingly, the code is quite general, including modes to not just
+read data, but write it out, and the writing mode can either overwrite
+sectors selectively (by reading existing sectors and merging the data)
+or creating fresh tracks. Writes are always whole-track writes.
