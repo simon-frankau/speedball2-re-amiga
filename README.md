@@ -118,7 +118,17 @@ By the time we're done:
 
 ### Copy protection measures
 
-The copper interrupt XOR-decodes a bunch of memory from 0x15070 to 0x159c0.
+The VERTB interrupt handler has self-modifying code to XOR-decode a
+bunch of memory. This XOR-decoding eventually self-modifies the
+self-modifying code, causing it to deactivate.
+
+We can statically undo it by XORing 0x38b767ac into 0x015070-0x159c0:
+
+```
+memory = currentProgram.getMemory()
+for addr in range(0x15070, 0x159c4, 4):
+    memory.setInt(toAddr(addr), 0x38b767ac ^ memory.getInt(toAddr(addr)))
+```
 
 ## Memory structure
 
@@ -139,3 +149,8 @@ NB: The Disk image has forms from 68e00 onwards
 Audio code starts at 0x000138b6
 
 Screen size 0x224a = 209 lines of (320 + 16) pixels.
+
+Looks like disk code from 15ee4 to 16862? 2.3kB of code?
+
+0x15fe4-0x16862 are disk routines, identical to those in the
+second-level loader.
