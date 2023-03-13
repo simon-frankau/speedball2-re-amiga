@@ -48,10 +48,11 @@ jump to it.
 
 [second-level.asm](boot/second-level.asm)
 
-The first-level loader doesn't seem that opinionated about memory. As
-long as it can grab 100kB of memory it'll load the second
-stage. Moreover, it uses the Amiga's boot ROM code to load the second
-stage. Things start to change at this point.
+The first-level loader relies on the OS quite heavily, using it for
+e.g. memory allocation. As long as it can allocate 100kB, it'll load
+the second level into that. It uses the ROM for disk access. Around
+here, things start to change, as the loader just uses memory and
+hardware directly.
 
 The loader basically ignores whatever memory allocations the OS told
 us about. In short, it skips 22 512 byte sectors (i.e. goes to track
@@ -115,6 +116,10 @@ By the time we're done:
  
  TODO: Work out how this all fits together...
 
+### Copy protection measures
+
+The copper interrupt XOR-decodes a bunch of memory from 0x15070 to 0x159c0.
+
 ## Memory structure
 
 Lots to TODO here...
@@ -127,4 +132,10 @@ Lots to TODO here...
  * Font 0x5ae00-0x5c840
  * Ends 0x5ca20
 
+ * Stack, then buffers down from 0x080000, 
+
 NB: The Disk image has forms from 68e00 onwards
+
+Audio code starts at 0x000138b6
+
+Screen size 0x224a = 209 lines of (320 + 16) pixels.
