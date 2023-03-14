@@ -9,7 +9,7 @@ project.
 ## Getting started
 
 I started on the Megadrive version because I believed (correctly, as
-it turned out!) that it would be easier to get going with, asa ROM
+it turned out!) that it would be easier to get going with, as a ROM
 image. Getting from a disk image to a memory image was a fun little
 learning curve.
 
@@ -132,25 +132,58 @@ for addr in range(0x15070, 0x159c4, 4):
 
 ## Memory structure
 
+Despite the complications of the initial loading process, the game
+seems to assume a flat 512kB of RAM is available.
+
+ * 0x000000-0x000084 Low memory
+ * 0x000084-0x05ca20 From disk:
+   * 0x000084-0x007f94 Variables
+   * 0x007f94-0x0124ca Main game engine
+   * 0x0124ca-0x0138b6 Mostly sprite routines
+   * 0x0138b6-0x014e78 Sound routines
+   * 0x014e78-0x015fe4 Misc hardware routines
+   * 0x015fe4-0x016862 Disk routines, identical to those in the
+     second-level loader
+   * 0x016862-0x0173be Graphics variables
+   * 0x0173be-0x04963a TODO: Big chunks of data, such as sprites.
+   * 0x04963a-0x049bce TODO: Unknown functions
+   * 0x049bce-0x05ca20 TODO: More data
+ * 0x5d51c scores_table
+ * 0x5dd1c gym_tile_map
+ * 0x5de20 manager_transfer_tile_map
+ 
+ * 0x05fbaa-0x06a71c `screen_3`
+ * 0x06a71c-0x07528e `screen_2`
+ * 0x07528e-0x07fe00 `screen_1`
+ * 0x07fe00-0x080000 Stack (512 bytes)
+   
+The main game engine is pretty well conserved between the Megadrive
+and Amiga versions.
+
 Lots to TODO here...
 
- * Lots of data up to 0x7f94
- * Code through 0x16994
- * Monitor images 0x173CA-0x1beca
+ * Monitor images 0x173ca-0x1beca
  * IFF picture 0x49e5e-0x52d0e - title screen with "Speedball II"
  * IFF picture 0x52d0e-0x5ae00 - archway
  * Font 0x5ae00-0x5c840
  * Ends 0x5ca20
 
- * Stack, then buffers down from 0x080000, 
+The screens are of size 0x224a = 209 lines of (320 + 16) pixels.
 
-NB: The Disk image has forms from 68e00 onwards
+## Disk structure
 
-Audio code starts at 0x000138b6
+The disk is a standard 80 track, 2 sides, 11 sector, 512bytes/sector
+880kB disk.
 
-Screen size 0x224a = 209 lines of (320 + 16) pixels.
-
-Looks like disk code from 15ee4 to 16862? 2.3kB of code?
-
-0x15fe4-0x16862 are disk routines, identical to those in the
-second-level loader.
+ * 0x00000-0x00400 (Sector 1) Boot block
+ * 0x00400-0x01000 (Sector 3) Second-level loader
+ * 0x02c00-0x4dc00 (Sector 22) Main binary
+ * Various ILBM FORMs at:
+  * 0x68e00, length 0x7566
+  * 0x90c00, length 0x6bf6
+  * 0x97800, length 0x56ba
+  * 0x9d000, length 0x3ff0
+  * 0xa1000, length 0x3fc0
+  * 0xa5000, length 0x3fa2
+  * 0xa9000, length 0x3f88
+ * 0xd7a00-0xdc000 (Sector 1752) Crack intro
