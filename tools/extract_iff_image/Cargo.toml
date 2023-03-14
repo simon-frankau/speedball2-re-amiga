@@ -1,0 +1,9 @@
+[package]
+name = "extract_iff_image"
+version = "0.1.0"
+authors = ["Simon Frankau <sgf@arbitrary.name>"]
+edition = "2021"
+
+[dependencies]
+image = "0.23.14"
+anyhow = "1.*"
