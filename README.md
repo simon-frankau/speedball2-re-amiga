@@ -113,7 +113,7 @@ By the time we're done:
  * 0x2c contains 0x01506c.
  * 0x80 contains 0xfbef (?)
  * 0x84 is the entry point.
- 
+
  TODO: Work out how this all fits together...
 
 ### Copy protection measures
@@ -146,27 +146,35 @@ seems to assume a flat 512kB of RAM is available.
      second-level loader
    * 0x016862-0x0173be Graphics variables
    * 0x0173be-0x04963a TODO: Big chunks of data, such as sprites.
-   * 0x04963a-0x049bce TODO: Unknown functions
-   * 0x049bce-0x05ca20 TODO: More data
+   * 0x04963a-0x05ca20 Intro sequence
  * 0x5d51c scores_table
  * 0x5dd1c gym_tile_map
  * 0x5de20 manager_transfer_tile_map
- 
+
  * 0x05fbaa-0x06a71c `screen_3`
  * 0x06a71c-0x07528e `screen_2`
  * 0x07528e-0x07fe00 `screen_1`
  * 0x07fe00-0x080000 Stack (512 bytes)
-   
+
 The main game engine is pretty well conserved between the Megadrive
 and Amiga versions.
 
 Lots to TODO here...
 
+Given conflicting uses of memory, I strongly suspect there's an
+overlay mechanism at play.
+
+ * 361d6 - splash_backdrop
+
  * Monitor images 0x173ca-0x1beca
- * IFF picture 0x49e5e-0x52d0e - title screen with "Speedball II"
- * IFF picture 0x52d0e-0x5ae00 - archway
- * Font 0x5ae00-0x5c840
- * Ends 0x5ca20
+
+ ### Intro sequence
+
+ * 0x04963a-0x049bce Intro sequence code
+ * 0x049bce-0x049e5e Introduction text
+ * 0x049e5e-0x052d0e IFF picture - title screen with "Speedball II"
+ * 0x052d0e-0x05ae00 IFF picture - archway backdrop
+ * 0x05ae00-0x05ca20 Font
 
 The screens are of size 0x224a = 209 lines of (320 + 16) pixels.
 
