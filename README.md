@@ -130,13 +130,19 @@ for addr in range(0x15070, 0x159c4, 4):
     memory.setInt(toAddr(addr), 0x38b767ac ^ memory.getInt(toAddr(addr)))
 ```
 
+start moves d6 to 0x80
+A5 loaded into 0x173b6 in init_periodic.
+0x173b4 cleared in init_copper.
+
+init_tables does weird stuff.
+
 ## Memory structure
 
 Despite the complications of the initial loading process, the game
 seems to assume a flat 512kB of RAM is available.
 
  * 0x000000-0x000084 Low memory
- * 0x000084-0x05ca20 From disk:
+ * 0x000084-0x05ca20 From initial disk load:
    * 0x000084-0x007f94 Variables
    * 0x007f94-0x0124ca Main game engine
    * 0x0124ca-0x0138b6 Mostly sprite routines
@@ -145,7 +151,8 @@ seems to assume a flat 512kB of RAM is available.
    * 0x015fe4-0x016862 Disk routines, identical to those in the
      second-level loader
    * 0x016862-0x0173be Graphics variables
-   * 0x0173be-0x04963a TODO: Big chunks of data, such as sprites.
+   * 0x0173be-0x01bc3e Other variables? TODO
+   * 0x01bc3e-0x04963a Sound data
    * 0x04963a-0x05ca20 Intro sequence
  * 0x5d51c scores_table
  * 0x5dd1c gym_tile_map
@@ -156,19 +163,34 @@ seems to assume a flat 512kB of RAM is available.
  * 0x07528e-0x07fe00 `screen_1`
  * 0x07fe00-0x080000 Stack (512 bytes)
 
+The screens are of size 0x224a = 209 lines of (320 + 16) pixels.
+
 The main game engine is pretty well conserved between the Megadrive
 and Amiga versions.
 
 Lots to TODO here...
 
-Given conflicting uses of memory, I strongly suspect there's an
-overlay mechanism at play.
-
- * 361d6 - splash_backdrop
-
  * Monitor images 0x173ca-0x1beca
 
- ### Intro sequence
+### Overlays
+
+Overlay 0 loaded 0x1bc3e-0x36c3e at start of game, once the intro
+sequence is complete.
+
+Splash image overlays are loaded into one of the screen buffers (from
+where they need to be decompressed into another buffer).
+
+The exception is overlay 2 (0x361d6-0x5dfd6). At the same time,
+overlay 28 is loaded to maybe 0x15118 + 0x1bc3e = 0x30d56-0x37956?
+
+`sprites_game_misc` 0x0003a2d6-0x4FED6 overlay 18
+??? 0x4fed6-0x5E8D6 overlay 26
+??? 0x1bc3e-0x1E83E overlay 27 - offset, again. 0x15118 + 0x1bc3e = 0x30d56-0x33956
+
+TODO: It looks like there's a mechanism for pre-loading overlays if
+the RAM's available?
+
+### Intro sequence
 
  * 0x04963a-0x049bce Intro sequence code
  * 0x049bce-0x049e5e Introduction text
@@ -176,22 +198,49 @@ overlay mechanism at play.
  * 0x052d0e-0x05ae00 IFF picture - archway backdrop
  * 0x05ae00-0x05ca20 Font
 
-The screens are of size 0x224a = 209 lines of (320 + 16) pixels.
-
 ## Disk structure
 
-The disk is a standard 80 track, 2 sides, 11 sector, 512bytes/sector
+The disk is a standard 80 track, 2 sides, 11 sector, 512 bytes/sector
 880kB disk.
 
- * 0x00000-0x00400 (Sector 1) Boot block
- * 0x00400-0x01000 (Sector 3) Second-level loader
- * 0x02c00-0x4dc00 (Sector 22) Main binary
- * Various ILBM FORMs at:
-  * 0x68e00, length 0x7566
-  * 0x90c00, length 0x6bf6
-  * 0x97800, length 0x56ba
-  * 0x9d000, length 0x3ff0
-  * 0xa1000, length 0x3fc0
-  * 0xa5000, length 0x3fa2
-  * 0xa9000, length 0x3f88
- * 0xd7a00-0xdc000 (Sector 1752) Crack intro
+Sector 622 contains a list of overlays, loaded into memory at
+0x1b7ee. I've statically loaded it into the memory image.
+
+Splash images are IFF ILBMs.
+
+| Start sector | Length | Contents                                        |
+|--------------|--------|-------------------------------------------------|
+| 0x000        | 0x2    | Boot block                                      |
+| 0x002        | 0x5    | Second-level loader                             |
+| 0x016        | 0x258  | Main binary image                               |
+| 0x26e        | 0x1    | Overlay directory                               |
+| 0x26f        | 0xd8   | Overlay #0                                      |
+| 0x347        | 0x13f  | Overlay #1: Background splash image etc.        |
+| 0x381        | 0x36   | Overlay #2: Part of #1                          |
+| 0x3b7        | 0x3    | Overlay #3: Part of #1                          |
+| 0x3bb        | 0xb    | Overlay #4: Part of #1                          |
+| 0x3c7        | 0x4    | Overlay #5: Part of #1                          |
+| 0x3cc        | 0x5    | Overlay #6: Part of #1                          |
+| 0x3d1        | 0x2    | Overlay #7: Part of #1                          |
+| 0x3d3        | 0x5    | Overlay #8: Part of #1                          |
+| 0x3d8        | 0x28   | Overlay #9: Part of #1                          |
+| 0x400        | 0x2e   | Overlay #10: Part of #1                         |
+| 0x42f        | 0x56   | Overlay #11: Part of #1                         |
+| 0x486        | 0x36   | Overlay #12: Victory splash image               |
+| 0x4bc        | 0x2c   | Overlay #13: Loss splash image                  |
+| 0x4e8        | 0x20   | Overlay #14: League win splash image            |
+| 0x508        | 0x20   | Overlay #15: Promotion splash image             |
+| 0x528        | 0x20   | Overlay #16: Cup win splash image               |
+| 0x548        | 0x20   | Overlay #17: Knockout win splash image          |
+| 0x568        | 0xae   | Overlay #18: TODO `sprites_game_misc`           |
+| 0x56d        | 0x3    | Overlay #19: Part of #18                        |
+| 0x570        | 0x5    | Overlay #20: Part of #18                        |
+| 0x575        | 0x8    | Overlay #21: Part of #18                        |
+| 0x57e        | 0x78   | Overlay #22: Part of #18                        |
+| 0x5f6        | 0xa    | Overlay #23: Part of #18                        |
+| 0x600        | 0x5    | Overlay #24: Part of #18                        |
+| 0x605        | 0x10   | Overlay #25: Part of #18                        |
+| 0x616        | 0x75   | Overlay #26: TODO                               |
+| 0x68b        | 0x16   | Overlay #27: TODO                               |
+| 0x6a1        | 0x1c   | Overlay #28: ???? Loaded with background splash |
+| 0x6bd        | 0x23   | Game crack intro                                |

@@ -8,3 +8,5 @@
  * `extract_images` - Start of tooling to extract bitmapped images
    from the binary.
  * `extract_iff_images` - Extract ILBM files.
+ * `make_label` - Generate Ghidra python to create labels for sounds
+   that are accessed as offsets from sound_base.

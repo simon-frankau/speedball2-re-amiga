@@ -1,0 +1,73 @@
+fn main() {
+    // These lengths and offsets for samples are taken from the entries in instrument_table.
+    println!("# Samples");
+    for (idx, (l, i)) in [
+        (0x8, 0x1412),
+        (0x6, 0x1422),
+        (0x8, 0x1432),
+        (0x4, 0x1442),
+        (0x10, 0x144A),
+        (0xC, 0x146A),
+        (0x4, 0x1482),
+        (0x8, 0x148A),
+        (0x8, 0x149A),
+        (0x9E9, 0x14BA),
+        (0x9EA, 0x288C),
+        (0x19E, 0x3C60),
+        (0x55D, 0x3F9C),
+        (0xAED, 0x4A56),
+        (0x561, 0x6030),
+        (0x53F, 0x6AF2),
+        (0x4D4, 0x7570),
+        (0x4BD, 0x7F18),
+        (0x13C9, 0x8892),
+        (0x13C9, 0x8892),
+        (0x373C, 0xB024),
+        (0x1146, 0x11E9C),
+        (0x11FD, 0x14128),
+        (0x11F2, 0x16522),
+        (0x1D8B, 0x18906),
+        (0x40E, 0x1C41C),
+        (0x3B7, 0x1CC38),
+        (0x3F9, 0x1D3A6),
+        (0xA46, 0x1DB98),
+        (0x5CA, 0x1F024),
+        (0x65F, 0x1FBB8),
+        (0x57B, 0x20876),
+        (0x6A9, 0x2136C),
+        (0xEAF, 0x220BE),
+        (0xF85, 0x23E1C),
+        (0xFA1, 0x25D26),
+        (0xFEC, 0x27C68),
+        (0x493, 0x29C40),
+        (0xCCF, 0x2A566),
+        (0x1146, 0x2BF04),
+    ]
+    .iter()
+    .enumerate()
+    {
+        // Calculate the actual address from the offset to sound_base.
+        let addr = i + 0x0001bc3e;
+        // Ghidra python instruction to create label...
+        println!(
+            "createLabel(toAddr(0x{:x}), \"sound_sample_{}\", True)",
+            addr, idx
+        );
+        // and associated array of words.
+        println!("createData(toAddr(0x{:x}), ghidra.program.model.data.ArrayDataType(ghidra.program.model.data.WordDataType(), {}, 2))", addr, l);
+    }
+
+    println!("\n# Sequences");
+    for (offset, index) in std::iter::zip([
+        0xE, 0x4B8, 0x8FF, 0xC31, 0x9B5, 0x9CA, 0x58D, 0x29, 0x728, 0xDD1, 0xFD, 0xE27, 0x73B,
+        0x18A, 0x9F1, 0x382, 0x5A0, 0x102B, 0xAFF, 0x10F3, 0x436, 0x80D, 0xB71, 0x137E, 0x138E,
+        0x139A,
+    ],1..)
+    {
+	let addr = offset + 0x0001bc3e;
+        println!(
+            "createLabel(toAddr(0x{:x}), \"sound_sequence_{}\", True)",
+            addr, index
+        );
+    }
+}

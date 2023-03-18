@@ -5,4 +5,5 @@ members = [
     "extract_images",
     "unpack",
     "find_iff",
+    "make_labels",
 ]
