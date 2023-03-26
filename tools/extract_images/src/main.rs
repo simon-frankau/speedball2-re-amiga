@@ -9,13 +9,13 @@ use std::path::Path;
 
 use image::RgbImage;
 
-// Game seems to use 5-bit images.
-const DEPTH: usize = 5;
+// Game seems to go up to 5-bit images.
+const MAX_DEPTH: usize = 5;
 
 // 32 colour palette
-const PALETTE_SIZE: usize = 1 << DEPTH;
+const PALETTE_SIZE: usize = 1 << MAX_DEPTH;
 
-const PALETTE_ADDRS: [(usize, &str); 2] = [(0x0000f2, "palette_game"), (0x000132, "palette_mgmt")];
+const PALETTE_ADDRS: [(usize, &str); 2] = [(0x0000f2, "game"), (0x000132, "mgmt")];
 
 // Memory locations don't match file locations, since image is loaded
 // at 0x84.
@@ -121,44 +121,317 @@ fn build_palette(data: &[u8]) -> Vec<(u8, u8, u8)> {
         .collect()
 }
 
-
-fn extract_set(data: &[u8], offset: usize, w: usize, h: usize, count: usize, palette: &[u8]) -> Image {
+fn extract_set(
+    name: &str,
+    data: &[u8],
+    offset: usize,
+    w: usize,
+    h: usize,
+    depth: usize,
+    count: usize,
+    palette: &[u8],
+) -> Image {
     let available_bits = (data.len() - offset) * 8;
-    let available = available_bits / (w * h * DEPTH);
+    let available = available_bits / (w * h * depth);
     let count = count.min(available);
-    
+
+    if w * h * depth * count != available_bits {
+        eprintln!(
+            "{}: Used 0x{:06x} vs. 0x{:06x} bytes",
+            name,
+            w * h * depth * count / 8,
+            available_bits / 8
+        );
+    }
+
     let mut img = Image::new(w, h * count, build_palette(palette));
     let data = &data[offset..];
-    for (idx, block) in data.chunks_exact(w * h * DEPTH / 8).enumerate().take(count) {
-        draw_image(block, w, h, DEPTH, &mut img, 0, idx * h);
+    for (idx, block) in data.chunks_exact(w * h * depth / 8).enumerate().take(count) {
+        draw_image(block, w, h, depth, &mut img, 0, idx * h);
     }
 
     img
 }
 
-/* Images (locations in RAM, not file):
-0x173ca-0x1beca: 96 x 64 x 5 - 4 monitor images
-0x5ae00-0x5c840: 16x16 font
- */
+struct Block<'a> {
+    file_name: &'a str,
+    palette: &'a str,
+    start: usize,
+    end: usize,
+    width: usize,
+    height: usize,
+    depth: usize,
+}
 
-// Sizes tried: Widths: 96, 32, 48, 320, 256
+const BLOCKS: [Block; 22] = [
+    // Monitor screeens.
+    Block {
+        file_name: "unpacked.bin",
+        palette: "game",
+        start: 0x17346,
+        end: 0x1af46,
+        width: 96,
+        height: 64,
+        depth: 5,
+    },
+    // 16x16 title sequence font. TODO: What palette?
+    Block {
+        file_name: "unpacked.bin",
+        palette: "mgmt",
+        start: 0x5ad9c,
+        end: 0x5c91c,
+        width: 16,
+        height: 16,
+        depth: 5,
+    },
+    // Blank at end of file.
+    Block {
+        file_name: "unpacked.bin",
+        palette: "mgmt",
+        start: 0x5c91c,
+        end: 0x5c99c,
+        width: 16,
+        height: 1,
+        depth: 1,
+    },
+    // TODO: Decode this. Is it *just* music?
+    Block {
+        file_name: "overlay_00.bin",
+        palette: "mgmt",
+        start: 0x0,
+        end: 0x1b000,
+        width: 32,
+        height: 1,
+        depth: 1,
+    },
+    // 0x0000-0x756e is compressed IFF of menu backdrop.
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "none",
+        start: 0x0,
+        end: 0x756e,
+        width: 1,
+        height: 1,
+        depth: 1,
+    },
+    // Management screen backdrop, management palette.
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0x756e,
+        end: 0xe18e,
+        width: 16,
+        height: 16,
+        depth: 5,
+    },
+    // Small characters.
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0xe18e,
+        end: 0xe986,
+        width: 8,
+        height: 8,
+        depth: 5,
+    },
+    // 16x16 characters for menu. TODO: Palette might need to be stolen from backdrop IFF?
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0xe986,
+        end: 0x10146,
+        width: 16,
+        height: 16,
+        depth: 5,
+    },
+    // This is something strange. Not quite sure what it is...
+    // Looks like 64 bits (8 bytes) * 5 * ... 28??
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "game",
+        start: 0x10146,
+        end: 0x119a6,
+        width: 64 * 5,
+        height: 1,
+        depth: 1,
+    },
+    // Management screen lights.
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0x119a6,
+        end: 0x123a6,
+        width: 16,
+        height: 16,
+        depth: 5,
+    },
+    // Management screen: Buttons, armour.
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0x123a6,
+        end: 0x1d026,
+        width: 32,
+        height: 32,
+        depth: 5,
+    },
+    // 16x16 chunks of face.
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0x1d026,
+        end: 0x25726,
+        width: 16,
+        height: 16,
+        depth: 4,
+    },
+    // 16x16 chunks of group icons
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0x25726,
+        end: 0x27346,
+        width: 16,
+        height: 16,
+        depth: 5,
+    },
+    // TODO: Some data at end of file?
+    Block {
+        file_name: "overlay_01_full.bin",
+        palette: "mgmt",
+        start: 0x27346,
+        end: 0x27e00,
+        width: 16,
+        height: 1,
+        depth: 1,
+    },
+    // Small in-game sprites.
+    Block {
+        file_name: "overlay_18_full.bin",
+        palette: "game",
+        start: 0,
+        end: 0x2c80,
+        width: 16,
+        height: 16,
+        depth: 4,
+    },
+    // Main character sprites (includes medidroid, large ball).
+    Block {
+        file_name: "overlay_18_full.bin",
+        palette: "game",
+        start: 0x2c80,
+        end: 0x13a80,
+        width: 32,
+        height: 32,
+        depth: 4,
+    },
+    // Bouncers, ball launcher.
+    Block {
+        file_name: "overlay_18_full.bin",
+        palette: "game",
+        start: 0x13a80,
+        end: 0x15b00,
+        width: 32,
+        height: 32,
+        depth: 5,
+    },
+    // Blank area at end of file.
+    Block {
+        file_name: "overlay_18_full.bin",
+        palette: "game",
+        start: 0x15b00,
+        end: 0x15c00,
+        width: 32,
+        height: 32,
+        depth: 1,
+    },
+    // Arena tiles.
+    Block {
+        file_name: "overlay_26.bin",
+        palette: "game",
+        start: 0,
+        end: 0xea00 - 0x40,
+        width: 16,
+        height: 16,
+        depth: 5,
+    },
+    // Blank are at end of file.
+    Block {
+        file_name: "overlay_26.bin",
+        palette: "game",
+        start: 0xea00 - 40,
+        end: 0xea00,
+        width: 32,
+        height: 1,
+        depth: 1,
+    },
+    // Data?
+    Block {
+        file_name: "overlay_27.bin",
+        palette: "game", // TODO
+        start: 0,
+        end: 0x2c00,
+        width: 32,
+        height: 1,
+        depth: 1,
+    },
+    // Data?
+    Block {
+        file_name: "overlay_28.bin",
+        palette: "game", // TODO
+        start: 0,
+        end: 0x3800,
+        width: 32,
+        height: 1,
+        depth: 1,
+    },
+];
 
 fn main() -> anyhow::Result<()> {
-    let data = fs::read("../unpack/out/unpacked.bin")?;
+    // let data = fs::read("../unpack/out/unpacked.bin")?;
+    let palette_source = fs::read("../unpack/out/unpacked.bin")?;
 
     fs::create_dir_all(OUT_DIR)?;
 
-    let img_data = &data;
     for (palette_addr, palette_name) in PALETTE_ADDRS.iter() {
         println!("Running for palette {}", palette_name);
-        let palette = &data[*palette_addr - IMAGE_BASE..];
-	// Monitor images
-//        let img = extract_set(img_data, 0x173CA - IMAGE_BASE, 96, 64, 10, palette);
-	// Font
-	let img = extract_set(img_data, 0x5ae00 - IMAGE_BASE, 16, 16, 42, palette);
-        img.save(Path::new(
-            format!("{}/extract-{}.png", OUT_DIR, palette_name).as_str(),
-        ))?;
+        let palette = &palette_source[*palette_addr - IMAGE_BASE..];
+
+        for block in BLOCKS.iter() {
+            if *palette_name != block.palette {
+                continue;
+            }
+
+            let data = fs::read(&format!("../../overlays/{}", block.file_name))?;
+            let data = if block.end > 0 {
+                &data[..block.end]
+            } else {
+                &data
+            };
+            let data = if block.start > 0 {
+                &data[block.start..]
+            } else {
+                &data
+            };
+
+            let img = extract_set(
+                block.file_name,
+                &data,
+                0x0,
+                block.width,
+                block.height,
+                block.depth,
+                1000000,
+                palette,
+            );
+            img.save(Path::new(
+                format!(
+                    "{}/{}-{:06x}-{:06x}.png",
+                    OUT_DIR, block.file_name, block.start, block.end
+                )
+                .as_str(),
+            ))?;
+        }
     }
 
     Ok(())
