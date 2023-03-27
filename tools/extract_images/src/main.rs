@@ -244,16 +244,16 @@ const BLOCKS: [Block; 22] = [
         height: 16,
         depth: 5,
     },
-    // This is something strange. Not quite sure what it is...
-    // Looks like 64 bits (8 bytes) * 5 * ... 28??
+    // Various 8x8 fonts. Palette clearly incorrect in places, but I'm
+    // not sure what the alternatives are...
     Block {
         file_name: "overlay_01_full.bin",
-        palette: "game",
+        palette: "mgmt",
         start: 0x10146,
         end: 0x119a6,
-        width: 64 * 5,
-        height: 1,
-        depth: 1,
+        width: 8,
+        height: 8,
+        depth: 5,
     },
     // Management screen lights.
     Block {
@@ -350,7 +350,7 @@ const BLOCKS: [Block; 22] = [
         file_name: "overlay_26.bin",
         palette: "game",
         start: 0,
-        end: 0xea00 - 0x40,
+        end: 0xe9c0,
         width: 16,
         height: 16,
         depth: 5,
@@ -359,7 +359,7 @@ const BLOCKS: [Block; 22] = [
     Block {
         file_name: "overlay_26.bin",
         palette: "game",
-        start: 0xea00 - 40,
+        start: 0xe9c0,
         end: 0xea00,
         width: 32,
         height: 1,
