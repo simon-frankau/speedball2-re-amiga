@@ -1,10 +1,14 @@
 //
-// Screen displayer
+// Amiga Speedball 2 unpacker
 //
+// Takes a Speedball 2 ADF image "Speedball 2 - Brutal Deluxe
+// (1990)(ImageWorks)[cr CLS - RZR]"
+// https://www.planetemu.net/rom/commodore-amiga-games-adf/speedball-2-brutal-deluxe-1990-imageworks-cr-cls-rzr-3
+// and unpacks it into memory.
 //
-// Pulls a static screen structure from the Speedball 2 ROM and
-// converts it into an image file. Understands the specific structure
-// used, with a palette, tile map, and set of cells.
+// Also decodes "Speedball 2 - Brutal Deluxe (1990)(ImageWorks)[cr
+// DC].adf" and "Speedball 2 - Brutal Deluxe (1990)(ImageWorks)[cr
+// CSL].adf".
 //
 
 use std::fs;
@@ -18,10 +22,12 @@ const DISK_OFFSET: usize = 22 * 512;
 // Unpackable region starts 10 bytes into the memory image.
 const MEM_OFFSET: usize = 10;
 // Packed length in image.
-const PACKED_LEN: usize = 0x48814;
+const PACKED_LEN_CLS: usize = 0x48814;
+// Length of area checksummed.
+const CHECK_LEN: usize = 150000;
 
 ////////////////////////////////////////////////////////////////////////
-// Main algorithm
+// Decompression algorithm for CLS RZR.
 //
 
 struct Decompressor {
@@ -94,14 +100,14 @@ impl Decompressor {
     }
 }
 
-fn decompress(data: &[u8]) -> Vec<u8> {
+fn decompress_cls(data: &[u8]) -> Vec<u8> {
     let mut d = Decompressor::new(data);
 
     fn copy_out(n: usize, d: &mut Decompressor) {
         println!("Reproducing {} bytes", n);
         for _ in 0..n {
             let byte = d.bits(8);
-	    d.output.push(byte as u8);
+            d.output.push(byte as u8);
         }
     }
 
@@ -124,11 +130,16 @@ fn decompress(data: &[u8]) -> Vec<u8> {
     }
 
     fn copy_back(len: usize, distance: usize, d: &mut Decompressor) {
-        println!("Copying {} bytes from history ({} vs {})", len, distance, d.output.len());
-	for _ in 0..len {
-	    let val = d.output[d.output.len() - distance];
-	    d.output.push(val);
-	}
+        println!(
+            "Copying {} bytes from history ({} vs {})",
+            len,
+            distance,
+            d.output.len()
+        );
+        for _ in 0..len {
+            let val = d.output[d.output.len() - distance];
+            d.output.push(val);
+        }
     }
 
     println!("Upacked length: {}", d.unpacked_length);
@@ -166,17 +177,17 @@ fn decompress(data: &[u8]) -> Vec<u8> {
             }
         }
 
-	// Check for end.
-	if d.byte_offset == 0 && d.bit_offset == 7 {
-	    // All bits have been read. As the start is not fully
-	    // packed, the end is precisely aligned to the bit.
-	    assert_eq!(d.output.len(), d.unpacked_length);
-	    break;
-	}
-	
+        // Check for end.
+        if d.byte_offset == 0 && d.bit_offset == 7 {
+            // All bits have been read. As the start is not fully
+            // packed, the end is precisely aligned to the bit.
+            assert_eq!(d.output.len(), d.unpacked_length);
+            break;
+        }
+
         // Lookback step
         let copy_mode = d.bits(2);
-	println!(
+        println!(
             "Lookback ({}@{:x}): {:x}",
             d.bit_offset, d.byte_offset, copy_mode
         );
@@ -225,15 +236,126 @@ fn decompress(data: &[u8]) -> Vec<u8> {
     d.output
 }
 
+// Perform the checksum done inside the Speedball 2 decompressor.
+fn checksum(v: &[u8], n: usize) -> u16 {
+    let mut sum: u16 = 0;
+    let mut counter = n; 
+    for val in v[..n].iter() {
+        sum = sum.wrapping_add(*val as u16);
+        sum = sum.rotate_left((counter + 1) as u32 & 7);
+        counter -= 1;
+    }
+    sum
+}
+
+////////////////////////////////////////////////////////////////////////
+// DC Decompressor
+//
+
+// Read a 16-bit little-endian value.
+fn read16le<'a>(data: &'a [u8]) -> (u16, &'a [u8]) {
+    let val = (data[0] as u16) | (data[1] as u16) << 8;
+    let rest = &data[2..];
+    (val, rest)
+}
+
+fn dc_inner(data: &[u8]) -> Vec<u8> {
+    let mut d = data;
+    let mut result = Vec::new();
+
+    while !d.is_empty() {
+        let op = d[0];
+        d = &d[1..];
+
+        if op & 0x80 == 0 {
+            // Top bit not set: Copy bytes from input.
+            result.extend(d[..op as usize].iter());
+            d = &d[op as usize..];
+            continue;
+        }
+
+        // Top bit set is a look-back. If op is 0xff, read a length
+        // word, otherwise the low bits of op are the length.
+        let len = if op == 0xff {
+            let len;
+            (len, d) = read16le(d);
+            len as usize
+        } else {
+            (op & !0x80) as usize
+        };
+
+        // Read the start offset.
+        let start;
+        (start, d) = read16le(d);
+
+        for index in 0..len {
+            let source = result[start as usize + index];
+            result.push(source);
+        }
+    }
+
+    result
+}
+
+fn decompress_dc(data: &[u8]) -> Vec<u8> {
+    let mut d = data;
+    let mut result = Vec::new();
+
+    loop {
+        let segment_length;
+        (segment_length, d) = read16le(d);
+        if segment_length == 0 {
+            break;
+        }
+        eprintln!("Seg len {}", segment_length);
+        result.extend(dc_inner(&d[..segment_length as usize]));
+        d = &d[segment_length as usize..];
+    }
+
+    result
+}
+
+////////////////////////////////////////////////////////////////////////
+// Main function
+//
+
 fn main() -> anyhow::Result<()> {
-    let data = fs::read("../../speedball2.adf")?;
-    fs::create_dir_all(OUT_DIR)?;
-    let out_file_name = format!("{}/{}", OUT_DIR, "unpacked.bin");
+    {
+        let data = fs::read("../../in/speedball2-dc.adf")?;
+        fs::create_dir_all(OUT_DIR)?;
+        let out_file_name = format!("{}/{}", OUT_DIR, "unpacked-dc.bin");
 
-    let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..][..PACKED_LEN];
-    let decompressed = decompress(unpackable_data);
+        let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..];
+        let decompressed = decompress_dc(unpackable_data);
+        fs::write(&Path::new(&out_file_name), &decompressed)?;
 
-    fs::write(&Path::new(&out_file_name), &decompressed)?;
-    
+	println!("DC checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
+    }
+
+    {
+	let data = fs::read("../../in/speedball2-csl.adf")?;
+        fs::create_dir_all(OUT_DIR)?;
+        let out_file_name = format!("{}/{}", OUT_DIR, "unpacked-csl.bin");
+
+        let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..];
+        let decompressed = decompress_dc(unpackable_data);
+        fs::write(&Path::new(&out_file_name), &decompressed)?;
+
+	println!("CSL checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
+    }
+
+    {
+        let data = fs::read("../../in/speedball2-cls.adf")?;
+        fs::create_dir_all(OUT_DIR)?;
+        let out_file_name = format!("{}/{}", OUT_DIR, "unpacked-cls.bin");
+
+        let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..][..PACKED_LEN_CLS];
+        let decompressed = decompress_cls(unpackable_data);
+
+        fs::write(&Path::new(&out_file_name), &decompressed)?;
+
+        println!("CLS checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
+    }
+
     Ok(())
 }

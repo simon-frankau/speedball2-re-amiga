@@ -1,8 +1,3 @@
-            ;While this is technically loaded into the start of
-            ;the allocated memory whose address was stashed into
-            ;0x84, we just assume it's loaded at 0x84! Works ok as
-            ;it's all PC-relative.
-            ;
             ;Set the stack pointer sufficiently far after the end of the code.
 
 00000084        lea         (0xcbe,PC)=>stack_pointer,SP

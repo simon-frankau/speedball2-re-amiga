@@ -163,7 +163,7 @@ struct Block<'a> {
     depth: usize,
 }
 
-const BLOCKS: [Block; 22] = [
+const BLOCKS: [Block; 24] = [
     // Monitor screeens.
     Block {
         file_name: "unpacked.bin",
@@ -194,13 +194,33 @@ const BLOCKS: [Block; 22] = [
         height: 1,
         depth: 1,
     },
-    // TODO: Decode this. Is it *just* music?
+    // Start of the file is just music.
     Block {
         file_name: "overlay_00.bin",
         palette: "mgmt",
         start: 0x0,
         end: 0x1b000,
         width: 32,
+        height: 1,
+        depth: 1,
+    },
+    // The chunk at the end is the status bar.
+    Block {
+        file_name: "overlay_00.bin",
+        palette: "game",
+        start: 0x1A598,
+        end: 0x1af98,
+        width: 320,
+        height: 16,
+        depth: 4,
+    },
+    // Blank at end of file.
+    Block {
+        file_name: "overlay_00.bin",
+        palette: "game",
+	start: 0x1af98,
+	end: 0x1b000,
+        width: 16,
         height: 1,
         depth: 1,
     },
