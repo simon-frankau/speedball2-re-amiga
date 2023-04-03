@@ -197,9 +197,9 @@ const BLOCKS: [Block; 24] = [
     // Start of the file is just music.
     Block {
         file_name: "overlay_00.bin",
-        palette: "mgmt",
+        palette: "data",
         start: 0x0,
-        end: 0x1b000,
+        end: 0x1a598,
         width: 32,
         height: 1,
         depth: 1,
@@ -208,7 +208,7 @@ const BLOCKS: [Block; 24] = [
     Block {
         file_name: "overlay_00.bin",
         palette: "game",
-        start: 0x1A598,
+        start: 0x1a598,
         end: 0x1af98,
         width: 320,
         height: 16,
@@ -226,7 +226,7 @@ const BLOCKS: [Block; 24] = [
     },
     // 0x0000-0x756e is compressed IFF of menu backdrop.
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "none",
         start: 0x0,
         end: 0x756e,
@@ -236,7 +236,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Management screen backdrop, management palette.
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0x756e,
         end: 0xe18e,
@@ -246,7 +246,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Small characters.
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0xe18e,
         end: 0xe986,
@@ -256,7 +256,7 @@ const BLOCKS: [Block; 24] = [
     },
     // 16x16 characters for menu. TODO: Palette might need to be stolen from backdrop IFF?
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0xe986,
         end: 0x10146,
@@ -267,7 +267,7 @@ const BLOCKS: [Block; 24] = [
     // Various 8x8 fonts. Palette clearly incorrect in places, but I'm
     // not sure what the alternatives are...
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0x10146,
         end: 0x119a6,
@@ -277,7 +277,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Management screen lights.
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0x119a6,
         end: 0x123a6,
@@ -287,7 +287,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Management screen: Buttons, armour.
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0x123a6,
         end: 0x1d026,
@@ -297,7 +297,7 @@ const BLOCKS: [Block; 24] = [
     },
     // 16x16 chunks of face.
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0x1d026,
         end: 0x25726,
@@ -307,7 +307,7 @@ const BLOCKS: [Block; 24] = [
     },
     // 16x16 chunks of group icons
     Block {
-        file_name: "overlay_01_full.bin",
+        file_name: "overlay_01.bin",
         palette: "mgmt",
         start: 0x25726,
         end: 0x27346,
@@ -315,10 +315,10 @@ const BLOCKS: [Block; 24] = [
         height: 16,
         depth: 5,
     },
-    // TODO: Some data at end of file?
+    // End of the file is scores tables and tile maps.
     Block {
-        file_name: "overlay_01_full.bin",
-        palette: "mgmt",
+        file_name: "overlay_01.bin",
+        palette: "data",
         start: 0x27346,
         end: 0x27e00,
         width: 16,
@@ -327,7 +327,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Small in-game sprites.
     Block {
-        file_name: "overlay_18_full.bin",
+        file_name: "overlay_18.bin",
         palette: "game",
         start: 0,
         end: 0x2c80,
@@ -337,7 +337,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Main character sprites (includes medidroid, large ball).
     Block {
-        file_name: "overlay_18_full.bin",
+        file_name: "overlay_18.bin",
         palette: "game",
         start: 0x2c80,
         end: 0x13a80,
@@ -347,7 +347,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Bouncers, ball launcher.
     Block {
-        file_name: "overlay_18_full.bin",
+        file_name: "overlay_18.bin",
         palette: "game",
         start: 0x13a80,
         end: 0x15b00,
@@ -357,7 +357,7 @@ const BLOCKS: [Block; 24] = [
     },
     // Blank area at end of file.
     Block {
-        file_name: "overlay_18_full.bin",
+        file_name: "overlay_18.bin",
         palette: "game",
         start: 0x15b00,
         end: 0x15c00,
@@ -408,8 +408,7 @@ const BLOCKS: [Block; 24] = [
 ];
 
 fn main() -> anyhow::Result<()> {
-    // let data = fs::read("../unpack/out/unpacked.bin")?;
-    let palette_source = fs::read("../unpack/out/unpacked.bin")?;
+    let palette_source = fs::read("../../overlays/unpacked.bin")?;
 
     fs::create_dir_all(OUT_DIR)?;
 

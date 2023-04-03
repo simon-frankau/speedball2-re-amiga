@@ -15,7 +15,10 @@ use std::fs;
 use std::path::Path;
 use std::str;
 
-const OUT_DIR: &str = "out";
+// Override these, if you need to!
+const IN_FILE: &str = "../../in/speedball2-cls.adf";
+const OUT_FILE: &str = "../../overlays/unpacked.bin";
+const IN_TYPE: Crack = Crack::ByCLSRZR;
 
 // Memory image starts 22 sectors into the disk image.
 const DISK_OFFSET: usize = 22 * 512;
@@ -25,6 +28,13 @@ const MEM_OFFSET: usize = 10;
 const PACKED_LEN_CLS: usize = 0x48814;
 // Length of area checksummed.
 const CHECK_LEN: usize = 150000;
+
+// Quick enum for the different kinds of crack we can unpack.
+enum Crack {
+    ByCLSRZR,
+    ByDC,
+    ByCSL,
+}
 
 ////////////////////////////////////////////////////////////////////////
 // Decompression algorithm for CLS RZR.
@@ -320,42 +330,24 @@ fn decompress_dc(data: &[u8]) -> Vec<u8> {
 //
 
 fn main() -> anyhow::Result<()> {
-    {
-        let data = fs::read("../../in/speedball2-dc.adf")?;
-        fs::create_dir_all(OUT_DIR)?;
-        let out_file_name = format!("{}/{}", OUT_DIR, "unpacked-dc.bin");
+    let data = fs::read(IN_FILE)?;
 
-        let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..];
-        let decompressed = decompress_dc(unpackable_data);
-        fs::write(&Path::new(&out_file_name), &decompressed)?;
-
-	println!("DC checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
-    }
-
-    {
-	let data = fs::read("../../in/speedball2-csl.adf")?;
-        fs::create_dir_all(OUT_DIR)?;
-        let out_file_name = format!("{}/{}", OUT_DIR, "unpacked-csl.bin");
-
-        let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..];
-        let decompressed = decompress_dc(unpackable_data);
-        fs::write(&Path::new(&out_file_name), &decompressed)?;
-
-	println!("CSL checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
-    }
-
-    {
-        let data = fs::read("../../in/speedball2-cls.adf")?;
-        fs::create_dir_all(OUT_DIR)?;
-        let out_file_name = format!("{}/{}", OUT_DIR, "unpacked-cls.bin");
-
-        let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..][..PACKED_LEN_CLS];
-        let decompressed = decompress_cls(unpackable_data);
-
-        fs::write(&Path::new(&out_file_name), &decompressed)?;
-
-        println!("CLS checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
-    }
-
+    let decompressed = match IN_TYPE {
+	Crack::ByDC => {
+            let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..];
+            decompress_dc(unpackable_data)
+	},
+	Crack::ByCSL => {
+            let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..];
+            decompress_dc(unpackable_data)
+	},
+	Crack::ByCLSRZR => {
+	    let unpackable_data = &data[DISK_OFFSET + MEM_OFFSET..][..PACKED_LEN_CLS];
+            decompress_cls(unpackable_data)
+	},
+    };
+    
+    fs::write(&Path::new(OUT_FILE), &decompressed)?;
+    println!("Checksum is 0x{:04x}", checksum(&decompressed, CHECK_LEN));
     Ok(())
 }

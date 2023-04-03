@@ -93,12 +93,12 @@ fn decompress(data: &[u8]) -> Vec<u8> {
     let mut v = Vec::new();
     while data.len() > 0 {
 	let x = data[0];
-	if 0 <= x && x < 128 {
+	if x < 128 {
 	    v.extend(data[1..][..x as usize + 1].iter());
 	    data = &data[x as usize + 2..];
 	} else if x > 128 {
 	    let c = data[1];
-	    for i in 0..(257 - x as usize) {
+	    for _i in 0..(257 - x as usize) {
 		v.push(c);
 	    }
 	    data = &data[2..];
@@ -108,7 +108,7 @@ fn decompress(data: &[u8]) -> Vec<u8> {
 }
 
 
-fn pixel_at(data: &[u8], width: usize, height: usize, n_planes: usize, x: usize, y: usize) -> u8 {
+fn pixel_at(data: &[u8], width: usize, _height: usize, n_planes: usize, x: usize, y: usize) -> u8 {
     let line_stride = width * n_planes;
     let mut addr = y * line_stride + x;
 
@@ -136,8 +136,8 @@ fn decode(data: &[u8]) -> Option<Image> {
     let (width, height) = (to_u16(&bmhd[8..]) as usize, to_u16(&bmhd[10..]) as usize);
     let n_planes = bmhd[16] as usize;
     let palette = get_cmap(cmap);
-    // Like the SB2 decoder, we're assuming compressed, not checking
-    // the BMHD flags.
+    // Like the decoder in the SB2 binary, we're assuming compressed,
+    // not checking the BMHD flags.
     let image_data = decompress(body);
 
     println!("  {}x{}, {} planes", width, height, n_planes);
@@ -151,18 +151,22 @@ fn decode(data: &[u8]) -> Option<Image> {
 }
 
 fn main() -> anyhow::Result<()> {
-    let data = fs::read("../unpack/out/unpacked.bin")?;
+    fs::create_dir_all(OUT_DIR)?;
 
-    for (idx, window) in data.windows(8).enumerate() {
-        let fourcc = to_fourcc(window);
-        let len = to_u32(&window[4..]);
-        // Plausible form?
-        if fourcc == "FORM" && len < data.len() as u32 {
-            println!("FORM at offset 0x{:x}, length 0x{:x}", idx, len);
-            if let Some(image) = decode(&data[idx + 8..][..len as usize]) {
-                image.save(Path::new(format!("{}/iff-{:x}.png", OUT_DIR, idx).as_str()))?;
+    for file in ["../../in/speedball2-cls.adf", "../../overlays/unpacked.bin"] {
+	let data = fs::read(file)?;
+
+	for (idx, window) in data.windows(8).enumerate() {
+            let fourcc = to_fourcc(window);
+            let len = to_u32(&window[4..]);
+            // Plausible form?
+            if fourcc == "FORM" && len < data.len() as u32 {
+		println!("FORM at offset 0x{:x}, length 0x{:x}", idx, len);
+		if let Some(image) = decode(&data[idx + 8..][..len as usize]) {
+                    image.save(Path::new(format!("{}/iff-{:x}.png", OUT_DIR, idx).as_str()))?;
+		}
             }
-        }
+	}
     }
 
     Ok(())
