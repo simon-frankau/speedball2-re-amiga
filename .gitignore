@@ -3,3 +3,5 @@ target/
 sb2-amiga.rep
 sb2-amiga.gpr
 out/
+in/
+overlays/

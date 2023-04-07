@@ -1,5 +1,10 @@
 # Reverse engineering of Speedball 2 for Commodore Amiga
 
+**Project status: This is incomplete. I've put a decent amount of work
+into understanding the copy protection (as it is, post-crack), which I
+wanted to put up, but large chunks of the image that are different
+from the Megadrive version are still unexamined.**
+
 Following up on my reverse engineering of the [Megadrive
 version](https://github.com/simon-frankau/speedball2-re.git), I
 thought I'd have a go at the Amiga version, in order to understand the
@@ -15,7 +20,7 @@ learning curve.
 
 I started with "Speedball 2 - Brutal Deluxe (1990)(ImageWorks)[cr
 CLS - RZR]"
-([here](https://www.planetemu.net/rom/commodore-amiga-games-adf/speedball-2-brutal-deluxe-1990-imageworks-cr-cls-rzr-3). The
+([here](https://www.planetemu.net/rom/commodore-amiga-games-adf/speedball-2-brutal-deluxe-1990-imageworks-cr-cls-rzr-3)). The
 disk image was just the right size for 80 cylinders, 2 heads, 11
 sectors/track and 512 bytes/sector, so it looked like the ADF format
 would be very tractable.
@@ -259,12 +264,12 @@ Memory-wise, these overlays are loaded as follows:
 
 | Overlay number | Start sector | # sectors | RAM range         |
 |----------------|--------------|-----------|-------------------|
-| #0    		 | 0x26f 		| 0xd8   	| 0x01bc3e-0x036c3e |
-| #1    		 | 0x347 		| 0x13f  	| 0x0361d6-0x05dfd6 |
-| #18   		 | 0x568 		| 0xae   	| 0x03a2d6-0x04fed6 |
-| #26   		 | 0x616 		| 0x75   	| 0x04fed6-0x05e8d6 |
-| #27   		 | 0x68b 		| 0x16   	| 0x030d56-0x033956 |
-| #28   		 | 0x6a1 		| 0x1c   	| 0x030d56-0x037956 |
+| #0             | 0x26f        | 0xd8      | 0x01bc3e-0x036c3e |
+| #1             | 0x347        | 0x13f     | 0x0361d6-0x05dfd6 |
+| #18            | 0x568        | 0xae      | 0x03a2d6-0x04fed6 |
+| #26            | 0x616        | 0x75      | 0x04fed6-0x05e8d6 |
+| #27            | 0x68b        | 0x16      | 0x030d56-0x033956 |
+| #28            | 0x6a1        | 0x1c      | 0x030d56-0x037956 |
 
 In more detail, they provide the following variables:
 

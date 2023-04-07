@@ -1,0 +1,25 @@
+#!/usr/bin/expect
+
+# This version of the script gets *all* interrupts from the point
+# where we start tracing, so it's something of a superset. From
+# running it, we observe we only need the 0x1bbea and 0x1bbc4.
+#
+# That's what we trace in v2.
+
+spawn "/Applications/FS-UAE.app/Contents/MacOS/fs-uae" "/Users/sgf/Documents/FS-UAE/Configurations/SB\ II\ debug.fs-uae"
+# Breakpoint at the start of tracing...
+expect ">"
+send "f 0x1bbe4\n"
+# And run until then.
+expect ">"
+send "g\n"
+# Remove breakpoint
+expect ">"
+send "f 0x1bbe4\n"
+# And repeatedly run to RTE and then inspect the following instruction.z
+while {1} {
+    expect ">"
+    send "fi\n"
+    expect ">"
+    send "t\n"
+}

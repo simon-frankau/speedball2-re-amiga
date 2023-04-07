@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+
+# This is the v2 script that just hooks the specific trace routines.
+
+spawn "/Applications/FS-UAE.app/Contents/MacOS/fs-uae" "/Users/sgf/Documents/FS-UAE/Configurations/SB\ II\ debug.fs-uae"
+# Set the breakpoints for the trace routine exceptions.
+expect ">"
+send "f 0x1bbea\n"
+expect ">"
+send "f 0x1bbc4\n"
+# Then, run to RTE, and inspect the following instruction.
+# And repeatedly run to RTE and then inspect the following instruction.
+while {1} {
+    expect ">"
+    send "g\n"
+    expect ">"
+    send "t\n"
+}

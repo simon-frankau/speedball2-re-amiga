@@ -293,6 +293,11 @@ use an emulator.
 
 ### Ghidra emulation
 
+*From here on out, in order to keep this file a little more
+streamlined, you can find the actual traces and code to produce the
+traces in [cp-tracing/README.md](cp-tracing/README.md). This directory
+includes plenty of dead-ends, if you want to see how not to do it!*
+
 Fortunately, Ghidra has a built-in emulator. Slightly less
 fortunately, it's very poorly documented. The documentation appears to
 be the Javadocs for the exposed classes, plus a few third-party blogs
@@ -518,6 +523,8 @@ Finally, `trap_trace_3` really just unwinds does a memory move/clear
 ```
 
 ### What, exactly was the point of that?
+
+The full trace can be found in [trace.asm](cp-tracing/trace.asm).
 
 Within all that encrypted malarky, the routine performed 3 patches,
 based on data at 0x39c6 (`cp_junk`):
