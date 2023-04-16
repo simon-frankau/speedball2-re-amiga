@@ -388,3 +388,65 @@ Splash images are IFF ILBMs.
 | 0x68b        | 0x16   | Overlay #27: TODO                               |
 | 0x6a1        | 0x1c   | Overlay #28: ???? Loaded with background splash |
 | 0x6bd        | 0x23   | Game crack intro                                |
+
+## Graphics
+
+### Overview
+
+The graphics code makes good use of the Copper and Blitter.
+
+The screen buffer supports efficient vertical scrolling by being
+structured like a ring buffer. To scroll down one line, a line is
+repurposed from being the old top line to the new bottom line.
+
+In terms of memory, this can be viewed as two contiguous chunks of
+memory, representing the latter part of screen memory, displayed
+first, and then the earlier part of memory, displayed second.
+
+The sprite drawing mechanisms need to be aware of this, breaking
+sprites into two if they cross the wrap-around point.
+
+Horrizontal scrolling is similarly managed by moving the start point
+along the line, and patching up the horizontal wrap-arounds.
+
+The in-game status bar is implemented is implemented as a third
+buffer. These three chunks (with status bar optional) are assembled by
+the Copper list. The Copper list also controls which of the three
+screen buffers is currently displayed, and the colour palette, so that
+everything gets synchronised with the vertical sync.
+
+Sprite drawing, both with a mask and without, is accelerated by the
+Blitter.
+
+### Details of scrolling and the game pitch
+
+The game pitch is broken into 16x16 blocks. The total game area is
+40x72 blocks. The screen memory is a 21x13 block window into this
+(336x208 pixels), of which 320x184 pixels are shown onscreen with the
+hardware assisting in sub-block scrolling. The last 16 rows of the 200
+row screen are the status bar, as mentioned above.
+
+Horizontal scrolling is achieved by changing the starting block within
+a row, and making the block that was the end of one row now the end of
+another. Since there is no wrap around within horizontal scrolling,
+the screen memory buffer is 209 rows long rather than 208, and the
+pitch is two screens wide.
+
+Most of this is implemented by `redraw_pitch`, a surprisingly messy
+function. The pitch structure is drawn from `pitch_map` where
+needed. Need is determined by `dirty_map`. The `dirty_map` entries for
+the blocks around the edge of the screen are always set, to ensure the
+screen displays correctly when scrolling.
+
+`line_table` maps from the pitch's absolute Y coordinates to screen
+offset. Since the screen behaves as a circular buffer, this is just
+increasing addresses in the screen buffer that wrap around a few
+times.
+
+This is used to populate `screen_line_table`, which is dynamically
+updated to represent where to find the on-screen lines in memory.
+
+### Sprites
+
+TODO
+

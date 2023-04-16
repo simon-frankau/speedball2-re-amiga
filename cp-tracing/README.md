@@ -3,7 +3,7 @@
 This directory contains the various scripts I attempted to use for
 tracing through the [Rob Northen's
 copylock](https://en.wikipedia.org/wiki/Rob_Northen_copylock), which
-is ana implementation of a[trace vector
+is an implementation of a [trace vector
 decoder](https://en.wikipedia.org/wiki/Trace_vector_decoder). It
 includes some dead-ends.
 
