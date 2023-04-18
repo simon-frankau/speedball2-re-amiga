@@ -15,7 +15,11 @@ const MAX_DEPTH: usize = 5;
 // 32 colour palette
 const PALETTE_SIZE: usize = 1 << MAX_DEPTH;
 
-const PALETTE_ADDRS: [(usize, &str); 2] = [(0x0000f2, "game"), (0x000132, "mgmt")];
+const PALETTE_ADDRS: [(usize, &str, bool); 3] = [
+    (0x0000f2, "game", false),
+    (0x0000f2, "player1", true),
+    (0x000132, "mgmt", false),
+];
 
 // Memory locations don't match file locations, since image is loaded
 // at 0x84.
@@ -129,7 +133,7 @@ fn extract_set(
     h: usize,
     depth: usize,
     count: usize,
-    palette: &[u8],
+    palette: Vec<(u8, u8, u8)>,
 ) -> Image {
     let available_bits = (data.len() - offset) * 8;
     let available = available_bits / (w * h * depth);
@@ -144,7 +148,7 @@ fn extract_set(
         );
     }
 
-    let mut img = Image::new(w, h * count, build_palette(palette));
+    let mut img = Image::new(w, h * count, palette);
     let data = &data[offset..];
     for (idx, block) in data.chunks_exact(w * h * depth / 8).enumerate().take(count) {
         draw_image(block, w, h, depth, &mut img, 0, idx * h);
@@ -163,7 +167,7 @@ struct Block<'a> {
     depth: usize,
 }
 
-const BLOCKS: [Block; 24] = [
+const BLOCKS: [Block; 25] = [
     // Monitor screeens.
     Block {
         file_name: "unpacked.bin",
@@ -218,8 +222,8 @@ const BLOCKS: [Block; 24] = [
     Block {
         file_name: "overlay_00.bin",
         palette: "game",
-	start: 0x1af98,
-	end: 0x1b000,
+        start: 0x1af98,
+        end: 0x1b000,
         width: 16,
         height: 1,
         depth: 1,
@@ -345,6 +349,16 @@ const BLOCKS: [Block; 24] = [
         height: 32,
         depth: 4,
     },
+    // And the same, but with player 1 palette.
+    Block {
+        file_name: "overlay_18.bin",
+        palette: "player1",
+        start: 0x2c80,
+        end: 0x13a80,
+        width: 32,
+        height: 32,
+        depth: 4,
+    },
     // Bouncers, ball launcher.
     Block {
         file_name: "overlay_18.bin",
@@ -407,14 +421,23 @@ const BLOCKS: [Block; 24] = [
     },
 ];
 
+// Used to make P2 sprites look like P1 sprites.
+fn mangle_palette(palette: &mut [(u8, u8, u8)]) {
+    palette[15] = palette[13];
+}
+
 fn main() -> anyhow::Result<()> {
     let palette_source = fs::read("../../overlays/unpacked.bin")?;
 
     fs::create_dir_all(OUT_DIR)?;
 
-    for (palette_addr, palette_name) in PALETTE_ADDRS.iter() {
+    for (palette_addr, palette_name, mangle) in PALETTE_ADDRS.iter() {
         println!("Running for palette {}", palette_name);
         let palette = &palette_source[*palette_addr - IMAGE_BASE..];
+        let mut palette = build_palette(palette);
+        if *mangle {
+            mangle_palette(&mut palette);
+        }
 
         for block in BLOCKS.iter() {
             if *palette_name != block.palette {
@@ -441,12 +464,13 @@ fn main() -> anyhow::Result<()> {
                 block.height,
                 block.depth,
                 1000000,
-                palette,
+                palette.clone(),
             );
+            let extra = if *mangle { "-p1" } else { "" };
             img.save(Path::new(
                 format!(
-                    "{}/{}-{:06x}-{:06x}.png",
-                    OUT_DIR, block.file_name, block.start, block.end
+                    "{}/{}-{:06x}-{:06x}{}.png",
+                    OUT_DIR, block.file_name, block.start, block.end, extra,
                 )
                 .as_str(),
             ))?;
