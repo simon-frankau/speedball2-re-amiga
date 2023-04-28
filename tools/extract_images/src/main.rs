@@ -167,7 +167,7 @@ struct Block<'a> {
     depth: usize,
 }
 
-const BLOCKS: [Block; 25] = [
+const BLOCKS: [Block; 26] = [
     // Monitor screeens.
     Block {
         file_name: "unpacked.bin",
@@ -176,6 +176,16 @@ const BLOCKS: [Block; 25] = [
         end: 0x1af46,
         width: 96,
         height: 64,
+        depth: 5,
+    },
+    // Font used for monitor overlays etc.
+    Block {
+        file_name: "unpacked.bin",
+        palette: "game",
+        start: 0x1af3a,
+        end: 0x1b66a,
+        width: 8,
+        height: 8,
         depth: 5,
     },
     // 16x16 title sequence font. TODO: What palette?

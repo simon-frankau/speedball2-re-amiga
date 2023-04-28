@@ -207,7 +207,9 @@ follows:
    * 0x015fe4-0x016862 Disk routines, identical to those in the
      second-level loader
    * 0x016862-0x0173be Graphics variables
-   * 0x0173be-0x01bc3e Other variables? TODO
+   * 0x0173be-0x01afbe Images used on the "monitor" overlay
+   * 0x01afbe-0x01b55e Font used in monitor overlays.
+   * 0x01b55e-0x01bc3e Variables and buffers.
    * 0x01bc3e-0x04963a Sound data
    * 0x04963a-0x05ca20 Intro sequence
  * Free memory
@@ -221,16 +223,9 @@ The screens are of size 0x224a = 209 lines of (320 + 16) pixels.
 The main game engine is pretty well conserved between the Megadrive
 and Amiga versions.
 
-Lots to TODO here...
-
- * Monitor images 0x173ca-0x1afca
-
- * TODO: Put up font image 0x01afbe-0x1b55e? Maybe as far as 0x01b6ee
-
-
-The memory up to 0x1bc3e, including all the key game code (TODO:
-AFAICT, right now) stays stable, while the memory above it, up to the
-screen buffers, is used by overlays.
+The memory up to 0x1bc3e, including all the key game code stays
+stable, while the memory above it, up to the screen buffers, is used
+by overlays.
 
 ### Overlays
 
@@ -250,8 +245,7 @@ The remaining overlays effectively work in a couple of modes:
 
  * Overlay #0 is loaded at 0x1bc3e-0x36c3e at the start of game, once
    the intro sequence is complete. It overwrites the intro music, data
-   and graphics, and prodvides replacement sound (TODO: Anything
-   else?).
+   and graphics, and prodvides replacement sound.
  * Overlays #1 and #28 are loaded together to provide the graphics for
    the menus and mangement mode.
  * Overlays #18, #26 and #27 are loaded together to provide the
@@ -324,13 +318,9 @@ If so, `preload_data` at 0x8056 copies relevant chunks into higher
 memory if available, saving the need to load from disk. It simply
 copies the whole preload chunks around, nothing subtle.
 
-TODO: It looks like the overlays are at least mostly just pure data,
-very little room for copy-protection shenanighans. If there are any,
-they'll be in overlays #27 and #28.
-
-TODO: `todo_generate_player_masks` uses `splash_backdrop` for some
-kind of player image masks. This might explain why some data is loaded
-in particular locations.
+`generate_player_team_masks` uses `splash_backdrop` to create the
+bitplane images for the second player. This is why overlay #18 is
+loaded in slightly higher memory, to make space for that bufer.
 
 ### Intro sequence
 
@@ -354,42 +344,42 @@ Sector 622 contains a list of overlays, loaded into memory at
 
 Splash images are IFF ILBMs.
 
-| Start sector | Length | Contents                                        |
-|--------------|--------|-------------------------------------------------|
-| 0x000        | 0x2    | Boot block                                      |
-| 0x002        | 0x5    | Second-level loader                             |
-| 0x016        | 0x258  | Main binary image                               |
-| 0x26e        | 0x1    | Overlay directory                               |
-| 0x26f        | 0xd8   | Overlay #0                                      |
-| 0x347        | 0x13f  | Overlay #1: Background splash image etc.        |
-| 0x381        | 0x36   | Overlay #2: Part of #1                          |
-| 0x3b7        | 0x3    | Overlay #3: Part of #1                          |
-| 0x3bb        | 0xb    | Overlay #4: Part of #1                          |
-| 0x3c7        | 0x4    | Overlay #5: Part of #1                          |
-| 0x3cc        | 0x5    | Overlay #6: Part of #1                          |
-| 0x3d1        | 0x2    | Overlay #7: Part of #1                          |
-| 0x3d3        | 0x5    | Overlay #8: Part of #1                          |
-| 0x3d8        | 0x28   | Overlay #9: Part of #1                          |
-| 0x400        | 0x2e   | Overlay #10: Part of #1                         |
-| 0x42f        | 0x56   | Overlay #11: Part of #1                         |
-| 0x486        | 0x36   | Overlay #12: Victory splash image               |
-| 0x4bc        | 0x2c   | Overlay #13: Loss splash image                  |
-| 0x4e8        | 0x20   | Overlay #14: League win splash image            |
-| 0x508        | 0x20   | Overlay #15: Promotion splash image             |
-| 0x528        | 0x20   | Overlay 1#6: Cup win splash image               |
-| 0x548        | 0x20   | Overlay #17: Knockout win splash image          |
-| 0x568        | 0xae   | Overlay #18: TODO `sprites_game_misc`           |
-| 0x56d        | 0x3    | Overlay #19: Part of #18                        |
-| 0x570        | 0x5    | Overlay #20: Part of #18                        |
-| 0x575        | 0x8    | Overlay #21: Part of #18                        |
-| 0x57e        | 0x78   | Overlay #22: Part of #18                        |
-| 0x5f6        | 0xa    | Overlay #23: Part of #18                        |
-| 0x600        | 0x5    | Overlay #24: Part of #18                        |
-| 0x605        | 0x10   | Overlay #25: Part of #18                        |
-| 0x616        | 0x75   | Overlay #26: TODO                               |
-| 0x68b        | 0x16   | Overlay #27: TODO                               |
-| 0x6a1        | 0x1c   | Overlay #28: ???? Loaded with background splash |
-| 0x6bd        | 0x23   | Game crack intro                                |
+| Start sector | Length | Contents                                         |
+|--------------|--------|--------------------------------------------------|
+| 0x000        | 0x2    | Boot block                                       |
+| 0x002        | 0x5    | Second-level loader                              |
+| 0x016        | 0x258  | Main binary image                                |
+| 0x26e        | 0x1    | Overlay directory                                |
+| 0x26f        | 0xd8   | Overlay #0                                       |
+| 0x347        | 0x13f  | Overlay #1: Base data (mostly music) after intro |
+| 0x381        | 0x36   | Overlay #2: Part of #1                           |
+| 0x3b7        | 0x3    | Overlay #3: Part of #1                           |
+| 0x3bb        | 0xb    | Overlay #4: Part of #1                           |
+| 0x3c7        | 0x4    | Overlay #5: Part of #1                           |
+| 0x3cc        | 0x5    | Overlay #6: Part of #1                           |
+| 0x3d1        | 0x2    | Overlay #7: Part of #1                           |
+| 0x3d3        | 0x5    | Overlay #8: Part of #1                           |
+| 0x3d8        | 0x28   | Overlay #9: Part of #1                           |
+| 0x400        | 0x2e   | Overlay #10: Part of #1                          |
+| 0x42f        | 0x56   | Overlay #11: Part of #1                          |
+| 0x486        | 0x36   | Overlay #12: Victory splash image                |
+| 0x4bc        | 0x2c   | Overlay #13: Loss splash image                   |
+| 0x4e8        | 0x20   | Overlay #14: League win splash image             |
+| 0x508        | 0x20   | Overlay #15: Promotion splash image              |
+| 0x528        | 0x20   | Overlay 1#6: Cup win splash image                |
+| 0x548        | 0x20   | Overlay #17: Knockout win splash image           |
+| 0x568        | 0xae   | Overlay #18: In-game graphics etc.               |
+| 0x56d        | 0x3    | Overlay #19: Part of #18                         |
+| 0x570        | 0x5    | Overlay #20: Part of #18                         |
+| 0x575        | 0x8    | Overlay #21: Part of #18                         |
+| 0x57e        | 0x78   | Overlay #22: Part of #18                         |
+| 0x5f6        | 0xa    | Overlay #23: Part of #18                         |
+| 0x600        | 0x5    | Overlay #24: Part of #18                         |
+| 0x605        | 0x10   | Overlay #25: Part of #18                         |
+| 0x616        | 0x75   | Overlay #26: TODO                                |
+| 0x68b        | 0x16   | Overlay #27: TODO                                |
+| 0x6a1        | 0x1c   | Overlay #28: Management mode graphics etc.       |
+| 0x6bd        | 0x23   | Game crack intro                                 |
 
 ## Graphics
 
@@ -494,7 +484,7 @@ the mask is equivalent to "not colour zero".
 There are a few non-`draw_sprite` drawing routine that call into the
 blitting functions:
 
- * `todo_maybe_overlay_function` calls `blit_32x32_no_mask_shared`.
+ * `add_monitor_overlay` calls `blit_32x32_no_mask_shared`.
  * `replay_frame` calls `sprite_fn_32x32_masked`.
 
 I was somewhat surprised by the quality of the sprite transfer
@@ -518,3 +508,14 @@ these generic sprite routines are about the most reusable routines in
 a computer game.
 
 Anyway, enough whinging.
+
+### Save games and goal replays
+
+Unlike the Megadrive version, there's disk access! The disk code is
+fairly simplistic: Each replay is pretty much just the 6kB replay
+buffer saved, with a couple of extra fields and identifying magic
+("goal"). Each replay gets a track to itself, starting with the third
+track.
+
+Save game is similar, with the serialised state being written to the
+first track for league (magic "leag") and second track for cup ("cup ").
