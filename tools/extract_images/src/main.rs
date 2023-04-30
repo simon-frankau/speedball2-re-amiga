@@ -409,20 +409,20 @@ const BLOCKS: [Block; 26] = [
         height: 1,
         depth: 1,
     },
-    // Data?
+    // Game sound
     Block {
         file_name: "overlay_27.bin",
-        palette: "game", // TODO
+        palette: "data",
         start: 0,
         end: 0x2c00,
         width: 32,
         height: 1,
         depth: 1,
     },
-    // Data?
+    // Management sound
     Block {
         file_name: "overlay_28.bin",
-        palette: "game", // TODO
+        palette: "data",
         start: 0,
         end: 0x3800,
         width: 32,

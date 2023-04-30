@@ -252,8 +252,13 @@ The remaining overlays effectively work in a couple of modes:
    graphics for game mode. The space between 0x361d6 and 0x3a2d6 is
    initialised at runtime, rather than loaded from disk.
 
-TODO: The purpose of overlays #27 and# #28 still not clear to
-me. Current theory is mode-specific sound?
+Overlays #27 and #28 contain sound data. Overlay 28 is actually an
+almost verbatim copy of the data in overlay 0 that it overwrites (I
+looks to me like there are about 10 samples at the end that don't
+match, and they're extremely low amplitude).
+
+It looks like Overlay #27 provides Sample 22 for game mode, while Overlay
+#28/Overlay #0 provide Samples 25, 26 and 27 for management mode.
 
 Memory-wise, these overlays are loaded as follows:
 
@@ -264,7 +269,7 @@ Memory-wise, these overlays are loaded as follows:
 | #18            | 0x568        | 0xae      | 0x03a2d6-0x04fed6 |
 | #26            | 0x616        | 0x75      | 0x04fed6-0x05e8d6 |
 | #27            | 0x68b        | 0x16      | 0x030d56-0x033956 |
-| #28            | 0x6a1        | 0x1c      | 0x030d56-0x037956 |
+| #28            | 0x6a1        | 0x1c      | 0x030d56-0x034456 |
 
 In more detail, they provide the following variables:
 
@@ -304,9 +309,9 @@ In more detail, they provide the following variables:
 | #26       | 0x04fed6  | Arena tiles - `sprites_arena`                          |
 | #26       | 0x05e896  | Blank area                                             |
 | #26       | 0x05e8d6  | End of overlay #26                                     |
-| #27       | 0x030d56  | Overlay 27 data - TODO                                 |
+| #27       | 0x030d56  | Overlay 27 data - game sound overlay                   |
 | #27       | 0x033956  | End of overlay #27                                     |
-| #28       | 0x030d56  | Overlay 28 data - TODO                                 |
+| #28       | 0x030d56  | Overlay 28 data - management sound overlay             |
 | #28       | 0x034556  | End of overlay #28                                     |
 
 It looks like the boot loader initialises 0x000028 with 0x100000 if
@@ -350,8 +355,8 @@ Splash images are IFF ILBMs.
 | 0x002        | 0x5    | Second-level loader                              |
 | 0x016        | 0x258  | Main binary image                                |
 | 0x26e        | 0x1    | Overlay directory                                |
-| 0x26f        | 0xd8   | Overlay #0                                       |
-| 0x347        | 0x13f  | Overlay #1: Base data (mostly music) after intro |
+| 0x26f        | 0xd8   | Overlay #0: Base data (mostly music) after intro |
+| 0x347        | 0x13f  | Overlay #1: Management mode graphics etc.        |
 | 0x381        | 0x36   | Overlay #2: Part of #1                           |
 | 0x3b7        | 0x3    | Overlay #3: Part of #1                           |
 | 0x3bb        | 0xb    | Overlay #4: Part of #1                           |
@@ -366,7 +371,7 @@ Splash images are IFF ILBMs.
 | 0x4bc        | 0x2c   | Overlay #13: Loss splash image                   |
 | 0x4e8        | 0x20   | Overlay #14: League win splash image             |
 | 0x508        | 0x20   | Overlay #15: Promotion splash image              |
-| 0x528        | 0x20   | Overlay 1#6: Cup win splash image                |
+| 0x528        | 0x20   | Overlay #16: Cup win splash image                |
 | 0x548        | 0x20   | Overlay #17: Knockout win splash image           |
 | 0x568        | 0xae   | Overlay #18: In-game graphics etc.               |
 | 0x56d        | 0x3    | Overlay #19: Part of #18                         |
@@ -376,9 +381,9 @@ Splash images are IFF ILBMs.
 | 0x5f6        | 0xa    | Overlay #23: Part of #18                         |
 | 0x600        | 0x5    | Overlay #24: Part of #18                         |
 | 0x605        | 0x10   | Overlay #25: Part of #18                         |
-| 0x616        | 0x75   | Overlay #26: TODO                                |
-| 0x68b        | 0x16   | Overlay #27: TODO                                |
-| 0x6a1        | 0x1c   | Overlay #28: Management mode graphics etc.       |
+| 0x616        | 0x75   | Overlay #26: In-game graphics                    |
+| 0x68b        | 0x16   | Overlay #27: In-game sound                       |
+| 0x6a1        | 0x1c   | Overlay #28: Management mod sound.               |
 | 0x6bd        | 0x23   | Game crack intro                                 |
 
 ## Graphics
