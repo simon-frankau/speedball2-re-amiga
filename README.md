@@ -252,7 +252,8 @@ sure you can work it out. ;)
 
 ### Symbol table comparison
 
-TODO
+[symbols.md](./symbols) provides a comparison between the symbol
+tables for the two versions.
 
 ### Gameplay comparison
 
