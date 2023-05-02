@@ -188,6 +188,96 @@ After more effort than it really should have taken, I reversed the
 remains of the copy protection. It's slightly epic, so I've put it in
 [COPY_PROTECTION.md](./COPY_PROTECTION.md).
 
+## Comparison with the Megadrive port
+
+### Binary comparison
+
+I should start by saying that
+[BinDiff](https://www.zynamics.com/software.html) was an excellent
+starting point, able to very effectively identify the equivalent
+functions between the Amiga and Megadrive ports. It got a bit useless
+on the less similar functions, but when the differences were small it
+did really well. While Ghidra integration is clearly a lot poorer than
+that for the other mainstream RE tools, it can still mark up the
+matching symbols. I wish it were able to also do variables, but I
+slowly ploughed through and matched them manually.
+
+There is a lot of similarity between the versions. The core engine of
+the game is even largely identical. The bits that are a bit graphical
+had some fairly consistent changes - code to do with flipping buffers
+(Amiga) or updating cells (Megadrive) for example, is pretty
+pervasive, and makes for a bunch of minor changes.
+
+Obviuosly there are huge changes around I/O: Graphics code, mostly
+involving heavy Blitter usage needed to be reversed, as did controls
+(the keyboard being a bit yuck), disk access (the base layer of which
+is shared with the second-level loader) and sound. The latter was a
+separate chaunk of code on both platforms. They share a data format,
+but the Amiga is more flexible, so some no-ops on the Megadrive were
+implemented on the Amiga, helping the data make sense.
+
+There was some dead code on the Megadrive that finally made sense in
+the context of the Amiga - for example around saving replays to
+disk. There's also some dead code of its own on the Amiga side - like
+a menu that allows you to select a team, that's never used.
+
+In a few places there are minor code differences that are not
+well-motivated by the port; they're just little tidy-ups between the
+versions. I suspect this just means the port was branched from a
+slightly different version than the Amiga version.
+
+A lot of the code and data is laid out in the same sequence on both
+platforms, as you'd expect starting from the same assembly source. In
+places things are juggled about. This is inevitable when the Megadrive
+has a lot of ROM and a little RAM, while the Amiga is purely RAM based
+and can load overlays from disk. There are a few different places
+where you can see how they've squeezed storage for the Megadrive
+version.
+
+### On commenting
+
+I commented the implementation of most of the Megadrive
+functions. Unfortunately, I don't see a simple way of automating the
+transfer of comments from the Megadrive edition to the Amiga edition,
+and I'm not doing it by hand (soooo many comments, sooo tedious). So
+my Amiga edition reversing only comments on the Amiga-specific
+things. If you want to understand a specific piece of uncommented
+code, look up the same function in my Megadrive reversing!
+
+A second effect on commenting of starting with the Megadrive version
+is that, despite the Amiga port being the earlier release, I treat the
+Megadrive version as the baseline, and explain the Amiga port in terms
+of diffs from that. In some ways, this is a bit ridiculous, but I'm
+sure you can work it out. ;)
+
+### Symbol table comparison
+
+TODO
+
+### Gameplay comparison
+
+In terms of functional differences between the Amiga and Megadrive
+versions, there are a few bug-fixes, but the main visible differences
+are:
+
+ * The Amiga has (significantly) better sound.
+ * The Amiga has a better arena backdrop when playing the game.
+ * Amiga has better load/save - games can be saved to disk at more
+   regular points, controlled via the mangament menus, rather than
+   getting a code at the end of a season that represents a compressed
+   state.
+ * Amiga allows you to save action replays.
+ * Amiga UI relies on a single fire button (but supports some keyboard
+   shortcuts).
+ * Amiga does not have goal marker objects (little dots at the screen
+   edge when the goal is offscreen).
+ * Amiga AI is more cautious about doing a high pass near an enemy player.
+ * Items are dropped on 16-pixel boundary, vs. 32-pixel for Megadrive.
+
+I think the key takeaway is that the gameplay itself is really very
+similar between the two versions. In my opinoin, the Megadrive version
+is an excellent conversion given the constraints.
+
 ## Memory structure
 
 Despite the complications of the initial loading process, the game
@@ -418,10 +508,11 @@ Blitter.
 ### Details of scrolling and the game pitch
 
 The game pitch is broken into 16x16 blocks. The total game area is
-40x72 blocks. The screen memory is a 21x13 block window into this
-(336x208 pixels), of which 320x184 pixels are shown onscreen with the
-hardware assisting in sub-block scrolling. The last 16 rows of the 200
-row screen are the status bar, as mentioned above.
+40x72 blocks (making 1152x640 pixels). The screen memory is a 21x13
+block window into this (336x208 pixels), of which 320x184 pixels are
+shown onscreen with the hardware assisting in sub-block scrolling. The
+last 16 rows of the 200 row screen are the status bar, as mentioned
+above.
 
 Horizontal scrolling is achieved by changing the starting block within
 a row, and making the block that was the end of one row now the end of
@@ -524,3 +615,11 @@ track.
 
 Save game is similar, with the serialised state being written to the
 first track for league (magic "leag") and second track for cup ("cup ").
+
+## Artificial Intelligence
+
+There's a lot that could be said about the algorithms the game uses,
+but I don't have the energy for that right now. One thing I really
+want to note, though, is that it doesn't cheat: The AI interacts with
+the rest of the game via the controller variables, providing the same
+input a human could. Not all games are like this!
