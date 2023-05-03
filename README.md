@@ -250,6 +250,12 @@ Megadrive version as the baseline, and explain the Amiga port in terms
 of diffs from that. In some ways, this is a bit ridiculous, but I'm
 sure you can work it out. ;)
 
+A third point is that there are various bits in the Megadrive code
+that are just remnants of the Amiga code that do nothing, and leave me
+going "???". If you look at the rare comments on the Amiga side,
+things become clear. I have not back-ported clarifications from the
+Amiga code to the Megadrive dissessembly as I am lazy.
+
 ### Symbol table comparison
 
 [symbols.md](./symbols) provides a comparison between the symbol
