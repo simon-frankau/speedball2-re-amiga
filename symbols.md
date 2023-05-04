@@ -75,15 +75,15 @@ variables.
 | screen_front                        | 0000009a | Data Label        |                                     |          |
 | screen_back                         | 000000a4 | Data Label        |                                     |          |
 | active_palette                      | 000000a8 | Data Label        |                                     |          |
-|                                     |          |                   | controller_1_cooked                 | 00ff0000 |
-|                                     |          |                   | controller_1_raw                    | 00ff0001 |
-|                                     |          |                   | controller_2_cooked                 | 00ff0002 |
-|                                     |          |                   | controller_2_raw                    | 00ff0003 |
-|                                     |          |                   | controller_2_is_present             | 00ff0004 |
-|                                     |          |                   | z80_bus_free                        | 00ff0006 |
-|                                     |          |                   | display_cram_buf_ptr                | 00ff000c |
-|                                     |          |                   | palette_fade                        | 00ff0010 |
-|                                     |          |                   | display_cram_buf_end                | 00ff0090 |
+|                                     |          | Data Label        | controller_1_cooked                 | 00ff0000 |
+|                                     |          | Data Label        | controller_1_raw                    | 00ff0001 |
+|                                     |          | Data Label        | controller_2_cooked                 | 00ff0002 |
+|                                     |          | Data Label        | controller_2_raw                    | 00ff0003 |
+|                                     |          | Data Label        | controller_2_is_present             | 00ff0004 |
+|                                     |          | Data Label        | z80_bus_free                        | 00ff0006 |
+|                                     |          | Data Label        | display_cram_buf_ptr                | 00ff000c |
+|                                     |          | Data Label        | palette_fade                        | 00ff0010 |
+|                                     |          | Data Label        | display_cram_buf_end                | 00ff0090 |
 | frame_timer_l                       | 000000e8 | Data Label        |                                     |          |
 | frame_timer_w                       | 000000ea | Data Label        | frame_timer_w                       | 00ff0092 |
 | frame_timer                         | 000000eb | Data Label        | frame_timer                         | 00ff0093 |
@@ -94,7 +94,7 @@ variables.
 | palette_game                        | 000000f2 | Data Label        |                                     |          |
 | palette_management_a                | 00000132 | Data Label        |                                     |          |
 | misc_flags                          | 00000172 | Data Label        | misc_flags                          | 00ff009a |
-|                                     |          |                   | zapper_light_counter                | 00ff009b |
+|                                     |          | Data Label        | zapper_light_counter                | 00ff009b |
 | ball_charge                         | 00000173 | Data Label        | ball_charge                         | 00ff009c |
 | frames_per_tick                     | 00000174 | Data Label        | frames_per_tick                     | 00ff009d |
 | match_time_frames                   | 00000175 | Data Label        | match_time_frames                   | 00ff009e |
@@ -136,18 +136,18 @@ variables.
 | match_cash_max_p2                   | 000001f0 | Data Label        | match_cash_max_p2                   | 00ff0108 |
 | stars_lit_p1                        | 000001f4 | Data Label        | stars_lit_p1                        | 00ff010c |
 | stars_lit_p2                        | 000001f5 | Data Label        | stars_lit_p2                        | 00ff010d |
-|                                     |          |                   | palette_gold_a                      | 00029e5e |
-|                                     |          |                   | palette_gold_b                      | 00029e7e |
-|                                     |          |                   | palette_gold_c                      | 00029e9e |
-|                                     |          |                   | palette_mono                        | 00029ebe |
-|                                     |          |                   | palette_management_a                | 00029ede |
-|                                     |          |                   | palette_management_b                | 00029efe |
-|                                     |          |                   | palette_magenta_a                   | 00029f1e |
-|                                     |          |                   | palette_magenta_b                   | 00029f3e |
-|                                     |          |                   | palette_backdrop_a                  | 00029f5e |
-|                                     |          |                   | palette_backdrop_b                  | 00029f7e |
-|                                     |          |                   | sprites_push_start                  | 00029fde |
-|                                     |          |                   | move_dir_to_facing_dir_array        | 0002a0de |
+|                                     |          | Data Label        | palette_gold_a                      | 00029e5e |
+|                                     |          | Data Label        | palette_gold_b                      | 00029e7e |
+|                                     |          | Data Label        | palette_gold_c                      | 00029e9e |
+|                                     |          | Data Label        | palette_mono                        | 00029ebe |
+|                                     |          | Data Label        | palette_management_a                | 00029ede |
+|                                     |          | Data Label        | palette_management_b                | 00029efe |
+|                                     |          | Data Label        | palette_magenta_a                   | 00029f1e |
+|                                     |          | Data Label        | palette_magenta_b                   | 00029f3e |
+|                                     |          | Data Label        | palette_backdrop_a                  | 00029f5e |
+|                                     |          | Data Label        | palette_backdrop_b                  | 00029f7e |
+|                                     |          | Data Label        | sprites_push_start                  | 00029fde |
+|                                     |          | Data Label        | move_dir_to_facing_dir_array        | 0002a0de |
 | tackle_noises                       | 000001f6 | Data Label        |                                     |          |
 | reaction_time_table                 | 000001fa | Data Label        | reaction_time_table                 | 0002a0ee |
 | position_lookahead_table            | 0000020a | Data Label        | position_lookahead_table            | 0002a0fe |
@@ -171,13 +171,13 @@ variables.
 | dirty_map                           | 000019ea | Data Label        |                                     |          |
 | str_replay                          | 000025ca | Data Label        | str_replay                          | 0002a16e |
 | str_overlay_half_time               | 000025d6 | Data Label        | str_overlay_half_time               | 0002a179 |
-|                                     |          |                   | text_overlay_counter                | 00ff010e |
-|                                     |          |                   | overlay_message                     | 00ff0110 |
-|                                     |          |                   | ram_block_1                         | 00ff0114 |
-|                                     |          |                   | palette_game                        | 00ff0114 |
-|                                     |          |                   | str_injured                         | 00ff0194 |
-|                                     |          |                   | str_injured_1                       | 00ff0196 |
-|                                     |          |                   | str_injured_2                       | 00ff0197 |
+|                                     |          | Data Label        | text_overlay_counter                | 00ff010e |
+|                                     |          | Data Label        | overlay_message                     | 00ff0110 |
+|                                     |          | Data Label        | ram_block_1                         | 00ff0114 |
+|                                     |          | Data Label        | palette_game                        | 00ff0114 |
+|                                     |          | Data Label        | str_injured                         | 00ff0194 |
+|                                     |          | Data Label        | str_injured_1                       | 00ff0196 |
+|                                     |          | Data Label        | str_injured_2                       | 00ff0197 |
 | str_000_to_000_half_time            | 000025e2 | Data Label        | str_000_to_000_half_time            | 00ff01ab |
 | str_overlay_match_over              | 000025ef | Data Label        | str_overlay_match_over              | 0002a186 |
 | str_000_to_000_match_over           | 00002604 | Data Label        | str_000_to_000_match_over           | 00ff01b8 |
@@ -212,14 +212,14 @@ variables.
 | str_load_game                       | 000027d7 | Data Label        | str_load_game                       | 0002a31f |
 | str_disk_error_top                  | 000027e4 | Data Label        |                                     |          |
 | str_replay_goals                    | 000027f1 | Data Label        | str_replay_goals                    | 0002a339 |
-|                                     |          |                   | str_password                        | 0002a348 |
+|                                     |          | Data Label        | str_password                        | 0002a348 |
 | str_disk_error_bottom               | 00002800 | Data Label        |                                     |          |
 | str_a_g                             | 0000280d | Data Label        | str_a_g                             | 00ff01ea |
 | str_h_o                             | 00002817 | Data Label        | str_h_o                             | 00ff01f4 |
 | str_p_r                             | 00002822 | Data Label        | str_p_r                             | 00ff01ff |
-|                                     |          |                   | str_000                             | 00ff0205 |
-|                                     |          |                   | str_0000                            | 00ff0209 |
-|                                     |          |                   | str_000_crd                         | 00ff020e |
+|                                     |          | Data Label        | str_000                             | 00ff0205 |
+|                                     |          | Data Label        | str_0000                            | 00ff0209 |
+|                                     |          | Data Label        | str_000_crd                         | 00ff020e |
 | str_00000                           | 00002828 | Data Label        | str_00000                           | 00ff0216 |
 | title_replay_goals                  | 00002834 | Data Label        | title_replay_goals                  | 0002a35a |
 | messages_speedball_2                | 0000283c | Data Label        |                                     |          |
@@ -266,13 +266,13 @@ variables.
 | str_pwdlp_nums                      | 00002a46 | Data Label        | str_pwdlp_nums                      | 00ff0486 |
 | str_next_fixture_sep_2              | 00002a79 | Data Label        | str_next_fixture_sep_2              | 00ff04b9 |
 | str_next_fixture_sep_3              | 00002aac | Data Label        | str_next_fixture_sep_3              | 00ff04ec |
-|                                     |          |                   | str_next_fixture_sep_3b             | 00ff051e |
+|                                     |          | Data Label        | str_next_fixture_sep_3b             | 00ff051e |
 | str_league_placing                  | 00002adf | Data Label        | str_league_placing                  | 00ff051f |
-|                                     |          |                   | str_placing_1                       | 00ff0550 |
-|                                     |          |                   | str_placing_2                       | 00ff0551 |
+|                                     |          | Data Label        | str_placing_1                       | 00ff0550 |
+|                                     |          | Data Label        | str_placing_2                       | 00ff0551 |
 | str_points_for                      | 00002b12 | Data Label        | str_points_for                      | 00ff0552 |
-|                                     |          |                   | str_points_for_1                    | 00ff0583 |
-|                                     |          |                   | str_points_for_2                    | 00ff0584 |
+|                                     |          | Data Label        | str_points_for_1                    | 00ff0583 |
+|                                     |          | Data Label        | str_points_for_2                    | 00ff0584 |
 | str_points_against                  | 00002b45 | Data Label        | str_points_against                  | 00ff0585 |
 | str_defense                         | 00002b78 | Data Label        | str_defense                         | 00ff05b8 |
 | str_midfield                        | 00002bab | Data Label        | str_midfield                        | 00ff05eb |
@@ -316,9 +316,9 @@ variables.
 | strings_results                     | 000033a8 | Data Label        | strings_results                     | 0002a578 |
 | strings_statistics                  | 000033fe | Data Label        | strings_statistics                  | 0002a5ce |
 | strings_fixture_list                | 00003454 | Data Label        | strings_fixture_list                | 0002a624 |
-|                                     |          |                   | str_play                            | 00ff0cfe |
-|                                     |          |                   | str_play_1                          | 00ff0cff |
-|                                     |          |                   | current_player_max_stats            | 00ff0d06 |
+|                                     |          | Data Label        | str_play                            | 00ff0cfe |
+|                                     |          | Data Label        | str_play_1                          | 00ff0cff |
+|                                     |          | Data Label        | current_player_max_stats            | 00ff0d06 |
 | arrow_position                      | 000034a2 | Data Label        | arrow_position                      | 00ff0d0a |
 | current_menu                        | 000034a4 | Data Label        |                                     |          |
 | str_menu_game_select                | 000034a8 | Data Label        | str_menu_game_select                | 0002a672 |
@@ -341,13 +341,13 @@ variables.
 | str_insert_game_save_disk           | 0000364c | Data Label        | str_insert_goal_save                | 0002a794 |
 | str_insert_goal_save_disk           | 0000366c | Data Label        | str_insert_game                     | 0002a7b4 |
 | str_insert_game_save_disk_2         | 0000368c | Data Label        |                                     |          |
-|                                     |          |                   | str_menu_retry_cancel               | 0002a7cf |
-|                                     |          |                   | str_menu_new_load                   | 0002a7f0 |
-|                                     |          |                   | menu_new_load                       | 0002a806 |
+|                                     |          | Data Label        | str_menu_retry_cancel               | 0002a7cf |
+|                                     |          | Data Label        | str_menu_new_load                   | 0002a7f0 |
+|                                     |          | Data Label        | menu_new_load                       | 0002a806 |
 | str_match                           | 000036a7 | Data Label        | str_match                           | 00ff021e |
-|                                     |          |                   | str_match_1                         | 00ff0226 |
+|                                     |          | Data Label        | str_match_1                         | 00ff0226 |
 | str_player_wins                     | 000036b1 | Data Label        | str_player_wins                     | 00ff0228 |
-|                                     |          |                   | str_player_wins_1                   | 00ff0231 |
+|                                     |          | Data Label        | str_player_wins_1                   | 00ff0231 |
 | str_player_0                        | 000036c1 | Data Label        | str_player_0                        | 00ff0238 |
 | str_round_one                       | 000036cc | Data Label        | str_round_1                         | 0002a816 |
 | str_round_two                       | 000036d8 | Data Label        | str_round_2                         | 0002a822 |
@@ -359,9 +359,9 @@ variables.
 | str_playoff                         | 00003729 | Data Label        | str_playoff                         | 0002a873 |
 | str_second_leg                      | 00003733 | Data Label        | str_second_leg                      | 0002a87d |
 | str_new_season                      | 00003740 | Data Label        | str_new_season                      | 0002a88a |
-|                                     |          |                   | str_password_valid                  | 0002a897 |
-|                                     |          |                   | str_password_wrong                  | 0002a8a8 |
-|                                     |          |                   | str_cheat_mode                      | 0002a8b9 |
+|                                     |          | Data Label        | str_password_valid                  | 0002a897 |
+|                                     |          | Data Label        | str_password_wrong                  | 0002a8a8 |
+|                                     |          | Data Label        | str_cheat_mode                      | 0002a8b9 |
 | str_total_score_win                 | 0000374d | Data Label        | str_total_score_win                 | 00ff0243 |
 | str_total_score_win_2               | 00003753 | Data Label        | str_total_score_win_2               | 00ff0249 |
 | str_score                           | 00003772 | Data Label        | str_score                           | 00ff0268 |
@@ -373,8 +373,8 @@ variables.
 | str_game_over                       | 000037e6 | Data Label        | str_game_over                       | 0002a8f5 |
 | str_replays_over                    | 000037f2 | Data Label        | str_replays_over                    | 0002a901 |
 | match_permutations                  | 00003801 | Data Label        | match_permutations                  | 0002a910 |
-|                                     |          |                   | gym_tile_map                        | 0002a948 |
-|                                     |          |                   | manager_transfer_tile_map           | 0002aa4c |
+|                                     |          | Data Label        | gym_tile_map                        | 0002a948 |
+|                                     |          | Data Label        | manager_transfer_tile_map           | 0002aa4c |
 | division_displayed_start            | 00003839 | Data Label        | division_displayed_start            | 00ff0d0c |
 | cup_teams                           | 0000383a | Data Label        | cup_teams                           | 00ff0d0e |
 | cup_teams_div2                      | 0000385a | Data Label        | cup_teams_div2                      | 00ff0d2e |
@@ -391,12 +391,12 @@ variables.
 | division_1_bottom                   | 000038a6 | Data Label        | division_1_bottom                   | 00ff02ca |
 | division_2                          | 000038aa | Data Label        | division_2                          | 00ff02ce |
 | division_2_damocles                 | 000038ae | Data Label        | division_2_damocles                 | 00ff02d2 |
-|                                     |          |                   | division_2_brutal_deluxe            | 00ff02ea |
+|                                     |          | Data Label        | division_2_brutal_deluxe            | 00ff02ea |
 | division_2_b                        | 000038ca | Data Label        | division_2_b                        | 00ff02ee |
 | division_1_b                        | 000038ea | Data Label        | division_1_b                        | 00ff030e |
-|                                     |          |                   | players_sorted_vertically           | 00ff0338 |
-|                                     |          |                   | edge_blocks                         | 00ff0388 |
-|                                     |          |                   | unused_division_ptr                 | 00ff0d5e |
+|                                     |          | Data Label        | players_sorted_vertically           | 00ff0338 |
+|                                     |          | Data Label        | edge_blocks                         | 00ff0388 |
+|                                     |          | Data Label        | unused_division_ptr                 | 00ff0d5e |
 | division_ptr                        | 0000390e | Data Label        | division_ptr                        | 00ff0d62 |
 | results_div_1                       | 00003912 | Data Label        | results_div_1                       | 00ff0d66 |
 | results_div_2                       | 00003922 | Data Label        | results_div_2                       | 00ff0d76 |
@@ -537,12 +537,12 @@ variables.
 | base_team_sprite_offsets            | 00003f74 | Data Label        | base_team_sprite_offsets            | 0002b14e |
 | base_team_names                     | 00003fb0 | Data Label        | base_team_names                     | 0002b18a |
 | green_lights_array                  | 00003fe0 | Data Label        |                                     |          |
-|                                     |          |                   | armour_id_to_stat                   | 0002b1ba |
-|                                     |          |                   | powerup_fns                         | 0002b1c2 |
-|                                     |          |                   | powerdown_fns                       | 0002b1fe |
-|                                     |          |                   | pitch_blocks                        | 0002b23e |
-|                                     |          |                   | player_sprite_lookup                | 0002b9de |
-|                                     |          |                   | status_bar_mapping                  | 0002bace |
+|                                     |          | Data Label        | armour_id_to_stat                   | 0002b1ba |
+|                                     |          | Data Label        | powerup_fns                         | 0002b1c2 |
+|                                     |          | Data Label        | powerdown_fns                       | 0002b1fe |
+|                                     |          | Data Label        | pitch_blocks                        | 0002b23e |
+|                                     |          | Data Label        | player_sprite_lookup                | 0002b9de |
+|                                     |          | Data Label        | status_bar_mapping                  | 0002bace |
 | player_ball_offsets                 | 00003ff8 | Data Label        | player_ball_offsets                 | 0002bb6e |
 | player_sprite_offsets               | 000040e2 | Data Label        | player_sprite_offsets               | 0002bc58 |
 | steps_multiplier_left_up            | 000042c2 | Data Label        | steps_multiplier_left_up            | 0002bd48 |
@@ -588,8 +588,8 @@ variables.
 | multiplier_origin_y                 | 000052ca | Data Label        | multiplier_origin_y                 | 00ff0e2e |
 | multiplier_animation_ptr            | 000052cc | Data Label        | multiplier_animation_ptr            | 00ff0e30 |
 | multiplier_animation_step           | 000052d0 | Data Label        | multiplier_animation_step           | 00ff0e34 |
-|                                     |          |                   | coin_value                          | 00ff0e36 |
-|                                     |          |                   | match_half_length_seconds           | 00ff0e38 |
+|                                     |          | Data Label        | coin_value                          | 00ff0e36 |
+|                                     |          | Data Label        | match_half_length_seconds           | 00ff0e38 |
 | screen_row_offsets                  | 000052d2 | Data Label        |                                     |          |
 | div_10_table                        | 000054d2 | Data Label        | div_10_table                        | 00ff0e3a |
 | screen_line_table                   | 000055d2 | Data Label        |                                     |          |
@@ -601,20 +601,20 @@ variables.
 | blit_fns_16x16_masked               | 000057da | Data Label        |                                     |          |
 | blit_fns_16x16_no_mask              | 000057e6 | Data Label        |                                     |          |
 | start_positions                     | 000057f2 | Data Label        | start_positions                     | 00ff0f3a |
-|                                     |          |                   | have_monitor_overlay                | 00ff1002 |
-|                                     |          |                   | palette_non_game                    | 00ff1004 |
-|                                     |          |                   | match_mode                          | 00ff1084 |
-|                                     |          |                   | sprite_char_buf                     | 00ff1086 |
-|                                     |          |                   | backbuffer                          | 00ff1106 |
-|                                     |          |                   | replay_buf                          | 00ff6b06 |
-|                                     |          |                   | sprites_monitor_text                | 00ff76fa |
-|                                     |          |                   | replay_buf_end                      | 00ff76fa |
-|                                     |          |                   | cell_list_end                       | 00ff9168 |
-|                                     |          |                   | cell_list                           | 00ff916c |
-|                                     |          |                   | cell_list_capacity                  | 00ffcfec |
+|                                     |          | Data Label        | have_monitor_overlay                | 00ff1002 |
+|                                     |          | Data Label        | palette_non_game                    | 00ff1004 |
+|                                     |          | Data Label        | match_mode                          | 00ff1084 |
+|                                     |          | Data Label        | sprite_char_buf                     | 00ff1086 |
+|                                     |          | Data Label        | backbuffer                          | 00ff1106 |
+|                                     |          | Data Label        | replay_buf                          | 00ff6b06 |
+|                                     |          | Data Label        | sprites_monitor_text                | 00ff76fa |
+|                                     |          | Data Label        | replay_buf_end                      | 00ff76fa |
+|                                     |          | Data Label        | cell_list_end                       | 00ff9168 |
+|                                     |          | Data Label        | cell_list                           | 00ff916c |
+|                                     |          | Data Label        | cell_list_capacity                  | 00ffcfec |
 | player_1_defense_1_stats            | 0000583a | Data Label        | player_1_defense_1_stats            | 00ffcff4 |
-|                                     |          |                   | ram_block_2                         | 00ffcff4 |
-|                                     |          |                   | player_1_defense_1_stats[1]         | 00ffcff5 |
+|                                     |          | Data Label        | ram_block_2                         | 00ffcff4 |
+|                                     |          | Data Label        | player_1_defense_1_stats[1]         | 00ffcff5 |
 | player_1_defense_2_stats            | 00005845 | Data Label        | player_1_defense_2_stats            | 00ffcfff |
 | player_1_defense_3_stats            | 00005850 | Data Label        | player_1_defense_3_stats            | 00ffd00a |
 | player_1_midfield_1_stats           | 0000585b | Data Label        | player_1_midfield_1_stats           | 00ffd015 |
@@ -639,7 +639,6 @@ variables.
 | player_2_subs_2_stats               | 0000592c | Data Label        | player_2_subs_2_stats               | 00ffd0e6 |
 | player_2_subs_3_stats               | 00005937 | Data Label        | player_2_subs_3_stats               | 00ffd0f1 |
 | player_temp_stats                   | 00005942 | Data Label        | player_temp_stats                   | 00ffd0fc |
-|                                     |          |                   | scores_tables                       | 0002c088 |
 | player_1_player_stats_table         | 0000594e | Data Label        | player_1_player_stats_table         | 0002c888 |
 | player_2_player_stats_table         | 0000597e | Data Label        | player_2_player_stats_table         | 0002c8b8 |
 | player_1_defense_1                  | 000059ae | Data Label        | player_1_defense_1                  | 00ffd108 |
@@ -739,10 +738,10 @@ variables.
 | str_kevin                           | 00005e88 | Data Label        | str_kevin                           | 0002ca5a |
 | sprite_background_tile              | 00005e8e | Data Label        |                                     |          |
 | sprite_face                         | 00005eb6 | Data Label        | sprite_face                         | 00ffd470 |
-|                                     |          |                   | ram_block_3                         | 00ffd470 |
+|                                     |          | Data Label        | ram_block_3                         | 00ffd470 |
 | sprite_char_2x2                     | 00005ede | Data Label        |                                     |          |
 | sprite_char_1x1                     | 00005f06 | Data Label        | sprite_char_1x1                     | 00ffd4c0 |
-|                                     |          |                   | sprite_char_1x1_small               | 00ffd4e8 |
+|                                     |          | Data Label        | sprite_char_1x1_small               | 00ffd4e8 |
 | sprite_upgrade_lights               | 00005f2e | Data Label        |                                     |          |
 | sprite_upgrade                      | 00005f56 | Data Label        | sprite_upgrade                      | 00ffd510 |
 | sprite_keypad                       | 00005f7e | Data Label        | sprite_keypad                       | 00ffd538 |
@@ -757,12 +756,12 @@ variables.
 | sprite_power_up_1                   | 000060e6 | Data Label        | sprite_power_up_1                   | 00ffd6a0 |
 | sprite_power_up_2                   | 0000610e | Data Label        | sprite_power_up_2                   | 00ffd6c8 |
 | sprite_armour                       | 00006136 | Data Label        | sprite_armour                       | 00ffd6f0 |
-|                                     |          |                   | left_goal_marker_obj                | 00ffd718 |
-|                                     |          |                   | right_goal_marker_obj               | 00ffd740 |
+|                                     |          | Data Label        | left_goal_marker_obj                | 00ffd718 |
+|                                     |          | Data Label        | right_goal_marker_obj               | 00ffd740 |
 | sprite_blue_player_marker           | 0000615e | Data Label        | sprite_blue_player_marker           | 00ffd768 |
 | sprite_red_player_marker            | 00006186 | Data Label        | sprite_red_player_marker            | 00ffd790 |
 | sprite_status_bar                   | 000061ae | Data Label        |                                     |          |
-|                                     |          |                   | sprite_player_number                | 00ffd7b8 |
+|                                     |          | Data Label        | sprite_player_number                | 00ffd7b8 |
 | sprite_score_multiplier_1           | 000061d6 | Data Label        | sprite_score_multiplier_1           | 00ffd7e0 |
 | sprite_score_multiplier_2           | 000061fe | Data Label        | sprite_score_multiplier_2           | 00ffd808 |
 | sprite_score_multiplier_3           | 00006226 | Data Label        | sprite_score_multiplier_3           | 00ffd830 |
@@ -922,14 +921,14 @@ variables.
 | direction_to_velocity_3             | 00007872 | Data Label        | direction_to_velocity_3             | 0002d6e8 |
 | direction_to_velocity_4             | 00007892 | Data Label        | direction_to_velocity_4             | 0002d708 |
 | direction_to_velocity_5             | 000078b2 | Data Label        | direction_to_velocity_5             | 0002d728 |
-|                                     |          |                   | direction_to_velocity_6             | 0002d748 |
+|                                     |          | Data Label        | direction_to_velocity_6             | 0002d748 |
 | direction_to_velocity_7             | 000078f2 | Data Label        | direction_to_velocity_7             | 0002d768 |
 | direction_to_velocity_8             | 00007912 | Data Label        | direction_to_velocity_8             | 0002d788 |
 | str_player_1                        | 00007932 | Data Label        | str_player_1                        | 00ffe1a4 |
-|                                     |          |                   | team_table_ram                      | 00ffe1a4 |
+|                                     |          | Data Label        | team_table_ram                      | 00ffe1a4 |
 | str_player_2                        | 0000793d | Data Label        | str_player_2                        | 00ffe1af |
 | str_brutal_deluxe                   | 00007948 | Data Label        | str_brutal_deluxe                   | 00ffe1ba |
-|                                     |          |                   | str_brutal_deluxe_1                 | 00ffe1bb |
+|                                     |          | Data Label        | str_brutal_deluxe_1                 | 00ffe1bb |
 | str_revolver                        | 00007958 | Data Label        | str_revolver                        | 00ffe1ca |
 | str_raw_messiahs                    | 00007963 | Data Label        | str_raw_messiahs                    | 00ffe1d5 |
 | str_violent_desire                  | 00007972 | Data Label        | str_violent_desire                  | 00ffe1e4 |
@@ -983,69 +982,69 @@ variables.
 | teams_all                           | 00007f50 | Data Label        | teams_all                           | 0002d7a8 |
 | teams_division_2                    | 00007f54 | Data Label        | teams_division_2                    | 0002d7ac |
 | teams_division_1                    | 00007f74 | Data Label        | teams_division_1                    | 0002d7cc |
-|                                     |          |                   | sprites_password_font               | 0002d7ec |
-|                                     |          |                   | pitch_block_map                     | 0002e0ec |
-|                                     |          |                   | dot_array                           | 0002e3bc |
-|                                     |          |                   | sprite_fns_table                    | 0002e3fc |
-|                                     |          |                   | zeroes                              | 0002e460 |
-|                                     |          |                   | shift_masks                         | 0002e4e0 |
-|                                     |          |                   | maskify                             | 0002e520 |
-|                                     |          |                   | z80_code                            | 0002e620 |
-|                                     |          |                   | division_displayed                  | 00ffe7c2 |
-|                                     |          |                   | keyboard_cursor_y                   | 00ffe7c4 |
-|                                     |          |                   | keyboard_cursor_x                   | 00ffe7c6 |
-|                                     |          |                   | next_text_cursor_location           | 00ffe7c8 |
-|                                     |          |                   | save_buffer_ptr                     | 00ffe7ca |
-|                                     |          |                   | save_buffer_bit                     | 00ffe7ce |
-|                                     |          |                   | current_cursor_location             | 00ffe7d0 |
-|                                     |          |                   | cheat_mode                          | 00ffe7d2 |
-|                                     |          |                   | cheat_controller_pressed            | 00ffe7d3 |
-|                                     |          |                   | cheat_tokens                        | 00ffe7d4 |
-|                                     |          |                   | bouncing_on_multiplier              | 00ffe7d6 |
-|                                     |          |                   | replay_ignore_button                | 00ffe7d8 |
-|                                     |          |                   | hw_sprite_start                     | 00ffe7da |
-|                                     |          |                   | hw_sprite_ptr                       | 00ffe8da |
-|                                     |          |                   | hw_sprite_count                     | 00ffe8de |
-|                                     |          |                   | game_cell_list                      | 00ffe8e0 |
-|                                     |          |                   | game_cell_list_end                  | 00ffe9e0 |
-|                                     |          |                   | background_save_stack               | 00ffe9e4 |
-|                                     |          |                   | background_save_ptr                 | 00ffea38 |
-|                                     |          |                   | is_coin_transferred                 | 00ffea3c |
-|                                     |          |                   | offscreen_marker_1                  | 00ffea3e |
-|                                     |          |                   | offscreen_marker_2                  | 00ffea44 |
-|                                     |          |                   | box_left                            | 00ffea4a |
-|                                     |          |                   | box_width                           | 00ffea4c |
-|                                     |          |                   | box_top                             | 00ffea4e |
-|                                     |          |                   | box_colour                          | 00ffea50 |
-|                                     |          |                   | box_height                          | 00ffea52 |
-|                                     |          |                   | box_right                           | 00ffea54 |
-|                                     |          |                   | box_bottom                          | 00ffea56 |
-|                                     |          |                   | rand_seed_1                         | 00ffea58 |
-|                                     |          |                   | rand_seed_2                         | 00ffea5c |
-|                                     |          |                   | rand_val                            | 00ffea60 |
-|                                     |          |                   | saved_io_version                    | 00ffea64 |
-|                                     |          |                   | h_int_done                          | 00ffea66 |
-|                                     |          |                   | ntsc_counter                        | 00ffea68 |
-|                                     |          |                   | sound_voice_1                       | 00ffea74 |
-|                                     |          |                   | sound_voice_2                       | 00ffeab8 |
-|                                     |          |                   | sound_voice_3                       | 00ffeafc |
-|                                     |          |                   | sound_voice_4                       | 00ffeb40 |
-|                                     |          |                   | sound_seq_stack_1                   | 00ffec04 |
-|                                     |          |                   | sound_seq_stack_2                   | 00ffec84 |
-|                                     |          |                   | sound_seq_stack_3                   | 00ffed04 |
-|                                     |          |                   | sound_seq_stack_4                   | 00ffed84 |
-|                                     |          |                   | sound_var_unk_1                     | 00ffed84 |
-|                                     |          |                   | sound_lock                          | 00ffed88 |
-|                                     |          |                   | sample_playing                      | 00ffed8a |
-|                                     |          |                   | is_pal_not_ntsc                     | 00ffed8c |
-|                                     |          |                   | ntsc_skip_counter                   | 00ffed8e |
-|                                     |          |                   | logo_colour_idx                     | 00ffed90 |
-|                                     |          |                   | logo_step_timer                     | 00ffed92 |
-|                                     |          |                   | saved_sp                            | 00ffed94 |
-|                                     |          |                   | is_booted                           | 00ffed98 |
-|                                     |          |                   | save_buffer                         | 00ffed9c |
-|                                     |          |                   | save_buffer_end                     | 00ffedba |
-|                                     |          |                   | ram_top                             | 00ffedbc |
+|                                     |          | Data Label        | sprites_password_font               | 0002d7ec |
+|                                     |          | Data Label        | pitch_block_map                     | 0002e0ec |
+|                                     |          | Data Label        | dot_array                           | 0002e3bc |
+|                                     |          | Data Label        | sprite_fns_table                    | 0002e3fc |
+|                                     |          | Data Label        | zeroes                              | 0002e460 |
+|                                     |          | Data Label        | shift_masks                         | 0002e4e0 |
+|                                     |          | Data Label        | maskify                             | 0002e520 |
+|                                     |          | Data Label        | z80_code                            | 0002e620 |
+|                                     |          | Data Label        | division_displayed                  | 00ffe7c2 |
+|                                     |          | Data Label        | keyboard_cursor_y                   | 00ffe7c4 |
+|                                     |          | Data Label        | keyboard_cursor_x                   | 00ffe7c6 |
+|                                     |          | Data Label        | next_text_cursor_location           | 00ffe7c8 |
+|                                     |          | Data Label        | save_buffer_ptr                     | 00ffe7ca |
+|                                     |          | Data Label        | save_buffer_bit                     | 00ffe7ce |
+|                                     |          | Data Label        | current_cursor_location             | 00ffe7d0 |
+|                                     |          | Data Label        | cheat_mode                          | 00ffe7d2 |
+|                                     |          | Data Label        | cheat_controller_pressed            | 00ffe7d3 |
+|                                     |          | Data Label        | cheat_tokens                        | 00ffe7d4 |
+|                                     |          | Data Label        | bouncing_on_multiplier              | 00ffe7d6 |
+|                                     |          | Data Label        | replay_ignore_button                | 00ffe7d8 |
+|                                     |          | Data Label        | hw_sprite_start                     | 00ffe7da |
+|                                     |          | Data Label        | hw_sprite_ptr                       | 00ffe8da |
+|                                     |          | Data Label        | hw_sprite_count                     | 00ffe8de |
+|                                     |          | Data Label        | game_cell_list                      | 00ffe8e0 |
+|                                     |          | Data Label        | game_cell_list_end                  | 00ffe9e0 |
+|                                     |          | Data Label        | background_save_stack               | 00ffe9e4 |
+|                                     |          | Data Label        | background_save_ptr                 | 00ffea38 |
+|                                     |          | Data Label        | is_coin_transferred                 | 00ffea3c |
+|                                     |          | Data Label        | offscreen_marker_1                  | 00ffea3e |
+|                                     |          | Data Label        | offscreen_marker_2                  | 00ffea44 |
+|                                     |          | Data Label        | box_left                            | 00ffea4a |
+|                                     |          | Data Label        | box_width                           | 00ffea4c |
+|                                     |          | Data Label        | box_top                             | 00ffea4e |
+|                                     |          | Data Label        | box_colour                          | 00ffea50 |
+|                                     |          | Data Label        | box_height                          | 00ffea52 |
+|                                     |          | Data Label        | box_right                           | 00ffea54 |
+|                                     |          | Data Label        | box_bottom                          | 00ffea56 |
+|                                     |          | Data Label        | rand_seed_1                         | 00ffea58 |
+|                                     |          | Data Label        | rand_seed_2                         | 00ffea5c |
+|                                     |          | Data Label        | rand_val                            | 00ffea60 |
+|                                     |          | Data Label        | saved_io_version                    | 00ffea64 |
+|                                     |          | Data Label        | h_int_done                          | 00ffea66 |
+|                                     |          | Data Label        | ntsc_counter                        | 00ffea68 |
+|                                     |          | Data Label        | sound_voice_1                       | 00ffea74 |
+|                                     |          | Data Label        | sound_voice_2                       | 00ffeab8 |
+|                                     |          | Data Label        | sound_voice_3                       | 00ffeafc |
+|                                     |          | Data Label        | sound_voice_4                       | 00ffeb40 |
+|                                     |          | Data Label        | sound_seq_stack_1                   | 00ffec04 |
+|                                     |          | Data Label        | sound_seq_stack_2                   | 00ffec84 |
+|                                     |          | Data Label        | sound_seq_stack_3                   | 00ffed04 |
+|                                     |          | Data Label        | sound_seq_stack_4                   | 00ffed84 |
+|                                     |          | Data Label        | sound_var_unk_1                     | 00ffed84 |
+|                                     |          | Data Label        | sound_lock                          | 00ffed88 |
+|                                     |          | Data Label        | sample_playing                      | 00ffed8a |
+|                                     |          | Data Label        | is_pal_not_ntsc                     | 00ffed8c |
+|                                     |          | Data Label        | ntsc_skip_counter                   | 00ffed8e |
+|                                     |          | Data Label        | logo_colour_idx                     | 00ffed90 |
+|                                     |          | Data Label        | logo_step_timer                     | 00ffed92 |
+|                                     |          | Data Label        | saved_sp                            | 00ffed94 |
+|                                     |          | Data Label        | is_booted                           | 00ffed98 |
+|                                     |          | Data Label        | save_buffer                         | 00ffed9c |
+|                                     |          | Data Label        | save_buffer_end                     | 00ffedba |
+|                                     |          | Data Label        | ram_top                             | 00ffedbc |
 
 ## Code
 
@@ -1062,826 +1061,826 @@ divergence - intialisation, save/load, graphics/blitting, interrupts,
 compression and sound. I finish this section at the point where it
 turns into purely Amiga-specific code.
 
-| Amiga Name                              | Location | Type               | Megadrive Name                         | Location |
-|-----------------------------------------|----------|--------------------|----------------------------------------|----------|
-| start                                   | 00007f94 | Function           |                                        |          |
-| preload_data                            | 00008056 | Function           |                                        |          |
-| load_mgmt_data                          | 00008216 | Function           |                                        |          |
-| load_game_data                          | 000082d6 | Function           |                                        |          |
-| code_modifier                           | 0000836a | Data Label         |                                        |          |
-| load_all_game_data                      | 0000838a | Function           |                                        |          |
-| load_arena_data                         | 00008394 | Function           |                                        |          |
-| load_overlay                            | 00008414 | Function           |                                        |          |
-| init_bitmaps                            | 00008432 | Function           |                                        |          |
-| init_noop                               | 000084a4 | Function           |                                        |          |
-|                                         |          |                    | noop_interrupt_handler                 | 000000fc |
-|                                         |          |                    | start                                  | 00000200 |
-|                                         |          |                    | skip_init                              | 0000028c |
-|                                         |          |                    | useful_constants                       | 0000028e |
-|                                         |          |                    | hw_ptrs                                | 00000294 |
-|                                         |          |                    | vdp_register_initialisation            | 000002a8 |
-|                                         |          |                    | start2                                 | 000002fa |
-|                                         |          |                    | dead_debugging                         | 00000312 |
-|                                         |          |                    | vdp_address_set                        | 00000330 |
-|                                         |          |                    | dead_set_palette                       | 0000034c |
-|                                         |          |                    | dead_colour_mangle                     | 000003b8 |
-|                                         |          |                    | dead_get_palette                       | 000003da |
-|                                         |          |                    | controller_init                        | 00000412 |
-|                                         |          |                    | vint                                   | 00000440 |
-|                                         |          |                    | controller_read                        | 00000490 |
-|                                         |          |                    | controller_presence_check              | 000004e6 |
-|                                         |          |                    | z80_bus_request                        | 00000538 |
-|                                         |          |                    | z80_bus_release                        | 00000560 |
-|                                         |          |                    | z80_program                            | 0000058a |
-|                                         |          |                    | z80_read                               | 000005f4 |
-|                                         |          |                    | init_vars                              | 00000614 |
-|                                         |          |                    | rom_block_1                            | 000007c4 |
-|                                         |          |                    | rom_block_1_end                        | 000013b5 |
-|                                         |          |                    | init_players_ram                       | 000013ba |
-|                                         |          |                    | rom_block_2                            | 000013d4 |
-|                                         |          |                    | rom_block_2_end                        | 00001850 |
-|                                         |          |                    | init_sprites_ram                       | 00001850 |
-|                                         |          |                    | rom_block_3                            | 00001872 |
-|                                         |          |                    | rom_block_3_end                        | 000025a6 |
-|                                         |          |                    | init_team_table                        | 000025a6 |
-|                                         |          |                    | team_table_rom                         | 000025cc |
-|                                         |          |                    | team_table_rom_end                     | 00002bea |
-|                                         |          |                    | main                                   | 00002bea |
-|                                         |          |                    | init_everything                        | 00002c2a |
-|                                         |          |                    | no_op                                  | 00002c52 |
-|                                         |          |                    | init_match_display                     | 00002c54 |
-| init_tables                             | 000084a6 | Function           | init_tables                            | 00002c6c |
-| init_line_table                         | 000084f0 | Function           |                                        |          |
-| trap_f_2                                | 00008518 | Function           |                                        |          |
-| init_player_mid_range_fields            | 0000851e | Function           | init_player_mid_range_fields           | 00002c9e |
-| display_fade_out                        | 00008554 | Function           | display_fade_out                       | 00002cd6 |
-| display_fade_in                         | 000085cc | Function           | display_fade_in                        | 00002d46 |
-| wait_40ms                               | 00008654 | Function           | wait_40ms                              | 00002dde |
-| display_fade_transition                 | 00008662 | Function           | dead_display_fade_in                   | 00002df0 |
-| display_fade_transition_hide_status_bar | 000086ee | Function           |                                        |          |
-| draw_menu_arrows                        | 00008786 | Function           | draw_menu_arrows                       | 00002e50 |
-|                                         |          |                    | clear_menu_arrows                      | 00002e7a |
-| shared_menu_function                    | 000087ae | Function           |                                        |          |
-| init_team_players_names_and_sprites     | 00008894 | Function           | init_team_players_names_and_sprites    | 00002ea4 |
-| main_menu                               | 000088c4 | Function           | main_menu                              | 00002edc |
-| blit_screen_third_to_back               | 00008ad4 | Function           |                                        |          |
-| blit_screen_front_to_back               | 00008ae4 | Function           | keypad_move_stub                       | 00003182 |
-| copy_area_front_to_back                 | 00008afa | Function           |                                        |          |
-| game_single_player                      | 00008b1c | Function           | game_single_player                     | 00003184 |
-| game_practice                           | 00008b72 | Function           | game_practice                          | 000032ce |
-| game_two_player                         | 00008bca | Function           | game_two_player                        | 0000330a |
-| menu_one_three_five                     | 00008d84 | Function           | menu_one_three_five                    | 0000354e |
-| gym_two_player                          | 00008d8e | Function           | gym_two_player                         | 00003634 |
-| construct_league_placing_string         | 00008e52 | Function           | construct_league_placing_string        | 0000373a |
-| update_league_placings                  | 00008ee0 | Function           | update_league_placings                 | 000037d6 |
-| team_bubble_pass                        | 00008f36 | Function           | team_bubble_pass                       | 0000383a |
-| display_league_placings                 | 00008f7c | Function           | display_league_placings                | 00003880 |
-| display_league_placings_div_1           | 00008fca | Function           | display_league_placings_div_1          | 000038de |
-| display_league_placings_div_2           | 00008fea | Function           | display_league_placings_div_2          | 0000390e |
-| show_league_placings                    | 0000900e | Function           | show_league_placings                   | 00003940 |
-| display_team_on_team_slot               | 0000908c | Function           | display_team_on_team_slot              | 000039cc |
-| display_box_on_team_slot                | 000090d2 | Function           | display_box_on_team_slot               | 00003a1e |
-| league_promote_relegate_announce        | 00009128 | Function           | league_promote_relegate_announce       | 00003a6e |
-| league_promote_relegate                 | 00009178 | Function           | league_promote_relegate                | 00003ae2 |
-| league_playoffs                         | 000091c4 | Function           | league_playoffs                        | 00003b32 |
-| cup_league_match                        | 00009292 | Function           | cup_league_match                       | 00003c4c |
-| cup_league_match_bd                     | 000092ee | Function           | cup_league_match_bd                    | 00003cc6 |
-| game_league                             | 00009308 | Function           | game_league                            | 00003ce4 |
-| league_season_middle                    | 00009466 | Function           | dead_league_season_middle              | 00003e74 |
-| league_season                           | 00009482 | Function           | league_season                          | 00003e94 |
-| league_round                            | 000094ae | Function           | league_round                           | 00003ec8 |
-| display_league_results                  | 0000952c | Function           | display_league_results                 | 00003f60 |
-| display_league_match_result             | 00009594 | Function           | display_league_match_result            | 00003fec |
-| league_match                            | 000095f2 | Function           | league_match                           | 00004054 |
-| set_league_teams                        | 00009616 | Function           | set_league_teams                       | 00004080 |
-| menu_disk_error                         | 0000964e | Function           |                                        |          |
-| keypad_manager_fn_save                  | 0000966a | Function           |                                        |          |
-| write_cup_config                        | 0000972e | Function           |                                        |          |
-| write_league_config                     | 0000974e | Function           |                                        |          |
-| write_market                            | 00009762 | Function           |                                        |          |
-| write_player_stats                      | 0000978c | Function           |                                        |          |
-| write_teams                             | 000097a2 | Function           |                                        |          |
-| write_player_stat                       | 000097e6 | Function           |                                        |          |
-| save_league                             | 0000980a | Function           |                                        |          |
-| save_cup                                | 00009860 | Function           |                                        |          |
-|                                         |          |                    | init_save_buffer                       | 000040c4 |
-|                                         |          |                    | do_save                                | 000040d6 |
-|                                         |          |                    | write_upgrades_to_save_buffer          | 0000412a |
-|                                         |          |                    | upgrade_weights                        | 0000417e |
-|                                         |          |                    | write_players_to_save_buffer           | 0000418e |
-|                                         |          |                    | reverse_lookup_player                  | 000041ae |
-|                                         |          |                    | player_name_list                       | 000041d0 |
-|                                         |          |                    | lookup_player                          | 00004248 |
-|                                         |          |                    | sprite_index                           | 00004260 |
-|                                         |          |                    | write_placings_to_save_buffer          | 0000429c |
-|                                         |          |                    | teams_list                             | 000042b8 |
-| do_load                                 | 000098b6 | Function           | do_load                                | 000042f8 |
-| read_cup_config                         | 00009978 | Function           |                                        |          |
-| read_league_config                      | 00009992 | Function           |                                        |          |
-| read_market                             | 000099a0 | Function           |                                        |          |
-| read_player_stats                       | 000099ca | Function           |                                        |          |
-| read_teams                              | 000099e0 | Function           |                                        |          |
-| read_player_stat                        | 00009a22 | Function           |                                        |          |
-| load_league                             | 00009a46 | Function           |                                        |          |
-| load_cup                                | 00009a96 | Function           |                                        |          |
-|                                         |          |                    | read_players_from_save_buffer          | 00004360 |
-|                                         |          |                    | read_placings_from_save_buffer         | 000043ba |
-|                                         |          |                    | mark_players_bought                    | 0000441a |
-|                                         |          |                    | check_cheat_modes                      | 00004458 |
-|                                         |          |                    | check_cheat_mode                       | 00004486 |
-|                                         |          |                    | cheat_easier_game                      | 000044e0 |
-|                                         |          |                    | cheat_playtesters                      | 00004500 |
-|                                         |          |                    | check_save                             | 00004520 |
-|                                         |          |                    | display_password_state                 | 0000456c |
-|                                         |          |                    | write_checksum_to_save_buffer          | 000045a0 |
-|                                         |          |                    | init_save                              | 000045c6 |
-|                                         |          |                    | write_to_save_buffer                   | 000045da |
-|                                         |          |                    | read_from_save_buffer                  | 00004626 |
-|                                         |          |                    | show_save_buffer                       | 00004662 |
-|                                         |          |                    | enter_saved_state                      | 00004694 |
-|                                         |          |                    | print_save_buffer                      | 0000485e |
-|                                         |          |                    | draw_char_grid                         | 0000489c |
-|                                         |          |                    | put_char                               | 000048d0 |
-|                                         |          |                    | draw_xor_keyboard_square               | 000048fe |
-|                                         |          |                    | update_text_cursor                     | 0000491c |
-|                                         |          |                    | update_screen_save_state               | 00004962 |
-|                                         |          |                    | put_char_save_state                    | 0000497c |
-|                                         |          |                    | save_string_x_offset                   | 00004990 |
-| league_new_game                         | 00009ae6 | Function           | league_new_game                        | 000049a0 |
-| shuffle_league                          | 00009b10 | Function           | shuffle_league                         | 000049d0 |
-| put_bd_first                            | 00009b42 | Function           | put_bd_first                           | 00004a02 |
-| init_market                             | 00009b74 | Function           | init_market                            | 00004a34 |
-| init_cup                                | 00009ba2 | Function           | init_cup                               | 00004a68 |
-| league_menu                             | 00009bce | Function           | league_menu                            | 00004a9c |
-| shuffle_half_league                     | 00009bd8 | Function           | shuffle_half_league                    | 00004b80 |
-| shuffle_final_four                      | 00009c0a | Function           | shuffle_final_four                     | 00004bb2 |
-| put_bd_first_2_divs                     | 00009c3c | Function           | put_bd_first_2_divs                    | 00004be4 |
-| menu_new_load                           | 00009c6e | Function           | dead_menu_new_load                     | 00004c16 |
-| game_cup                                | 00009c78 | Function           | game_cup                               | 00004cea |
-| cup_match                               | 00009db4 | Function           | cup_match                              | 00004e76 |
-| display_fixture_list                    | 00009e92 | Function           | display_fixture_list                   | 00004f9a |
-| print_cup_fixture                       | 00009ee4 | Function           | print_cup_fixture                      | 00005008 |
-| display_total_match_result              | 00009f30 | Function           | display_total_match_result             | 00005056 |
-| total_victory                           | 00009fb4 | Function           | total_victory                          | 000050fa |
-| total_defeat                            | 0000a026 | Function           | total_defeat                           | 00005160 |
-| format_total_score                      | 0000a082 | Function           | format_total_score                     | 000051be |
-| draw_total_string                       | 0000a096 | Function           | draw_total_string                      | 000051d6 |
-| generate_team_total_stats               | 0000a0a6 | Function           | generate_team_total_stats              | 000051e8 |
-| cup_league_match_not_bd                 | 0000a0d2 | Function           | cup_league_match_not_bd                | 00005214 |
-| init_cup_teams_list                     | 0000a11e | Function           | init_cup_teams_list                    | 00005268 |
-| game_knockout                           | 0000a134 | Function           | game_knockout                          | 00005282 |
-| win_league                              | 0000a1b6 | Function           | win_league                             | 0000532a |
-| win_shared                              | 0000a1ee | Function           |                                        |          |
-| win_promo                               | 0000a22e | Function           | win_promo                              | 00005366 |
-| win_cup                                 | 0000a266 | Function           | win_cup                                | 000053a2 |
-| win_knockout                            | 0000a2a2 | Function           | win_knockout                           | 000053de |
-| dead_select_team                        | 0000a2de | Function           | dead_select_team                       | 0000541a |
-| load_replay_goals                       | 0000a338 | Function           | dead_replay_goal                       | 0000547e |
-| load_replay_goal                        | 0000a3c8 | Function           | dead_load_replay_goal                  | 000054f8 |
-| zero_screen                             | 0000a48a | Function           | dead_replay_goal_3                     | 000055aa |
-| populate_opposition_player_stats        | 0000a49e | Function           | populate_opposition_player_stats       | 000055ac |
-| populate_opposition_player_group_stats  | 0000a4c8 | Function           | populate_opposition_player_group_stats | 000055d6 |
-| init_player_stats                       | 0000a4e6 | Function           | init_player_stats                      | 000055f4 |
-| do_manager_screen                       | 0000a504 | Function           | do_manager_screen                      | 00005612 |
-| update_market                           | 0000a590 | Function           | update_market                          | 000056c6 |
-| do_player_grid                          | 0000a650 | Function           | do_player_grid                         | 00005798 |
-| update_player_grid_idx                  | 0000a80e | Function           | update_player_grid_idx                 | 000059ba |
-| draw_player_table_cursor                | 0000a820 | Function           | draw_player_table_cursor               | 000059d2 |
-| undraw_player_table_cursor              | 0000a8a8 | Function           | undraw_player_table_cursor             | 00005a54 |
-| do_transfer_screen                      | 0000a8e8 | Function           | do_transfer_screen                     | 00005a98 |
-| do_gym_screen                           | 0000a92c | Function           | do_gym_screen                          | 00005ae8 |
-| do_keypad                               | 0000aa9a | Function           | do_keypad                              | 00005c96 |
-| keypad_fn_noop                          | 0000ac36 | Function           |                                        |          |
-| keypad_transfer_fn_left                 | 0000ac52 | Function           | keypad_transfer_fn_left                | 00005e74 |
-| previous_buyable_player                 | 0000ac90 | Function           | previous_buyable_player                | 00005e92 |
-| keypad_transfer_fn_right                | 0000acb6 | Function           | keypad_transfer_fn_right               | 00005ec2 |
-| next_buyable_player                     | 0000acf4 | Function           | next_buyable_player                    | 00005ee0 |
-| keypad_fn_left                          | 0000ad28 | Function           | keypad_fn_left                         | 00005f22 |
-| keypad_fn_right                         | 0000ad6a | Function           | keypad_fn_right                        | 00005f48 |
-| keypad_manager_fn_table                 | 0000adb2 | Function           | keypad_manager_fn_table                | 00005f76 |
-| keypad_manager_fn_gym                   | 0000adda | Function           | keypad_manager_fn_gym                  | 00005fa0 |
-| keypad_manager_fn_transfer              | 0000adea | Function           | keypad_manager_fn_transfer             | 00005fb0 |
-| keypad_manager_fn_fixture               | 0000ae02 | Function           | keypad_manager_fn_fixture              | 00005fca |
-| keypad_manager_fn_stats                 | 0000ae0c | Function           | keypad_manager_fn_stats                | 00005fd4 |
-| keypad_fn_gym_next_fixture              | 0000ae16 | Function           | keypad_fn_gym_next_fixture             | 00005fde |
-| keypad_transfer_fn_fixture              | 0000ae20 | Function           | keypad_transfer_fn_fixture             | 00005fe8 |
-| keypad_fn_exit                          | 0000ae2a | Function           | keypad_fn_exit                         | 00005ff2 |
-| keypad_fn_gym_player                    | 0000ae2c | Function           | keypad_fn_gym_player                   | 00005ff4 |
-| keypad_fn_gym_group                     | 0000ae78 | Function           | keypad_fn_gym_group                    | 0000601c |
-| keypad_fn_gym_team                      | 0000aec6 | Function           | keypad_fn_gym_team                     | 00006046 |
-| select_buy_mode                         | 0000af0c | Function           | select_buy_mode                        | 00006068 |
-| keypad_fn_buy                           | 0000af22 | Function           | keypad_fn_buy                          | 00006086 |
-| get_max_boost                           | 0000af8a | Function           | get_max_boost                          | 000060ca |
-| buy_for_player                          | 0000b028 | Function           | buy_for_player                         | 0000616e |
-| buy_for_group                           | 0000b0ce | Function           | buy_for_group                          | 0000623a |
-| buy_for_team                            | 0000b11e | Function           | buy_for_team                           | 000062a4 |
-| keypad_fn_gym_buy_all                   | 0000b160 | Function           | keypad_fn_gym_buy_all                  | 000062fe |
-| dead_boost_cash                         | 0000b1b0 | Function           | dead_boost_cash                        | 00006364 |
-| keypad_manager_fn_substitute            | 0000b1be | Function           | keypad_manager_fn_substitute           | 0000637c |
-| find_market_player_position             | 0000b290 | Function           | find_market_player_position            | 0000643a |
-| find_market_player                      | 0000b2a0 | Function           | find_market_player                     | 0000644a |
-| get_player_value                        | 0000b2c6 | Function           | get_player_value                       | 00006472 |
-| keypad_transfer_fn_buy                  | 0000b326 | Function           | keypad_transfer_fn_buy                 | 000064d8 |
-| swap_bytes                              | 0000b3be | Function           | swap_bytes                             | 00006584 |
-| draw_keypad_key_light                   | 0000b3ce | Function           | draw_keypad_key_light                  | 00006594 |
-| draw_keypress_pressed_key               | 0000b418 | Function           | draw_keypress_pressed_key              | 000065e4 |
-| draw_keypad                             | 0000b46c | Function           | draw_keypad                            | 0000663c |
-| activate_current_upgrade_light          | 0000b4da | Function           | activate_current_upgrade_light         | 000066ac |
-| deactivate_all_upgrade_lights           | 0000b538 | Function           | deactivate_all_upgrade_lights          | 00006712 |
-| select_current_upgrade                  | 0000b584 | Function           | select_current_upgrade                 | 00006760 |
-| set_selected_upgrade_variables          | 0000b5c6 | Function           | set_selected_upgrade_variables         | 00006774 |
-| copy_monitor_front_to_back              | 0000b5e4 | Function           |                                        |          |
-| copy_cash_front_to_back                 | 0000b5f2 | Function           |                                        |          |
-| copy_upgrade_description_front_to_back  | 0000b602 | Function           |                                        |          |
-| copy_armour_front_to_back               | 0000b610 | Function           |                                        |          |
-| display_selected_upgrade_description    | 0000b622 | Function           | display_selected_upgrade_description   | 0000679c |
-| highlight_armour_aux                    | 0000b696 | Function           | highlight_armour_aux                   | 00006818 |
-| highlight_armour                        | 0000b6dc | Function           | highlight_armour                       | 00006866 |
-| draw_plays                              | 0000b726 | Function           | draw_plays                             | 000068ac |
-| format_5_decimal_digits                 | 0000b75e | Function           | format_5_decimal_digits                | 000068ea |
-| format_4_decimal_digits                 | 0000b762 | Function           | format_4_decimal_digits                | 000068ee |
-| format_3_decimal_digits                 | 0000b766 | Function           | format_3_decimal_digits                | 000068f2 |
-| format_2_decimal_digits                 | 0000b76a | Function           | format_2_decimal_digits                | 000068f6 |
-| format_decimal_digit                    | 0000b76e | Function           | format_decimal_digit                   | 000068fa |
-| generate_group_stats                    | 0000b784 | Function           | generate_group_stats                   | 00006910 |
-| generate_team_stats                     | 0000b7b6 | Function           | generate_team_stats                    | 00006942 |
-| average_8                               | 0000b7f8 | Function           | average_8                              | 00006988 |
-| generate_team_fixture_strings           | 0000b80e | Function           | generate_team_fixture_strings          | 0000699e |
-| generate_fixture_strings                | 0000b94a | Function           | generate_fixture_strings               | 00006af4 |
-| display_next_fixture                    | 0000b960 | Function           | display_next_fixture                   | 00006b0e |
-| sum_team_stat                           | 0000b992 | Function           | sum_team_stat                          | 00006b54 |
-| stats_format_decimal                    | 0000b9ac | Function           | stats_format_decimal                   | 00006b6e |
-| write_team_statistics                   | 0000b9b4 | Function           | write_team_statistics                  | 00006b76 |
-| display_statistics                      | 0000ba0a | Function           | display_statistics                     | 00006bd8 |
-| draw_string_list                        | 0000baaa | Function           | draw_string_list                       | 00006ca8 |
-| substitute_player                       | 0000bacc | Function           | substitute_player                      | 00006cca |
-| round_player_stats                      | 0000bb5a | Function           | round_player_stats                     | 00006d60 |
-| copy_player                             | 0000bb7a | Function           | copy_player                            | 00006d80 |
-| show_title                              | 0000bba0 | Function           | show_title                             | 00006da6 |
-| display_screen_block                    | 0000bbde | Function           | display_screen_block                   | 00006de0 |
-| draw_attribute_strings                  | 0000bbf8 | Function           | draw_attribute_strings                 | 00006e12 |
-| draw_manager_screen                     | 0000bc20 | Function           | draw_manager_screen                    | 00006e3c |
-| draw_transfer_screen                    | 0000bc7a | Function           | draw_transfer_screen                   | 00006ea8 |
-| draw_gym_screen                         | 0000bd06 | Function           | draw_gym_screen                        | 00006f4e |
-| redraw_cash                             | 0000bd6e | Function           | redraw_cash                            | 00006fc8 |
-| draw_stats                              | 0000bdb8 | Function           | draw_stats                             | 00007016 |
-| draw_buying_player_stats                | 0000be70 | Function           | draw_buying_player_stats               | 000070d0 |
-| draw_buying_group_stats                 | 0000beb0 | Function           | draw_buying_group_stats                | 0000711a |
-| draw_buying_team_stats                  | 0000becc | Function           | draw_buying_team_stats                 | 0000713c |
-| draw_player_to_buy_stats                | 0000bee2 | Function           | draw_player_to_buy_stats               | 00007156 |
-| draw_box_colour                         | 0000bf06 | Function           |                                        |          |
-| draw_current_buyable                    | 0000bf22 | Function           | draw_current_buyable                   | 00007182 |
-| clear_buying_text                       | 0000bf70 | Function           | clear_buying_text                      | 000071ce |
-| draw_buying_player                      | 0000bf84 | Function           | draw_buying_player                     | 000071de |
-| draw_buying_group                       | 0000c036 | Function           | draw_buying_group                      | 0000729c |
-| draw_buying_team                        | 0000c054 | Function           | draw_buying_team                       | 000072bc |
-| draw_player_to_buy                      | 0000c06a | Function           | draw_player_to_buy                     | 000072d2 |
-| draw_player_table                       | 0000c0f2 | Function           | draw_player_table                      | 00007362 |
-| draw_player_name_for_table              | 0000c138 | Function           | draw_player_name_for_table             | 000073b0 |
-| draw_face                               | 0000c1c4 | Function           | draw_face                              | 00007438 |
-| draw_group_logo                         | 0000c22a | Function           | draw_group_logo                        | 000074b6 |
-| player_sprites_to_start_positions       | 0000c2aa | Function           | player_sprites_to_start_positions      | 00007534 |
-| play_match                              | 0000c2d0 | Function           | play_match                             | 000075b6 |
-|                                         |          |                    | do_cheat                               | 000079cc |
-|                                         |          |                    | do_cheat_playtest                      | 00007a12 |
-|                                         |          |                    | do_cheat_easier_game                   | 00007a60 |
-| display_string                          | 0000c650 | Function           | display_string                         | 00007b10 |
-| display_2x2_char                        | 0000c694 | Function           |                                        |          |
-| display_string_space                    | 0000c6c8 | Function           |                                        |          |
-| draw_management_background              | 0000c6d8 | Function           | draw_management_background             | 00007b54 |
-| draw_mgmt_bkgnd_tile                    | 0000c70c | Function           |                                        |          |
-| draw_mgmt_bkgnd_step_coords             | 0000c72e | Function           |                                        |          |
-| draw_string                             | 0000c744 | Function           | draw_string                            | 00007bf2 |
-| draw_char                               | 0000c788 | Function           | draw_char                              | 00007c2e |
-| expand_char                             | 0000c7c8 | Function           |                                        |          |
-| advance_cursor                          | 0000c7e2 | Function           | advance_cursor                         | 00007c84 |
-| draw_string_alt                         | 0000c7f2 | Function           | draw_string_alt                        | 00007c94 |
-| draw_char_alt                           | 0000c82e | Function           | draw_char_alt                          | 00007cc4 |
-| draw_string_pixel                       | 0000c86a | Function           | draw_string_pixel                      | 00007d18 |
-| draw_char_pixel                         | 0000c8ae | Function           | draw_char_pixel                        | 00007d50 |
-| move_next_char_small                    | 0000c8e8 | Function           | move_next_char_small                   | 00007da2 |
-| format_score_win                        | 0000c8ec | Function           | format_score_win                       | 00007da6 |
-| load_victory                            | 0000c8fe | Function           |                                        |          |
-| load_defeat                             | 0000c936 | Function           |                                        |          |
-| victory                                 | 0000c96e | Function           | victory                                | 00007dba |
-| defeat                                  | 0000c9de | Function           | defeat                                 | 00007e2e |
-| display_match_result                    | 0000ca3a | Function           | display_match_result                   | 00007e8c |
-| draw_score_string                       | 0000cabe | Function           | draw_score_string                      | 00007f2e |
-| format_score_string                     | 0000cace | Function           | format_score_string                    | 00007f40 |
-| update_match_stats                      | 0000cae4 | Function           | update_match_stats                     | 00007f5a |
-| clear_match_stats                       | 0000cb70 | Function           | clear_match_stats                      | 00007fee |
-| wait_no_keypress                        | 0000cb92 | Function           | wait_no_keypress                       | 00008012 |
-|                                         |          |                    | wait_any_abcs_pressed                  | 00008014 |
-| wait_any_fire_pressed_timeout           | 0000cbb8 | Function           | wait_any_abcs_2s                       | 00008034 |
-|                                         |          |                    | wait_no_buttons                        | 0000806c |
-| wait_fire_pressed                       | 0000cc28 | Function           | wait_any_abcs_down                     | 00008082 |
-| init_screen_status_bar                  | 0000cc74 | Function           |                                        |          |
-| expand_320_to_336                       | 0000ccd8 | Function           |                                        |          |
-| draw_xor_vertical_line                  | 0000ccf0 | Function           | dead_replay_goal_4                     | 00008098 |
-| draw_xor_horizontal_line                | 0000ccfc | Function           |                                        |          |
-| draw_xor_square                         | 0000cd08 | Function           |                                        |          |
-| xor_mode                                | 0000cd38 | Data Label         |                                        |          |
-| target_screen_buffer                    | 0000cd3a | Data Label         |                                        |          |
-| draw_colour_h_line                      | 0000cd3e | Function           |                                        |          |
-| draw_colour_h_line_bitplane             | 0000cd98 | Function           |                                        |          |
-| draw_sub_byte_hline                     | 0000cdea | Function           |                                        |          |
-| draw_colour_vertical_line               | 0000ce20 | Function           |                                        |          |
-| step_match                              | 0000cf10 | Function           | step_match                             | 0000809a |
-| match_tick                              | 0000d052 | Function           | match_tick                             | 00008208 |
-|                                         |          |                    | set_monitor_overlay                    | 00008248 |
-|                                         |          |                    | add_monitor_overlay                    | 000082e4 |
-| build_text_overlay                      | 0000d0f2 | Function           | build_text_overlay                     | 00008326 |
-| draw_text_overlay                       | 0000d22e | Function           | draw_text_overlay                      | 0000845e |
-| draw_overlay_char                       | 0000d26e | Function           | draw_overlay_char                      | 000084a0 |
-| green_light_active_player               | 0000d2bc | Function           | green_light_active_player              | 000084fa |
-| draw_status_bar_position                | 0000d3a8 | Function           |                                        |          |
-| clear_status_green_lights               | 0000d402 | Function           | clear_status_green_lights              | 000085c0 |
-|                                         |          |                    | draw_status_bar_position               | 000085fe |
-| draw_health_meter                       | 0000d476 | Function           | draw_health_meter                      | 0000868c |
-| draw_health_meter_blue                  | 0000d49a | Function           |                                        |          |
-| draw_health_meter_blue_word             | 0000d4b2 | Function           |                                        |          |
-| draw_health_meter_red                   | 0000d502 | Function           |                                        |          |
-| draw_health_meter_red_word              | 0000d51a | Function           |                                        |          |
-|                                         |          |                    | draw_health_meter_aux                  | 000086c2 |
-|                                         |          |                    | health_bar_masks_p1                    | 00008730 |
-|                                         |          |                    | health_bar_masks_p2                    | 00008754 |
-| update_match_time                       | 0000d576 | Function           | update_match_time                      | 00008778 |
-| check_all_stars_lit                     | 0000d682 | Function           | check_all_stars_lit                    | 000088c6 |
-| update_time_stats                       | 0000d6e0 | Function           | update_time_stats                      | 00008924 |
-| display_time                            | 0000d71c | Function           |                                        |          |
-| step_prepare_ball_launch                | 0000d73c | Function           | step_prepare_ball_launch               | 0000896e |
-| step_ball_launch                        | 0000d816 | Function           | step_ball_launch                       | 00008a62 |
-| step_slow_ball                          | 0000d89a | Function           | step_slow_ball                         | 00008ae2 |
-| update_players_location_info            | 0000d95e | Function           | update_players_location_info           | 00008bb2 |
-| update_player_location_info             | 0000d992 | Function           | update_player_location_info            | 00008bea |
-| update_active_players                   | 0000d9aa | Function           | update_active_players                  | 00008c0a |
-| select_active_player                    | 0000d9ea | Function           | select_active_player                   | 00008c5c |
-| calculate_player_distances              | 0000da02 | Function           | calculate_player_distances             | 00008c74 |
-| update_offscreen_bit                    | 0000da5e | Function           | update_offscreen_bit                   | 00008cd6 |
-| is_point_offscreen                      | 0000daa0 | Function           | is_point_offscreen                     | 00008d1c |
-| distance_to_point                       | 0000daca | Function           | distance_to_point                      | 00008d4a |
-| vector_length                           | 0000daf6 | Function           | vector_length                          | 00008d76 |
-| handle_score_goal                       | 0000db22 | Function           | handle_score_goal                      | 00008da2 |
-| goal_sound_function                     | 0000dc8c | Function           |                                        |          |
-| award_points                            | 0000dcca | Function           | award_points                           | 00008f3e |
-| play_sound_downwards                    | 0000dd30 | Function           |                                        |          |
-| step_start_multiplier                   | 0000dd60 | Function           | step_start_multiplier                  | 00008fae |
-| change_score_multiplier                 | 0000df02 | Function           | change_score_multiplier                | 00009188 |
-| step_run_multiplier                     | 0000dfe8 | Function           | step_run_multiplier                    | 00009288 |
-| step_warp                               | 0000e072 | Function           | step_warp                              | 00009324 |
-| step_stars                              | 0000e118 | Function           | step_stars                             | 000093d0 |
-| stars_light_p1                          | 0000e200 | Function           | stars_light_p1                         | 000094cc |
-| stars_light_p2                          | 0000e28c | Function           | stars_light_p2                         | 00009516 |
-| stars_unlight_p1                        | 0000e318 | Function           | stars_unlight_p1                       | 00009560 |
-| stars_unlight_p2                        | 0000e32e | Function           | stars_unlight_p2                       | 0000958c |
-| stars_unlight_all_p1                    | 0000e3a6 | Function           | stars_unlight_all_p1                   | 000095b8 |
-| stars_unlight_all_p2                    | 0000e3b6 | Function           | stars_unlight_all_p2                   | 000095c6 |
-| step_bumpers                            | 0000e3c6 | Function           | step_bumpers                           | 000095d4 |
-| step_bumper                             | 0000e3ea | Function           | step_bumper                            | 000095fe |
-| step_zappers                            | 0000e498 | Function           | step_zappers                           | 000096ae |
-| step_zapper                             | 0000e4cc | Function           | step_zapper                            | 00009702 |
-| light_zapper                            | 0000e548 | Function           | light_zapper                           | 0000977e |
-|                                         |          |                    | unlight_zapper                         | 000097b4 |
-| set_goal_scored_animation               | 0000e55e | Function           | set_goal_scored_animation              | 000097e2 |
-| constrain_sprites                       | 0000e5de | Function           | constrain_sprites                      | 00009870 |
-| constrain_sprite                        | 0000e62a | Function           | constrain_sprite                       | 000098c8 |
-| update_camera                           | 0000e71c | Function           | update_camera                          | 0000998e |
-| get_camera_speed                        | 0000e7b2 | Function           | get_camera_speed                       | 00009a5e |
-| step_sprites                            | 0000e7ce | Function           | step_sprites                           | 00009a7a |
-| step_player                             | 0000e86c | Function           | step_player                            | 00009b28 |
-| spawn_cash                              | 0000e894 | Function           | spawn_cash                             | 00009b50 |
-| spawn_powerup                           | 0000e8f2 | Function           | spawn_powerup                          | 00009bba |
-| spawn_armour                            | 0000e924 | Function           | spawn_armour                           | 00009bee |
-| control_player                          | 0000e95e | Function           | control_player                         | 00009c2c |
-| check_player_onscreen                   | 0000ea92 | Function           | check_player_onscreen                  | 00009d6e |
-| handle_collisions                       | 0000eac8 | Function           | handle_collisions                      | 00009da8 |
-| handle_collision                        | 0000eb28 | Function           | handle_collision                       | 00009e0e |
-| get_ball                                | 0000eb9c | Function           | get_ball                               | 00009e82 |
-| zap_player                              | 0000ed12 | Function           | zap_player                             | 00009fa0 |
-| goalie_deflect_ball                     | 0000ed52 | Function           | goalie_deflect_ball                    | 00009fe8 |
-| deflection_direction                    | 0000edf4 | Data Label         | deflection_direction                   | 0000a092 |
-| user_controlled_player                  | 0000ee04 | Function           | user_controlled_player                 | 0000a0a2 |
-| active_player_ai                        | 0000ee22 | Function           | active_player_ai                       | 0000a0c0 |
-| get_opposing_player_directions          | 0000efe2 | Function           | get_opposing_player_directions         | 0000a28c |
-| check_collectibles                      | 0000f05a | Function           | check_collectibles                     | 0000a30a |
-| check_collectible                       | 0000f0b8 | Function           | check_collectible                      | 0000a376 |
-| try_moving_mostly_forward               | 0000f0fc | Function           | try_moving_mostly_forward              | 0000a3ba |
-| try_moving_left                         | 0000f132 | Function           | try_moving_left                        | 0000a3f0 |
-| try_moving_right                        | 0000f14a | Function           | try_moving_right                       | 0000a408 |
-| find_route_left_first                   | 0000f162 | Function           | find_route_left_first                  | 0000a420 |
-| find_route_right_first                  | 0000f20e | Function           | find_route_right_first                 | 0000a4cc |
-| active_defensive_player_pass_ai         | 0000f2c4 | Function           | active_defensive_player_pass_ai        | 0000a582 |
-| use_court_hardware_ai                   | 0000f3a8 | Function           | use_court_hardware_ai                  | 0000a66a |
-| use_zapper                              | 0000f50c | Function           | use_zapper                             | 0000a7d6 |
-| get_player_observe_distance             | 0000f55a | Function           | get_player_observe_distance            | 0000a824 |
-| get_sustain                             | 0000f564 | Function           | get_sustain                            | 0000a82e |
-| set_goal_throw_location                 | 0000f580 | Function           | set_goal_throw_location                | 0000a84e |
-| active_forward_player_with_ball_ai      | 0000f60a | Function           | active_forward_player_with_ball_ai     | 0000a8d8 |
-| is_teammate_blocked                     | 0000f738 | Function           | is_teammate_blocked                    | 0000aa0c |
-| base_player_ai                          | 0000f752 | Function           | base_player_ai                         | 0000aa26 |
-| find_closest_available_enemy            | 0000f866 | Function           | find_closest_available_enemy           | 0000ab3c |
-| is_point_in_player_bounds               | 0000f8cc | Function           | is_point_in_player_bounds              | 0000aba6 |
-| get_defender_to_support                 | 0000f8f2 | Function           | get_defender_to_support                | 0000abcc |
-| adjust_support_nearby_attacker          | 0000f920 | Function           | adjust_support_nearby_attacker         | 0000abfe |
-| adjust_support_target                   | 0000f992 | Function           | adjust_support_target                  | 0000ac70 |
-| centre_x                                | 0000fa12 | Function           | centre_x                               | 0000acf0 |
-| constrain_y_diagonally                  | 0000fa1e | Function           | constrain_y_diagonally                 | 0000acfc |
-| attackers_targeting                     | 0000fa5c | Function           | attackers_targeting                    | 0000ad3a |
-| dead_unknown                            | 0000fae8 | Function           | dead_unknown                           | 0000adca |
-| constrain_x                             | 0000faf4 | Function           | constrain_x                            | 0000add6 |
-| constrain_y                             | 0000fb12 | Function           | constrain_y                            | 0000adf4 |
-| base_goalie_set_intercept_position      | 0000fb30 | Function           | base_goalie_set_intercept_position     | 0000ae12 |
-| get_goalie_back_y                       | 0000fca6 | Function           | get_goalie_back_y                      | 0000af8c |
-| get_active_goalie_back_y                | 0000fcbc | Function           | get_active_goalie_back_y               | 0000afa2 |
-| get_diagonal_left_goal_intercept        | 0000fcd2 | Function           | get_diagonal_left_goal_intercept       | 0000afb8 |
-| get_diagonal_right_goal_intercept       | 0000fce4 | Function           | get_diagonal_right_goal_intercept      | 0000afca |
-| active_goalie_no_ball_ai                | 0000fcf4 | Function           | active_goalie_no_ball_ai               | 0000afda |
-| get_predicted_ball_position_for_goalie  | 0000fed0 | Function           | get_predicted_ball_position_for_goalie | 0000b1ba |
-| handle_local_interaction_ai             | 0000ff2e | Function           | handle_local_interaction_ai            | 0000b21c |
-| distance_check                          | 00010030 | Function           | distance_check                         | 0000b332 |
-| slide_or_jump_at_target                 | 00010058 | Function           | slide_or_jump_at_target                | 0000b35a |
-| active_player_slide_or_jump             | 0001012c | Function           | active_player_slide_or_jump            | 0000b43e |
-| do_slide                                | 00010138 | Function           | do_slide                               | 0000b44a |
-| base_player_attack                      | 000101ca | Function           | base_player_attack                     | 0000b4ee |
-| avoid_enemy_player                      | 0001020e | Function           | avoid_enemy_player                     | 0000b536 |
-| start_player_move_action_fn             | 00010250 | Function           | start_player_move_action_fn            | 0000b578 |
-| player_moving_action_fn                 | 000102e2 | Function           | player_moving_action_fn                | 0000b60a |
-| preconfigure_player_move                | 000103cc | Function           | preconfigure_player_move               | 0000b700 |
-| hitting_action_fn                       | 0001042c | Function           | hitting_action_fn                      | 0000b770 |
-| do_tackle                               | 00010468 | Function           | do_tackle                              | 0000b7b2 |
-| get_tackle_difficulty                   | 000105ba | Function           | get_tackle_difficulty                  | 0000b8c4 |
-| damage_player                           | 0001061a | Function           | damage_player                          | 0000b92a |
-| do_goal_throw_ai                        | 0001066e | Function           | do_goal_throw_ai                       | 0000b97e |
-| do_throw_punt_ai                        | 0001069a | Function           | do_throw_punt_ai                       | 0000b9ac |
-| do_throw_high_ai                        | 0001071e | Function           | do_throw_high_ai                       | 0000ba0a |
-| do_throw_low_ai                         | 00010742 | Function           | do_throw_low_ai                        | 0000ba2e |
-| do_throw_common_ai                      | 00010766 | Function           | do_throw_common_ai                     | 0000ba52 |
-| throwing_action_fn                      | 000107be | Function           | throwing_action_fn                     | 0000bab0 |
-| set_ball_speed                          | 000108e0 | Function           | set_ball_speed                         | 0000bbe8 |
-| set_standing_catch_animation            | 000108fa | Function           | set_standing_catch_animation           | 0000bc08 |
-| start_player_standing_action_fn         | 00010958 | Function           | start_player_standing_action_fn        | 0000bc6c |
-| preconfigure_player_standing            | 000109a2 | Function           | preconfigure_player_standing           | 0000bcb8 |
-| jumping_action_fn                       | 000109d6 | Function           | jumping_action_fn                      | 0000bcf6 |
-| complete_action_fn                      | 00010a28 | Function           | complete_action_fn                     | 0000bd4a |
-| goalie_sliding_action_fn                | 00010a7a | Function           | goalie_sliding_action_fn               | 0000bd9e |
-| sliding_action_fn                       | 00010a82 | Function           | sliding_action_fn                      | 0000bda6 |
-| noop                                    | 00010a8a | Function           | noop                                   | 0000bdae |
-| reset_player_timer                      | 00010a8c | Function           | reset_player_timer                     | 0000bdb0 |
-| target_predicted_position               | 00010aaa | Function           | target_predicted_position              | 0000bdd2 |
-| reflect_x                               | 00010ae8 | Function           | reflect_x                              | 0000be14 |
-| reflect_y                               | 00010b0a | Function           | reflect_y                              | 0000be36 |
-| get_object_to_point_direction           | 00010b2c | Function           | get_object_to_point_direction          | 0000be58 |
-| get_direction_to_target                 | 00010b90 | Function           | get_direction_to_target                | 0000bebc |
-| handle_user_input                       | 00010bc4 | Function           | handle_user_input                      | 0000bef0 |
-| convert_move_dir_to_facing_dir          | 00010cde | Function           | convert_move_dir_to_facing_dir         | 0000c01a |
-| configure_sprite_for_direction          | 00010cee | Function           | configure_sprite_for_direction         | 0000c02c |
-| step_sprite_animations                  | 00010d04 | Function           | step_sprite_animations                 | 0000c042 |
-| set_player_sprite_offset                | 00010dfe | Function           | set_player_sprite_offset               | 0000c13e |
-| start_injury                            | 00010e16 | Function           | start_injury                           | 0000c164 |
-| step_injury                             | 00010fac | Function           | step_injury                            | 0000c2f4 |
-| step_injury_0                           | 0001100a | Function           | step_injury_0                          | 0000c35c |
-| step_injury_1                           | 000110aa | Function           | step_injury_1                          | 0000c41c |
-| step_injury_2                           | 000111aa | Function           | step_injury_2                          | 0000c54a |
-| step_injury_3                           | 0001122e | Function           | step_injury_3                          | 0000c5ca |
-| limit_player_movement                   | 00011304 | Function           | limit_player_movement                  | 0000c6a8 |
-| test_powerup_reverse                    | 0001137c | Function           | test_powerup_reverse                   | 0000c726 |
-| test_block_powerup                      | 00011398 | Function           | test_block_powerup                     | 0000c746 |
-| test_shield_powerup                     | 000113bc | Function           | test_shield_powerup                    | 0000c772 |
-| collect_coin                            | 000113d4 | Function           | collect_coin                           | 0000c78e |
-| randomise_coin                          | 00011418 | Function           | randomise_coin                         | 0000c7de |
-| collect_powerup                         | 00011436 | Function           | collect_powerup                        | 0000c7fa |
-| draw_status_bar_powerup                 | 0001147e | Function           | draw_status_bar_powerup                | 0000c848 |
-|                                         |          |                    | overwrite_cell                         | 0000c890 |
-| randomise_powerup                       | 0001151a | Function           | randomise_powerup                      | 0000c900 |
-| collect_armour                          | 00011558 | Function           | collect_armour                         | 0000c944 |
-| randomise_armour                        | 0001158c | Function           | randomise_armour                       | 0000c97c |
-| distance_to_collectable                 | 000115c2 | Function           | distance_to_collectable                | 0000c9b6 |
-| randomise_powerup_positions             | 00011612 | Function           | randomise_powerup_position             | 0000ca08 |
-| randomise_coin_position                 | 00011646 | Function           | randomise_coin_position                | 0000ca38 |
-| randomise_armour_position               | 00011692 | Function           | randomise_armour_position              | 0000ca80 |
-| apply_armour                            | 000116b8 | Function           | apply_armour                           | 0000caa2 |
-| tackle_drop_armour                      | 0001170e | Function           | tackle_drop_armour                     | 0000cafe |
-| clear_powerup                           | 00011794 | Function           | clear_powerup                          | 0000cb8c |
-| powerup_shield                          | 000117f4 | Function           |                                        |          |
-| powerup_freeze                          | 0001180c | Function           | powerup_freeze                         | 0000cbfc |
-|                                         |          |                    | powerup_reverse                        | 0000cc1a |
-| powerup_stats_down                      | 00011824 | Function           | powerup_stats_down                     | 0000cc3a |
-| powerdown_stats_down                    | 0001185a | Function           | powerdown_stats_down                   | 0000cc7a |
-| powerup_stats_up                        | 00011872 | Function           | powerup_stats_up                       | 0000cc96 |
-| powerdown_stats_up                      | 000118aa | Function           | powerdown_stats_up                     | 0000ccd8 |
-| powerup_stats_up_both                   | 000118c2 | Function           | powerup_stats_up_both                  | 0000ccf4 |
-| powerdown_stats_up_both                 | 000118f0 | Function           | powerdown_stats_up_both                | 0000cd2c |
-| powerup_slow                            | 00011902 | Function           | powerup_slow                           | 0000cd42 |
-| powerdown_slow                          | 00011936 | Function           | powerdown_slow                         | 0000cd80 |
-| powerup_grab                            | 0001194e | Function           | powerup_grab                           | 0000cd9c |
-| powerup_teleport                        | 00011972 | Function           | powerup_teleport                       | 0000cdc4 |
-| powerup_reverse                         | 000119b6 | Function           |                                        |          |
-| powerup_block                           | 000119d0 | Function           | powerup_block                          | 0000ce10 |
-|                                         |          |                    | powerup_shield                         | 0000ce30 |
-| powerup_energy                          | 000119ea | Function           | powerup_energy                         | 0000ce50 |
-| powerup_zap                             | 00011a00 | Function           | powerup_zap                            | 0000ce66 |
-| for_all_active_players                  | 00011a96 | Function           | for_all_active_players                 | 0000cf0a |
-| set_stats                               | 00011aa6 | Function           | set_stats                              | 0000cf1a |
-| revert_stats                            | 00011ab0 | Function           | revert_stats                           | 0000cf24 |
-| set_slow_down                           | 00011aba | Function           | set_slow_down                          | 0000cf2e |
-| revert_slow_down                        | 00011ac4 | Function           | revert_slow_down                       | 0000cf38 |
-| set_stats_aux                           | 00011ace | Function           | set_stats_aux                          | 0000cf42 |
-| revert_stats_aux                        | 00011aec | Function           | revert_stats_aux                       | 0000cf60 |
-| set_slow_down_aux                       | 00011b0c | Function           | set_slow_down_aux                      | 0000cf80 |
-| revert_slow_down_aux                    | 00011b1a | Function           | revert_slow_down_aux                   | 0000cf8e |
-| dirty_map_all                           | 00011b28 | Function           |                                        |          |
-| dirty_map_edge                          | 00011b3a | Function           |                                        |          |
-| redraw_pitch                            | 00011b88 | Function           |                                        |          |
-|                                         |          |                    | init_vdp                               | 0000cf9c |
-|                                         |          |                    | display_configure_non_match            | 0000d074 |
-|                                         |          |                    | display_configure_match                | 0000d1d6 |
-|                                         |          |                    | vdp_data_write                         | 0000d3c2 |
-|                                         |          |                    | display_push_start_match               | 0000d3d2 |
-|                                         |          |                    | display_push_start_non_match           | 0000d3d8 |
-|                                         |          |                    | push_start_indices                     | 0000d414 |
-|                                         |          |                    | init_pitch_cell_map                    | 0000d428 |
-|                                         |          |                    | write_background_cell_mapping          | 0000d574 |
-|                                         |          |                    | transfer_cell_map_with_scroll          | 0000d596 |
-|                                         |          |                    | set_hw_scroll                          | 0000d656 |
-|                                         |          |                    | display_match                          | 0000d68c |
-| display_scores                          | 00011d7e | Function           | display_scores                         | 0000d6b4 |
-| display_scores_inner                    | 00011d92 | Function           |                                        |          |
-| display_score                           | 00011dae | Function           |                                        |          |
-| display_digit                           | 00011dbc | Function           |                                        |          |
-| display_digit_inner                     | 00011dce | Function           |                                        |          |
-|                                         |          |                    | display_score_digit                    | 0000d6e8 |
-|                                         |          |                    | display_time                           | 0000d782 |
-|                                         |          |                    | display_time_digit                     | 0000d7b8 |
-| draw_game                               | 00011e0c | Function           | draw_game                              | 0000d852 |
-| draw_score_multipliers                  | 00011ece | Function           | draw_score_multipliers                 | 0000d922 |
-| draw_powerups                           | 00011ee0 | Function           |                                        |          |
-| draw_player_markers                     | 00011f1a | Function           | draw_player_markers                    | 0000d938 |
-| sort_players_vertically                 | 00011f40 | Function           | sort_players_vertically                | 0000d966 |
-| players_sorted_vertically               | 00011f8c | Data Label         |                                        |          |
-| draw_all_players                        | 00011fdc | Function           | draw_all_players                       | 0000d9b6 |
-| draw_ball                               | 00011ff0 | Function           | draw_ball                              | 0000d9ce |
-| save_replay_origin                      | 00011ffa | Function           | save_replay_origin                     | 0000d9da |
-| write_replay_buf                        | 00012018 | Function           | write_replay_buf                       | 0000d9fe |
-| read_replay_buffer                      | 00012050 | Function           | read_replay_buffer                     | 0000da42 |
-| run_replay                              | 00012062 | Function           | run_replay                             | 0000da56 |
-| save_replay                             | 000121b8 | Function           | dead_save_replay                       | 0000dbc0 |
-|                                         |          |                    | dead_something_3                       | 0000dc5a |
-| disk_error_message                      | 00012272 | Function           | dead_disk_error                        | 0000dc5c |
-| replay_frame                            | 00012302 | Function           | replay_frame                           | 0000dcda |
-|                                         |          |                    | dead_disk_error_aux                    | 0000dd62 |
-| add_monitor_overlay                     | 000123ce | Function           |                                        |          |
-| dirty_map_top_left                      | 00012492 | Function           |                                        |          |
-| draw_sprite                             | 000124ca | Function           | draw_sprite                            | 0000dd64 |
-| save_sprite_for_replay                  | 0001256c | Function           | save_sprite_for_replay                 | 0000ddf4 |
-| mark_sprite_dirty                       | 000125ca | Function           |                                        |          |
-| sprite_fn_32x32_masked                  | 00012662 | Function           |                                        |          |
-| blit_16x16_masked_right                 | 00012780 | Function           |                                        |          |
-| blit_16x16_masked_left                  | 00012792 | Function           |                                        |          |
-| blit_16x16_masked_onscreen              | 000127a6 | Function           |                                        |          |
-| blit_32x32_red_onscreen                 | 000127c6 | Function           |                                        |          |
-| blit_32x32_red_shared                   | 000127e2 | Function           |                                        |          |
-| sprite_is_5_bits                        | 000129f4 | Data Label         |                                        |          |
-| bitplane_stride                         | 000129f6 | Data Label         |                                        |          |
-| source_mod_adjust                       | 000129fa | Data Label         |                                        |          |
-| sprite_16x16_size                       | 000129fc | Data Label         |                                        |          |
-| blit_32x32_red_near_right               | 000129fe | Function           |                                        |          |
-| blit_32x32_red_near_left                | 00012a28 | Function           |                                        |          |
-| blit_32x32_red_far_right                | 00012a48 | Function           |                                        |          |
-| blit_32x32_red_far_left                 | 00012a7a | Function           |                                        |          |
-| sprite_fn_32x32_no_mask                 | 00012ab0 | Function           |                                        |          |
-| sprite_prepare_16x16                    | 00012bbc | Function           |                                        |          |
-| sprite_fn_16x16_masked                  | 00012c64 | Function           |                                        |          |
-| sprite_fn_16x16_no_mask                 | 00012cce | Function           |                                        |          |
-| blit_16x16_no_mask_right                | 00012d38 | Function           |                                        |          |
-| blit_16x16_no_mask_left                 | 00012d4a | Function           |                                        |          |
-| blit_16x16_no_mask_onscreen             | 00012d68 | Function           |                                        |          |
-| blit_16x16_no_mask_shared               | 00012d6e | Function           |                                        |          |
-| blit_32x32_no_mask_near_right           | 00012d8c | Function           |                                        |          |
-| blit_32x32_no_mask_near_left            | 00012db6 | Function           |                                        |          |
-| blit_32x32_no_mask_far_right            | 00012dd6 | Function           |                                        |          |
-| blit_32x32_no_mask_far_left             | 00012e0c | Function           |                                        |          |
-| blit_32x32_no_mask_onscreen             | 00012e44 | Function           |                                        |          |
-| blit_32x32_no_mask_shared               | 00012e62 | Function           |                                        |          |
-| ones_mask                               | 0001309e | Data Label         |                                        |          |
-| blanks                                  | 000130a2 | Data Label         |                                        |          |
-| blit_screen                             | 000130d2 | Function           |                                        |          |
-| copy_to_screen                          | 00013184 | Function           |                                        |          |
-| config_blitter_for_pitch_block          | 0001323a | Function           |                                        |          |
-| zero_pitch_block                        | 00013274 | Function           |                                        |          |
-| pitch_block_positive                    | 000132f6 | Function           |                                        |          |
-| pitch_block_negative                    | 000133b4 | Function           |                                        |          |
-| blit_32x32_blue_onscreen                | 0001347a | Function           |                                        |          |
-| blit_32x32_blue_shared                  | 00013496 | Function           |                                        |          |
-| blit_32x32_blue_near_left               | 000136bc | Function           |                                        |          |
-| blit_32x32_blue_far_right               | 000136dc | Function           |                                        |          |
-| blit_32x32_blue_far_left                | 0001370e | Function           |                                        |          |
-| blit_32x32_blue_near_right              | 00013748 | Function           |                                        |          |
-| generate_player_team_masks              | 00013772 | Function           |                                        |          |
-|                                         |          |                    | clear_hw_sprites                       | 0000de5e |
-|                                         |          |                    | build_hw_sprite                        | 0000de86 |
-|                                         |          |                    | transfer_hw_sprites                    | 0000dee6 |
-|                                         |          |                    | init_background_save_stack             | 0000dfb2 |
-|                                         |          |                    | draw_background_sprites                | 0000dfbe |
-|                                         |          |                    | restore_background                     | 0000e00a |
-|                                         |          |                    | update_background_sides                | 0000e040 |
-|                                         |          |                    | draw_left_edge_piece                   | 0000e102 |
-|                                         |          |                    | draw_right_edge_piece                  | 0000e10e |
-|                                         |          |                    | nuke_offscreen_markers                 | 0000e144 |
-|                                         |          |                    | clear_offscreen_markers                | 0000e156 |
-|                                         |          |                    | clear_offscreen_markers_aux            | 0000e172 |
-|                                         |          |                    | draw_cell_marker                       | 0000e1ac |
-|                                         |          |                    | draw_cell_markers_aux                  | 0000e1d6 |
-|                                         |          |                    | sprite_fn_player                       | 0000e43a |
-|                                         |          |                    | sprite_fn_ball_launcher                | 0000e472 |
-|                                         |          |                    | sprite_fn_bumper                       | 0000e4a0 |
-|                                         |          |                    | sprite_fn_big_ball                     | 0000e4dc |
-|                                         |          |                    | sprite_fn_ball                         | 0000e510 |
-|                                         |          |                    | sprite_fn_coin                         | 0000e542 |
-|                                         |          |                    | sprite_fn_power_up_1                   | 0000e55e |
-|                                         |          |                    | sprite_fn_power_up_2                   | 0000e568 |
-|                                         |          |                    | sprite_fn_power_up_3                   | 0000e572 |
-|                                         |          |                    | sprite_fn_power_up_common              | 0000e57a |
-|                                         |          |                    | draw_background_sprite                 | 0000e59c |
-|                                         |          |                    | sprite_fn_blue_marker                  | 0000e5f0 |
-|                                         |          |                    | sprite_fn_red_marker                   | 0000e622 |
-|                                         |          |                    | sprite_fn_player_number                | 0000e654 |
-|                                         |          |                    | sprite_fn_medibot_1                    | 0000e686 |
-|                                         |          |                    | sprite_fn_medibot_2                    | 0000e6ba |
-|                                         |          |                    | sprite_fn_multiplier_top               | 0000e6ee |
-|                                         |          |                    | sprite_fn_multiplier_bottom            | 0000e7a0 |
-|                                         |          |                    | display_splash                         | 0000e852 |
-|                                         |          |                    | sprite_fn_simple_unmasked              | 0000e9a4 |
-|                                         |          |                    | sprite_fn_simple_masked                | 0000e9e2 |
-|                                         |          |                    | dead_put_4x4                           | 0000ea20 |
-|                                         |          |                    | dead_put_4x1                           | 0000ea4e |
-|                                         |          |                    | sprite_fn_armour                       | 0000ea7a |
-|                                         |          |                    | put_4x1_masked                         | 0000eaa8 |
-|                                         |          |                    | sprite_fn_keypad                       | 0000ead4 |
-|                                         |          |                    | put_3x1                                | 0000eb00 |
-|                                         |          |                    | put_3x3_masked                         | 0000eb22 |
-|                                         |          |                    | put_3x1_masked                         | 0000eb46 |
-|                                         |          |                    | display_2x2_char                       | 0000eb68 |
-|                                         |          |                    | put_cell                               | 0000ebaa |
-|                                         |          |                    | put_masked_cell                        | 0000ec08 |
-|                                         |          |                    | schedule_cell_transfer                 | 0000ec80 |
-|                                         |          |                    | transfer_cells                         | 0000ecde |
-|                                         |          |                    | draw_box_colour                        | 0000ed82 |
-|                                         |          |                    | draw_xor_square_48x48                  | 0000edc6 |
-|                                         |          |                    | draw_xor_square_16x16                  | 0000edd2 |
-|                                         |          |                    | draw_xor_square                        | 0000edda |
-|                                         |          |                    | schedule_box                           | 0000ee62 |
-|                                         |          |                    | draw_colour_h_line                     | 0000eede |
-|                                         |          |                    | lhs_mask                               | 0000ef84 |
-|                                         |          |                    | rhs_mask                               | 0000efa4 |
-|                                         |          |                    | draw_xor_horizontal_line               | 0000efc4 |
-|                                         |          |                    | horizontal_start_bitmask_table         | 0000f042 |
-|                                         |          |                    | horizontal_end_bitmask_table           | 0000f062 |
-|                                         |          |                    | draw_xor_vertical_line                 | 0000f082 |
-|                                         |          |                    | vertical_bitmask_table                 | 0000f0b2 |
-| strlen                                  | 000137a8 | Function           | strlen                                 | 0000f0d4 |
-| reset_team                              | 000137b8 | Function           | reset_team                             | 0000f0e4 |
-| reset_player                            | 000137ca | Function           | reset_player                           | 0000f0f6 |
-| swap_x_constraints                      | 0001380a | Function           | swap_x_constraints                     | 0000f136 |
-| swap_y_constraints                      | 0001381a | Function           | swap_y_constraints                     | 0000f146 |
-| swap_facing_direction                   | 0001382a | Function           | swap_facing_direction                  | 0000f156 |
-| swap_playing_direction                  | 0001383a | Function           | swap_playing_direction                 | 0000f166 |
-| change_ends                             | 00013860 | Function           | change_ends                            | 0000f18c |
-|                                         |          |                    | init_rand                              | 0000f1f6 |
-|                                         |          |                    | rand                                   | 0000f20c |
-|                                         |          |                    | dead_read_write_palette_entry          | 0000f242 |
-|                                         |          |                    | init_hardware                          | 0000f272 |
-|                                         |          |                    | h_interrupt_handler                    | 0000f2bc |
-|                                         |          |                    | v_interrupt_handler                    | 0000f2d2 |
-|                                         |          |                    | qpac_decompress                        | 0000f3bc |
-|                                         |          |                    | read_8_bits                            | 0000f54e |
-|                                         |          |                    | QPAC_MAGIC_ID                          | 0000f5d2 |
-|                                         |          |                    | sound_init_dac                         | 0000f5e2 |
-|                                         |          |                    | sound_set_sharp_decay                  | 0000f664 |
-|                                         |          |                    | sound_wait_idle                        | 0000f68e |
-|                                         |          |                    | sound_start_note                       | 0000f6a0 |
-|                                         |          |                    | dt1_mul_reg_for_channel_again          | 0000f8c8 |
-|                                         |          |                    | offset_for_channel_again2              | 0000f8ce |
-|                                         |          |                    | fb_algo_for_channel                    | 0000f8d4 |
-|                                         |          |                    | sound_step_note                        | 0000f8da |
-|                                         |          |                    | offset_for_channel_again               | 0000f942 |
-|                                         |          |                    | sound_stop                             | 0000f948 |
-|                                         |          |                    | dt1_mul_reg_for_channel                | 0000f9a6 |
-|                                         |          |                    | offset_for_channel                     | 0000f9ac |
-|                                         |          |                    | sound_set_freq                         | 0000f9b2 |
-|                                         |          |                    | freq_reg_for_channel                   | 0000fa32 |
-|                                         |          |                    | sound_buggy_dual_divide                | 0000fa38 |
-|                                         |          |                    | vibrato_table                          | 0000fa6e |
-|                                         |          |                    | sound_note_table                       | 0000faae |
-|                                         |          |                    | sound_note_table_2                     | 0000fb0e |
-|                                         |          |                    | sound_note_table_3                     | 0000fb6e |
-|                                         |          |                    | sound_note_table_4                     | 0000fbce |
-|                                         |          |                    | sound_note_table_5                     | 0000fc2e |
-|                                         |          |                    | sound_note_table_6                     | 0000fc8e |
-|                                         |          |                    | sound_note_table_7                     | 0000fcee |
-|                                         |          |                    | sound_note_table_8                     | 0000fd4e |
-|                                         |          |                    | sound_convert_to_fm_freq               | 0000fdae |
-| int_audio                               | 000138b6 | Function           |                                        |          |
-| sound_table                             | 00013958 | Data Label         |                                        |          |
-| sound_play                              | 00013aa8 | Function           | sound_play                             | 0000fde4 |
-| sound_effects                           | 00013b5a | Data Label         |                                        |          |
-| sound_envelopes                         | 00013cb4 | Data Label         |                                        |          |
-| sound_service_channel                   | 00013cc4 | Function           |                                        |          |
-| sound_update                            | 00013d24 | Function           | sound_int_handler                      | 0000fe66 |
-| sound_update_hardware                   | 00013d48 | Function           |                                        |          |
-| sound_update_hardware_channel           | 00013d66 | Function           |                                        |          |
-| sound_envelope                          | 00013dc2 | Function           |                                        |          |
-| sound_envelope_channel                  | 00013de6 | Function           |                                        |          |
-| sound_envelope_channel_aux              | 00013e08 | Function           |                                        |          |
-| sound_init                              | 00013e9a | Function           | sound_init                             | 0000fe9e |
-| sound_channel_settings                  | 0001407c | Data Label         |                                        |          |
-|                                         |          |                    | sound_seq_stack_table_again            | 0000ff6c |
-|                                         |          |                    | sound_play_sample                      | 0000ff7c |
-|                                         |          |                    | z80_program_main_code                  | 0000ffda |
-| sound_play_channel                      | 0001408c | Function           | sound_init_sequence                    | 0000fff4 |
-|                                         |          |                    | sound_voice_table                      | 00010048 |
-| sound_stack_pointers                    | 00014158 | Data Label         | sound_seq_stack_table                  | 00010058 |
-| sound_update_channels                   | 00014168 | Function           | sound_update                           | 00010068 |
-| sound_next_command                      | 000141d8 | Instruction Label  | sound_next_command                     | 00010096 |
-| sound_switch                            | 000141ea | Data Label         | sound_command_table                    | 000100a8 |
-| sound_op_cont                           | 000142b2 | Function           | sound_op_cont                          | 00010108 |
-|                                         |          |                    | sound_process_voice                    | 0001014c |
-| sound_op_set_vol                        | 00014398 | Function           | sound_op_set_36                        | 0001016e |
-| sound_op_noop_84                        | 000143a2 | Function           |                                        |          |
-| sound_op_goto_start                     | 000143a8 | Function           | sound_op_goto_start                    | 00010178 |
-| sound_op_set_note_len                   | 000143b4 | Function           | sound_op_set_note_len                  | 00010184 |
-| sound_op_set_tempo                      | 000143c2 | Function           | sound_op_set_tempo                     | 00010192 |
-| sound_op_silence                        | 000143d2 | Function           |                                        |          |
-| sound_op_effect                         | 000143f0 | Function           | sound_op_noop_1b_operand               | 0001019c |
-| sound_op_noop_a0                        | 00014434 | Function           |                                        |          |
-| sound_op_noop_a4                        | 0001443a | Function           |                                        |          |
-| sound_op_set_loop_flags                 | 00014440 | Function           | sound_op_or_38                         | 000101a2 |
-| sound_op_stop                           | 0001444a | Function           | sound_op_stop                          | 000101ac |
-| sound_op_call                           | 00014484 | Function           | sound_op_call                          | 000101d6 |
-| sound_op_return                         | 000144a6 | Function           | sound_op_ret                           | 000101ec |
-| sound_op_add_transposition              | 000144ac | Function           | sound_op_add_3a                        | 000101f2 |
-| sound_op_set_transposition              | 000144c2 | Function           | sound_op_set_3a                        | 00010208 |
-| sound_op_for                            | 000144ce | Function           | sound_op_for                           | 00010214 |
-| sound_op_next                           | 000144e2 | Function           | sound_op_next                          | 00010228 |
-| sound_op_set_envelope                   | 00014502 | Function           |                                        |          |
-| sound_op_clear_envelope                 | 00014514 | Function           |                                        |          |
-| sound_op_set_instrument                 | 0001451c | Function           | sound_op_set_instrument                | 00010248 |
-| sound_init_pitch_table                  | 00014552 | Function           |                                        |          |
-| sound_op_jump                           | 00014576 | Function           | sound_op_jmp                           | 0001026c |
-| sound_vibrato_reset                     | 00014596 | Function           |                                        |          |
-| sound_tremolo_reset                     | 000145ae | Function           |                                        |          |
-| sound_channel_0                         | 000145c6 | Data Label         |                                        |          |
-| sound_channel_1                         | 0001465a | Data Label         |                                        |          |
-| sound_channel_2                         | 000146ee | Data Label         |                                        |          |
-| sound_channel_3                         | 00014782 | Data Label         |                                        |          |
-| sound_stack_0                           | 00014896 | Data Label         |                                        |          |
-| sound_stack_1                           | 00014916 | Data Label         |                                        |          |
-| sound_stack_2                           | 00014996 | Data Label         |                                        |          |
-| sound_stack_3                           | 00014a16 | Data Label         |                                        |          |
-| sound_tempo                             | 00014a1a | Data Label         |                                        |          |
-| sound_priorities                        | 00014a1c | Data Label         |                                        |          |
-| sound_weird_broken_lookup               | 00014a2c | Data Label         |                                        |          |
-| sound_lock                              | 00014a34 | Data Label         |                                        |          |
-| sound_pitch_table_0                     | 00014a9a | Data Label         |                                        |          |
-| sound_pitch_table_1                     | 00014afa | Data Label         |                                        |          |
-| sound_pitch_table_2                     | 00014b5a | Data Label         |                                        |          |
-| sound_default_instrument                | 00014e5a | Data Label         |                                        |          |
-| sound_zero_sample                       | 00014e68 | Data Label         |                                        |          |
-| rand                                    | 00014e78 | Function           |                                        |          |
-| init_rand                               | 00014eae | Function           |                                        |          |
-| rand_seed_1                             | 00014ec4 | Data Label         |                                        |          |
-| rand_seed_2                             | 00014ec8 | Data Label         |                                        |          |
-| rand_val                                | 00014ecc | Data Label         |                                        |          |
-| dead_init_sprites                       | 00014ed0 | Function           |                                        |          |
-| init_hw_aux                             | 00014f0a | Function           |                                        |          |
-| init_periodic                           | 00014f2a | Function           |                                        |          |
-| trap0                                   | 00014f88 | Function           |                                        |          |
-| wait_vertb                              | 00014f94 | Function           |                                        |          |
-| line_table                              | 00014fac | Data Label         |                                        |          |
-| trap_f_1                                | 0001506c | Function           |                                        |          |
-| trap_illegal_1                          | 0001507c | Function           |                                        |          |
-| trap_illegal_2                          | 0001509c | Function           |                                        |          |
-| cp_end                                  | 000159bc | Instruction Label  |                                        |          |
-| int_vertb                               | 000159c0 | Function           |                                        |          |
-| current_screen                          | 00015a44 | Data Label         |                                        |          |
-| controllers_update                      | 00015a48 | Function           |                                        |          |
-| read_joystick                           | 00015ac2 | Function           |                                        |          |
-| dead_update_colours                     | 00015af8 | Function           |                                        |          |
-| dead_update_colours_aux                 | 00015b3e | Function           |                                        |          |
-| disable_status_bar                      | 00015b70 | Function           |                                        |          |
-| init_screen_line_table                  | 00015bca | Function           |                                        |          |
-| copper_tweak                            | 00015be8 | Function           |                                        |          |
-| enable_status_bar                       | 00015c44 | Function           |                                        |          |
-| init_copper                             | 00015c6a | Function           |                                        |          |
-| init_copper_set                         | 00015d04 | Function           |                                        |          |
-| set_int_keyboard                        | 00015d96 | Function           |                                        |          |
-| set_int_keyboard_aux                    | 00015dbc | Function           |                                        |          |
-| int_keyboard                            | 00015dda | Function           |                                        |          |
-| read_write_palette_entry                | 00015e4c | Function           |                                        |          |
-| switch_screens                          | 00015ea8 | Function           |                                        |          |
-| read_overlay                            | 00015ee4 | Function           |                                        |          |
-| read_check_overlay_index                | 00015f3a | Function           |                                        |          |
-| write_data                              | 00015f68 | Function           |                                        |          |
-| read_overlay_index                      | 00015fbe | Function           |                                        |          |
+| Amiga Name                              | Location | Type              | Megadrive Name                         | Location |
+|-----------------------------------------|----------|-------------------|----------------------------------------|----------|
+| start                                   | 00007f94 | Function          |                                        |          |
+| preload_data                            | 00008056 | Function          |                                        |          |
+| load_mgmt_data                          | 00008216 | Function          |                                        |          |
+| load_game_data                          | 000082d6 | Function          |                                        |          |
+| code_modifier                           | 0000836a | Data Label        |                                        |          |
+| load_all_game_data                      | 0000838a | Function          |                                        |          |
+| load_arena_data                         | 00008394 | Function          |                                        |          |
+| load_overlay                            | 00008414 | Function          |                                        |          |
+| init_bitmaps                            | 00008432 | Function          |                                        |          |
+| init_noop                               | 000084a4 | Function          |                                        |          |
+|                                         |          | Instruction Label | noop_interrupt_handler                 | 000000fc |
+|                                         |          | Function          | start                                  | 00000200 |
+|                                         |          | Instruction Label | skip_init                              | 0000028c |
+|                                         |          | Data Label        | useful_constants                       | 0000028e |
+|                                         |          | Data Label        | hw_ptrs                                | 00000294 |
+|                                         |          | Data Label        | vdp_register_initialisation            | 000002a8 |
+|                                         |          | Instruction Label | start2                                 | 000002fa |
+|                                         |          | Function          | dead_debugging                         | 00000312 |
+|                                         |          | Function          | vdp_address_set                        | 00000330 |
+|                                         |          | Function          | dead_set_palette                       | 0000034c |
+|                                         |          | Function          | dead_colour_mangle                     | 000003b8 |
+|                                         |          | Function          | dead_get_palette                       | 000003da |
+|                                         |          | Function          | controller_init                        | 00000412 |
+|                                         |          | Function          | vint                                   | 00000440 |
+|                                         |          | Function          | controller_read                        | 00000490 |
+|                                         |          | Function          | controller_presence_check              | 000004e6 |
+|                                         |          | Function          | z80_bus_request                        | 00000538 |
+|                                         |          | Function          | z80_bus_release                        | 00000560 |
+|                                         |          | Function          | z80_program                            | 0000058a |
+|                                         |          | Function          | z80_read                               | 000005f4 |
+|                                         |          | Function          | init_vars                              | 00000614 |
+|                                         |          | Data Label        | rom_block_1                            | 000007c4 |
+|                                         |          | Data Label        | rom_block_1_end                        | 000013b5 |
+|                                         |          | Function          | init_players_ram                       | 000013ba |
+|                                         |          | Data Label        | rom_block_2                            | 000013d4 |
+|                                         |          | Function          | rom_block_2_end                        | 00001850 |
+|                                         |          | Function          | init_sprites_ram                       | 00001850 |
+|                                         |          | Data Label        | rom_block_3                            | 00001872 |
+|                                         |          | Function          | rom_block_3_end                        | 000025a6 |
+|                                         |          | Function          | init_team_table                        | 000025a6 |
+|                                         |          | Data Label        | team_table_rom                         | 000025cc |
+|                                         |          | Instruction Label | team_table_rom_end                     | 00002bea |
+|                                         |          | Instruction Label | main                                   | 00002bea |
+|                                         |          | Function          | init_everything                        | 00002c2a |
+|                                         |          | Function          | no_op                                  | 00002c52 |
+|                                         |          | Function          | init_match_display                     | 00002c54 |
+| init_tables                             | 000084a6 | Function          | init_tables                            | 00002c6c |
+| init_line_table                         | 000084f0 | Function          |                                        |          |
+| trap_f_2                                | 00008518 | Function          |                                        |          |
+| init_player_mid_range_fields            | 0000851e | Function          | init_player_mid_range_fields           | 00002c9e |
+| display_fade_out                        | 00008554 | Function          | display_fade_out                       | 00002cd6 |
+| display_fade_in                         | 000085cc | Function          | display_fade_in                        | 00002d46 |
+| wait_40ms                               | 00008654 | Function          | wait_40ms                              | 00002dde |
+| display_fade_transition                 | 00008662 | Function          | dead_display_fade_in                   | 00002df0 |
+| display_fade_transition_hide_status_bar | 000086ee | Function          |                                        |          |
+| draw_menu_arrows                        | 00008786 | Function          | draw_menu_arrows                       | 00002e50 |
+|                                         |          | Function          | clear_menu_arrows                      | 00002e7a |
+| shared_menu_function                    | 000087ae | Function          |                                        |          |
+| init_team_players_names_and_sprites     | 00008894 | Function          | init_team_players_names_and_sprites    | 00002ea4 |
+| main_menu                               | 000088c4 | Function          | main_menu                              | 00002edc |
+| blit_screen_third_to_back               | 00008ad4 | Function          |                                        |          |
+| blit_screen_front_to_back               | 00008ae4 | Function          | keypad_move_stub                       | 00003182 |
+| copy_area_front_to_back                 | 00008afa | Function          |                                        |          |
+| game_single_player                      | 00008b1c | Function          | game_single_player                     | 00003184 |
+| game_practice                           | 00008b72 | Function          | game_practice                          | 000032ce |
+| game_two_player                         | 00008bca | Function          | game_two_player                        | 0000330a |
+| menu_one_three_five                     | 00008d84 | Function          | menu_one_three_five                    | 0000354e |
+| gym_two_player                          | 00008d8e | Function          | gym_two_player                         | 00003634 |
+| construct_league_placing_string         | 00008e52 | Function          | construct_league_placing_string        | 0000373a |
+| update_league_placings                  | 00008ee0 | Function          | update_league_placings                 | 000037d6 |
+| team_bubble_pass                        | 00008f36 | Function          | team_bubble_pass                       | 0000383a |
+| display_league_placings                 | 00008f7c | Function          | display_league_placings                | 00003880 |
+| display_league_placings_div_1           | 00008fca | Function          | display_league_placings_div_1          | 000038de |
+| display_league_placings_div_2           | 00008fea | Function          | display_league_placings_div_2          | 0000390e |
+| show_league_placings                    | 0000900e | Function          | show_league_placings                   | 00003940 |
+| display_team_on_team_slot               | 0000908c | Function          | display_team_on_team_slot              | 000039cc |
+| display_box_on_team_slot                | 000090d2 | Function          | display_box_on_team_slot               | 00003a1e |
+| league_promote_relegate_announce        | 00009128 | Function          | league_promote_relegate_announce       | 00003a6e |
+| league_promote_relegate                 | 00009178 | Function          | league_promote_relegate                | 00003ae2 |
+| league_playoffs                         | 000091c4 | Function          | league_playoffs                        | 00003b32 |
+| cup_league_match                        | 00009292 | Function          | cup_league_match                       | 00003c4c |
+| cup_league_match_bd                     | 000092ee | Function          | cup_league_match_bd                    | 00003cc6 |
+| game_league                             | 00009308 | Function          | game_league                            | 00003ce4 |
+| league_season_middle                    | 00009466 | Function          | dead_league_season_middle              | 00003e74 |
+| league_season                           | 00009482 | Function          | league_season                          | 00003e94 |
+| league_round                            | 000094ae | Function          | league_round                           | 00003ec8 |
+| display_league_results                  | 0000952c | Function          | display_league_results                 | 00003f60 |
+| display_league_match_result             | 00009594 | Function          | display_league_match_result            | 00003fec |
+| league_match                            | 000095f2 | Function          | league_match                           | 00004054 |
+| set_league_teams                        | 00009616 | Function          | set_league_teams                       | 00004080 |
+| menu_disk_error                         | 0000964e | Function          |                                        |          |
+| keypad_manager_fn_save                  | 0000966a | Function          |                                        |          |
+| write_cup_config                        | 0000972e | Function          |                                        |          |
+| write_league_config                     | 0000974e | Function          |                                        |          |
+| write_market                            | 00009762 | Function          |                                        |          |
+| write_player_stats                      | 0000978c | Function          |                                        |          |
+| write_teams                             | 000097a2 | Function          |                                        |          |
+| write_player_stat                       | 000097e6 | Function          |                                        |          |
+| save_league                             | 0000980a | Function          |                                        |          |
+| save_cup                                | 00009860 | Function          |                                        |          |
+|                                         |          | Function          | init_save_buffer                       | 000040c4 |
+|                                         |          | Function          | do_save                                | 000040d6 |
+|                                         |          | Function          | write_upgrades_to_save_buffer          | 0000412a |
+|                                         |          | Data Label        | upgrade_weights                        | 0000417e |
+|                                         |          | Function          | write_players_to_save_buffer           | 0000418e |
+|                                         |          | Function          | reverse_lookup_player                  | 000041ae |
+|                                         |          | Data Label        | player_name_list                       | 000041d0 |
+|                                         |          | Function          | lookup_player                          | 00004248 |
+|                                         |          | Data Label        | sprite_index                           | 00004260 |
+|                                         |          | Function          | write_placings_to_save_buffer          | 0000429c |
+|                                         |          | Data Label        | teams_list                             | 000042b8 |
+| do_load                                 | 000098b6 | Function          | do_load                                | 000042f8 |
+| read_cup_config                         | 00009978 | Function          |                                        |          |
+| read_league_config                      | 00009992 | Function          |                                        |          |
+| read_market                             | 000099a0 | Function          |                                        |          |
+| read_player_stats                       | 000099ca | Function          |                                        |          |
+| read_teams                              | 000099e0 | Function          |                                        |          |
+| read_player_stat                        | 00009a22 | Function          |                                        |          |
+| load_league                             | 00009a46 | Function          |                                        |          |
+| load_cup                                | 00009a96 | Function          |                                        |          |
+|                                         |          | Function          | read_players_from_save_buffer          | 00004360 |
+|                                         |          | Function          | read_placings_from_save_buffer         | 000043ba |
+|                                         |          | Function          | mark_players_bought                    | 0000441a |
+|                                         |          | Function          | check_cheat_modes                      | 00004458 |
+|                                         |          | Function          | check_cheat_mode                       | 00004486 |
+|                                         |          | Data Label        | cheat_easier_game                      | 000044e0 |
+|                                         |          | Data Label        | cheat_playtesters                      | 00004500 |
+|                                         |          | Function          | check_save                             | 00004520 |
+|                                         |          | Function          | display_password_state                 | 0000456c |
+|                                         |          | Function          | write_checksum_to_save_buffer          | 000045a0 |
+|                                         |          | Function          | init_save                              | 000045c6 |
+|                                         |          | Function          | write_to_save_buffer                   | 000045da |
+|                                         |          | Function          | read_from_save_buffer                  | 00004626 |
+|                                         |          | Function          | show_save_buffer                       | 00004662 |
+|                                         |          | Function          | enter_saved_state                      | 00004694 |
+|                                         |          | Function          | print_save_buffer                      | 0000485e |
+|                                         |          | Function          | draw_char_grid                         | 0000489c |
+|                                         |          | Function          | put_char                               | 000048d0 |
+|                                         |          | Function          | draw_xor_keyboard_square               | 000048fe |
+|                                         |          | Function          | update_text_cursor                     | 0000491c |
+|                                         |          | Function          | update_screen_save_state               | 00004962 |
+|                                         |          | Function          | put_char_save_state                    | 0000497c |
+|                                         |          | Data Label        | save_string_x_offset                   | 00004990 |
+| league_new_game                         | 00009ae6 | Function          | league_new_game                        | 000049a0 |
+| shuffle_league                          | 00009b10 | Function          | shuffle_league                         | 000049d0 |
+| put_bd_first                            | 00009b42 | Function          | put_bd_first                           | 00004a02 |
+| init_market                             | 00009b74 | Function          | init_market                            | 00004a34 |
+| init_cup                                | 00009ba2 | Function          | init_cup                               | 00004a68 |
+| league_menu                             | 00009bce | Function          | league_menu                            | 00004a9c |
+| shuffle_half_league                     | 00009bd8 | Function          | shuffle_half_league                    | 00004b80 |
+| shuffle_final_four                      | 00009c0a | Function          | shuffle_final_four                     | 00004bb2 |
+| put_bd_first_2_divs                     | 00009c3c | Function          | put_bd_first_2_divs                    | 00004be4 |
+| menu_new_load                           | 00009c6e | Function          | dead_menu_new_load                     | 00004c16 |
+| game_cup                                | 00009c78 | Function          | game_cup                               | 00004cea |
+| cup_match                               | 00009db4 | Function          | cup_match                              | 00004e76 |
+| display_fixture_list                    | 00009e92 | Function          | display_fixture_list                   | 00004f9a |
+| print_cup_fixture                       | 00009ee4 | Function          | print_cup_fixture                      | 00005008 |
+| display_total_match_result              | 00009f30 | Function          | display_total_match_result             | 00005056 |
+| total_victory                           | 00009fb4 | Function          | total_victory                          | 000050fa |
+| total_defeat                            | 0000a026 | Function          | total_defeat                           | 00005160 |
+| format_total_score                      | 0000a082 | Function          | format_total_score                     | 000051be |
+| draw_total_string                       | 0000a096 | Function          | draw_total_string                      | 000051d6 |
+| generate_team_total_stats               | 0000a0a6 | Function          | generate_team_total_stats              | 000051e8 |
+| cup_league_match_not_bd                 | 0000a0d2 | Function          | cup_league_match_not_bd                | 00005214 |
+| init_cup_teams_list                     | 0000a11e | Function          | init_cup_teams_list                    | 00005268 |
+| game_knockout                           | 0000a134 | Function          | game_knockout                          | 00005282 |
+| win_league                              | 0000a1b6 | Function          | win_league                             | 0000532a |
+| win_shared                              | 0000a1ee | Function          |                                        |          |
+| win_promo                               | 0000a22e | Function          | win_promo                              | 00005366 |
+| win_cup                                 | 0000a266 | Function          | win_cup                                | 000053a2 |
+| win_knockout                            | 0000a2a2 | Function          | win_knockout                           | 000053de |
+| dead_select_team                        | 0000a2de | Function          | dead_select_team                       | 0000541a |
+| load_replay_goals                       | 0000a338 | Function          | dead_replay_goal                       | 0000547e |
+| load_replay_goal                        | 0000a3c8 | Function          | dead_load_replay_goal                  | 000054f8 |
+| zero_screen                             | 0000a48a | Function          | dead_replay_goal_3                     | 000055aa |
+| populate_opposition_player_stats        | 0000a49e | Function          | populate_opposition_player_stats       | 000055ac |
+| populate_opposition_player_group_stats  | 0000a4c8 | Function          | populate_opposition_player_group_stats | 000055d6 |
+| init_player_stats                       | 0000a4e6 | Function          | init_player_stats                      | 000055f4 |
+| do_manager_screen                       | 0000a504 | Function          | do_manager_screen                      | 00005612 |
+| update_market                           | 0000a590 | Function          | update_market                          | 000056c6 |
+| do_player_grid                          | 0000a650 | Function          | do_player_grid                         | 00005798 |
+| update_player_grid_idx                  | 0000a80e | Function          | update_player_grid_idx                 | 000059ba |
+| draw_player_table_cursor                | 0000a820 | Function          | draw_player_table_cursor               | 000059d2 |
+| undraw_player_table_cursor              | 0000a8a8 | Function          | undraw_player_table_cursor             | 00005a54 |
+| do_transfer_screen                      | 0000a8e8 | Function          | do_transfer_screen                     | 00005a98 |
+| do_gym_screen                           | 0000a92c | Function          | do_gym_screen                          | 00005ae8 |
+| do_keypad                               | 0000aa9a | Function          | do_keypad                              | 00005c96 |
+| keypad_fn_noop                          | 0000ac36 | Function          |                                        |          |
+| keypad_transfer_fn_left                 | 0000ac52 | Function          | keypad_transfer_fn_left                | 00005e74 |
+| previous_buyable_player                 | 0000ac90 | Function          | previous_buyable_player                | 00005e92 |
+| keypad_transfer_fn_right                | 0000acb6 | Function          | keypad_transfer_fn_right               | 00005ec2 |
+| next_buyable_player                     | 0000acf4 | Function          | next_buyable_player                    | 00005ee0 |
+| keypad_fn_left                          | 0000ad28 | Function          | keypad_fn_left                         | 00005f22 |
+| keypad_fn_right                         | 0000ad6a | Function          | keypad_fn_right                        | 00005f48 |
+| keypad_manager_fn_table                 | 0000adb2 | Function          | keypad_manager_fn_table                | 00005f76 |
+| keypad_manager_fn_gym                   | 0000adda | Function          | keypad_manager_fn_gym                  | 00005fa0 |
+| keypad_manager_fn_transfer              | 0000adea | Function          | keypad_manager_fn_transfer             | 00005fb0 |
+| keypad_manager_fn_fixture               | 0000ae02 | Function          | keypad_manager_fn_fixture              | 00005fca |
+| keypad_manager_fn_stats                 | 0000ae0c | Function          | keypad_manager_fn_stats                | 00005fd4 |
+| keypad_fn_gym_next_fixture              | 0000ae16 | Function          | keypad_fn_gym_next_fixture             | 00005fde |
+| keypad_transfer_fn_fixture              | 0000ae20 | Function          | keypad_transfer_fn_fixture             | 00005fe8 |
+| keypad_fn_exit                          | 0000ae2a | Function          | keypad_fn_exit                         | 00005ff2 |
+| keypad_fn_gym_player                    | 0000ae2c | Function          | keypad_fn_gym_player                   | 00005ff4 |
+| keypad_fn_gym_group                     | 0000ae78 | Function          | keypad_fn_gym_group                    | 0000601c |
+| keypad_fn_gym_team                      | 0000aec6 | Function          | keypad_fn_gym_team                     | 00006046 |
+| select_buy_mode                         | 0000af0c | Function          | select_buy_mode                        | 00006068 |
+| keypad_fn_buy                           | 0000af22 | Function          | keypad_fn_buy                          | 00006086 |
+| get_max_boost                           | 0000af8a | Function          | get_max_boost                          | 000060ca |
+| buy_for_player                          | 0000b028 | Function          | buy_for_player                         | 0000616e |
+| buy_for_group                           | 0000b0ce | Function          | buy_for_group                          | 0000623a |
+| buy_for_team                            | 0000b11e | Function          | buy_for_team                           | 000062a4 |
+| keypad_fn_gym_buy_all                   | 0000b160 | Function          | keypad_fn_gym_buy_all                  | 000062fe |
+| dead_boost_cash                         | 0000b1b0 | Function          | dead_boost_cash                        | 00006364 |
+| keypad_manager_fn_substitute            | 0000b1be | Function          | keypad_manager_fn_substitute           | 0000637c |
+| find_market_player_position             | 0000b290 | Function          | find_market_player_position            | 0000643a |
+| find_market_player                      | 0000b2a0 | Function          | find_market_player                     | 0000644a |
+| get_player_value                        | 0000b2c6 | Function          | get_player_value                       | 00006472 |
+| keypad_transfer_fn_buy                  | 0000b326 | Function          | keypad_transfer_fn_buy                 | 000064d8 |
+| swap_bytes                              | 0000b3be | Function          | swap_bytes                             | 00006584 |
+| draw_keypad_key_light                   | 0000b3ce | Function          | draw_keypad_key_light                  | 00006594 |
+| draw_keypress_pressed_key               | 0000b418 | Function          | draw_keypress_pressed_key              | 000065e4 |
+| draw_keypad                             | 0000b46c | Function          | draw_keypad                            | 0000663c |
+| activate_current_upgrade_light          | 0000b4da | Function          | activate_current_upgrade_light         | 000066ac |
+| deactivate_all_upgrade_lights           | 0000b538 | Function          | deactivate_all_upgrade_lights          | 00006712 |
+| select_current_upgrade                  | 0000b584 | Function          | select_current_upgrade                 | 00006760 |
+| set_selected_upgrade_variables          | 0000b5c6 | Function          | set_selected_upgrade_variables         | 00006774 |
+| copy_monitor_front_to_back              | 0000b5e4 | Function          |                                        |          |
+| copy_cash_front_to_back                 | 0000b5f2 | Function          |                                        |          |
+| copy_upgrade_description_front_to_back  | 0000b602 | Function          |                                        |          |
+| copy_armour_front_to_back               | 0000b610 | Function          |                                        |          |
+| display_selected_upgrade_description    | 0000b622 | Function          | display_selected_upgrade_description   | 0000679c |
+| highlight_armour_aux                    | 0000b696 | Function          | highlight_armour_aux                   | 00006818 |
+| highlight_armour                        | 0000b6dc | Function          | highlight_armour                       | 00006866 |
+| draw_plays                              | 0000b726 | Function          | draw_plays                             | 000068ac |
+| format_5_decimal_digits                 | 0000b75e | Function          | format_5_decimal_digits                | 000068ea |
+| format_4_decimal_digits                 | 0000b762 | Function          | format_4_decimal_digits                | 000068ee |
+| format_3_decimal_digits                 | 0000b766 | Function          | format_3_decimal_digits                | 000068f2 |
+| format_2_decimal_digits                 | 0000b76a | Function          | format_2_decimal_digits                | 000068f6 |
+| format_decimal_digit                    | 0000b76e | Function          | format_decimal_digit                   | 000068fa |
+| generate_group_stats                    | 0000b784 | Function          | generate_group_stats                   | 00006910 |
+| generate_team_stats                     | 0000b7b6 | Function          | generate_team_stats                    | 00006942 |
+| average_8                               | 0000b7f8 | Function          | average_8                              | 00006988 |
+| generate_team_fixture_strings           | 0000b80e | Function          | generate_team_fixture_strings          | 0000699e |
+| generate_fixture_strings                | 0000b94a | Function          | generate_fixture_strings               | 00006af4 |
+| display_next_fixture                    | 0000b960 | Function          | display_next_fixture                   | 00006b0e |
+| sum_team_stat                           | 0000b992 | Function          | sum_team_stat                          | 00006b54 |
+| stats_format_decimal                    | 0000b9ac | Function          | stats_format_decimal                   | 00006b6e |
+| write_team_statistics                   | 0000b9b4 | Function          | write_team_statistics                  | 00006b76 |
+| display_statistics                      | 0000ba0a | Function          | display_statistics                     | 00006bd8 |
+| draw_string_list                        | 0000baaa | Function          | draw_string_list                       | 00006ca8 |
+| substitute_player                       | 0000bacc | Function          | substitute_player                      | 00006cca |
+| round_player_stats                      | 0000bb5a | Function          | round_player_stats                     | 00006d60 |
+| copy_player                             | 0000bb7a | Function          | copy_player                            | 00006d80 |
+| show_title                              | 0000bba0 | Function          | show_title                             | 00006da6 |
+| display_screen_block                    | 0000bbde | Function          | display_screen_block                   | 00006de0 |
+| draw_attribute_strings                  | 0000bbf8 | Function          | draw_attribute_strings                 | 00006e12 |
+| draw_manager_screen                     | 0000bc20 | Function          | draw_manager_screen                    | 00006e3c |
+| draw_transfer_screen                    | 0000bc7a | Function          | draw_transfer_screen                   | 00006ea8 |
+| draw_gym_screen                         | 0000bd06 | Function          | draw_gym_screen                        | 00006f4e |
+| redraw_cash                             | 0000bd6e | Function          | redraw_cash                            | 00006fc8 |
+| draw_stats                              | 0000bdb8 | Function          | draw_stats                             | 00007016 |
+| draw_buying_player_stats                | 0000be70 | Function          | draw_buying_player_stats               | 000070d0 |
+| draw_buying_group_stats                 | 0000beb0 | Function          | draw_buying_group_stats                | 0000711a |
+| draw_buying_team_stats                  | 0000becc | Function          | draw_buying_team_stats                 | 0000713c |
+| draw_player_to_buy_stats                | 0000bee2 | Function          | draw_player_to_buy_stats               | 00007156 |
+| draw_box_colour                         | 0000bf06 | Function          |                                        |          |
+| draw_current_buyable                    | 0000bf22 | Function          | draw_current_buyable                   | 00007182 |
+| clear_buying_text                       | 0000bf70 | Function          | clear_buying_text                      | 000071ce |
+| draw_buying_player                      | 0000bf84 | Function          | draw_buying_player                     | 000071de |
+| draw_buying_group                       | 0000c036 | Function          | draw_buying_group                      | 0000729c |
+| draw_buying_team                        | 0000c054 | Function          | draw_buying_team                       | 000072bc |
+| draw_player_to_buy                      | 0000c06a | Function          | draw_player_to_buy                     | 000072d2 |
+| draw_player_table                       | 0000c0f2 | Function          | draw_player_table                      | 00007362 |
+| draw_player_name_for_table              | 0000c138 | Function          | draw_player_name_for_table             | 000073b0 |
+| draw_face                               | 0000c1c4 | Function          | draw_face                              | 00007438 |
+| draw_group_logo                         | 0000c22a | Function          | draw_group_logo                        | 000074b6 |
+| player_sprites_to_start_positions       | 0000c2aa | Function          | player_sprites_to_start_positions      | 00007534 |
+| play_match                              | 0000c2d0 | Function          | play_match                             | 000075b6 |
+|                                         |          | Function          | do_cheat                               | 000079cc |
+|                                         |          | Function          | do_cheat_playtest                      | 00007a12 |
+|                                         |          | Function          | do_cheat_easier_game                   | 00007a60 |
+| display_string                          | 0000c650 | Function          | display_string                         | 00007b10 |
+| display_2x2_char                        | 0000c694 | Function          |                                        |          |
+| display_string_space                    | 0000c6c8 | Function          |                                        |          |
+| draw_management_background              | 0000c6d8 | Function          | draw_management_background             | 00007b54 |
+| draw_mgmt_bkgnd_tile                    | 0000c70c | Function          |                                        |          |
+| draw_mgmt_bkgnd_step_coords             | 0000c72e | Function          |                                        |          |
+| draw_string                             | 0000c744 | Function          | draw_string                            | 00007bf2 |
+| draw_char                               | 0000c788 | Function          | draw_char                              | 00007c2e |
+| expand_char                             | 0000c7c8 | Function          |                                        |          |
+| advance_cursor                          | 0000c7e2 | Function          | advance_cursor                         | 00007c84 |
+| draw_string_alt                         | 0000c7f2 | Function          | draw_string_alt                        | 00007c94 |
+| draw_char_alt                           | 0000c82e | Function          | draw_char_alt                          | 00007cc4 |
+| draw_string_pixel                       | 0000c86a | Function          | draw_string_pixel                      | 00007d18 |
+| draw_char_pixel                         | 0000c8ae | Function          | draw_char_pixel                        | 00007d50 |
+| move_next_char_small                    | 0000c8e8 | Function          | move_next_char_small                   | 00007da2 |
+| format_score_win                        | 0000c8ec | Function          | format_score_win                       | 00007da6 |
+| load_victory                            | 0000c8fe | Function          |                                        |          |
+| load_defeat                             | 0000c936 | Function          |                                        |          |
+| victory                                 | 0000c96e | Function          | victory                                | 00007dba |
+| defeat                                  | 0000c9de | Function          | defeat                                 | 00007e2e |
+| display_match_result                    | 0000ca3a | Function          | display_match_result                   | 00007e8c |
+| draw_score_string                       | 0000cabe | Function          | draw_score_string                      | 00007f2e |
+| format_score_string                     | 0000cace | Function          | format_score_string                    | 00007f40 |
+| update_match_stats                      | 0000cae4 | Function          | update_match_stats                     | 00007f5a |
+| clear_match_stats                       | 0000cb70 | Function          | clear_match_stats                      | 00007fee |
+| wait_no_keypress                        | 0000cb92 | Function          | wait_no_keypress                       | 00008012 |
+|                                         |          | Function          | wait_any_abcs_pressed                  | 00008014 |
+| wait_any_fire_pressed_timeout           | 0000cbb8 | Function          | wait_any_abcs_2s                       | 00008034 |
+|                                         |          | Function          | wait_no_buttons                        | 0000806c |
+| wait_fire_pressed                       | 0000cc28 | Function          | wait_any_abcs_down                     | 00008082 |
+| init_screen_status_bar                  | 0000cc74 | Function          |                                        |          |
+| expand_320_to_336                       | 0000ccd8 | Function          |                                        |          |
+| draw_xor_vertical_line                  | 0000ccf0 | Function          | dead_replay_goal_4                     | 00008098 |
+| draw_xor_horizontal_line                | 0000ccfc | Function          |                                        |          |
+| draw_xor_square                         | 0000cd08 | Function          |                                        |          |
+| xor_mode                                | 0000cd38 | Data Label        |                                        |          |
+| target_screen_buffer                    | 0000cd3a | Data Label        |                                        |          |
+| draw_colour_h_line                      | 0000cd3e | Function          |                                        |          |
+| draw_colour_h_line_bitplane             | 0000cd98 | Function          |                                        |          |
+| draw_sub_byte_hline                     | 0000cdea | Function          |                                        |          |
+| draw_colour_vertical_line               | 0000ce20 | Function          |                                        |          |
+| step_match                              | 0000cf10 | Function          | step_match                             | 0000809a |
+| match_tick                              | 0000d052 | Function          | match_tick                             | 00008208 |
+|                                         |          | Function          | set_monitor_overlay                    | 00008248 |
+|                                         |          | Function          | add_monitor_overlay                    | 000082e4 |
+| build_text_overlay                      | 0000d0f2 | Function          | build_text_overlay                     | 00008326 |
+| draw_text_overlay                       | 0000d22e | Function          | draw_text_overlay                      | 0000845e |
+| draw_overlay_char                       | 0000d26e | Function          | draw_overlay_char                      | 000084a0 |
+| green_light_active_player               | 0000d2bc | Function          | green_light_active_player              | 000084fa |
+| draw_status_bar_position                | 0000d3a8 | Function          |                                        |          |
+| clear_status_green_lights               | 0000d402 | Function          | clear_status_green_lights              | 000085c0 |
+|                                         |          | Function          | draw_status_bar_position               | 000085fe |
+| draw_health_meter                       | 0000d476 | Function          | draw_health_meter                      | 0000868c |
+| draw_health_meter_blue                  | 0000d49a | Function          |                                        |          |
+| draw_health_meter_blue_word             | 0000d4b2 | Function          |                                        |          |
+| draw_health_meter_red                   | 0000d502 | Function          |                                        |          |
+| draw_health_meter_red_word              | 0000d51a | Function          |                                        |          |
+|                                         |          | Function          | draw_health_meter_aux                  | 000086c2 |
+|                                         |          | Data Label        | health_bar_masks_p1                    | 00008730 |
+|                                         |          | Data Label        | health_bar_masks_p2                    | 00008754 |
+| update_match_time                       | 0000d576 | Function          | update_match_time                      | 00008778 |
+| check_all_stars_lit                     | 0000d682 | Function          | check_all_stars_lit                    | 000088c6 |
+| update_time_stats                       | 0000d6e0 | Function          | update_time_stats                      | 00008924 |
+| display_time                            | 0000d71c | Function          |                                        |          |
+| step_prepare_ball_launch                | 0000d73c | Function          | step_prepare_ball_launch               | 0000896e |
+| step_ball_launch                        | 0000d816 | Function          | step_ball_launch                       | 00008a62 |
+| step_slow_ball                          | 0000d89a | Function          | step_slow_ball                         | 00008ae2 |
+| update_players_location_info            | 0000d95e | Function          | update_players_location_info           | 00008bb2 |
+| update_player_location_info             | 0000d992 | Function          | update_player_location_info            | 00008bea |
+| update_active_players                   | 0000d9aa | Function          | update_active_players                  | 00008c0a |
+| select_active_player                    | 0000d9ea | Function          | select_active_player                   | 00008c5c |
+| calculate_player_distances              | 0000da02 | Function          | calculate_player_distances             | 00008c74 |
+| update_offscreen_bit                    | 0000da5e | Function          | update_offscreen_bit                   | 00008cd6 |
+| is_point_offscreen                      | 0000daa0 | Function          | is_point_offscreen                     | 00008d1c |
+| distance_to_point                       | 0000daca | Function          | distance_to_point                      | 00008d4a |
+| vector_length                           | 0000daf6 | Function          | vector_length                          | 00008d76 |
+| handle_score_goal                       | 0000db22 | Function          | handle_score_goal                      | 00008da2 |
+| goal_sound_function                     | 0000dc8c | Function          |                                        |          |
+| award_points                            | 0000dcca | Function          | award_points                           | 00008f3e |
+| play_sound_downwards                    | 0000dd30 | Function          |                                        |          |
+| step_start_multiplier                   | 0000dd60 | Function          | step_start_multiplier                  | 00008fae |
+| change_score_multiplier                 | 0000df02 | Function          | change_score_multiplier                | 00009188 |
+| step_run_multiplier                     | 0000dfe8 | Function          | step_run_multiplier                    | 00009288 |
+| step_warp                               | 0000e072 | Function          | step_warp                              | 00009324 |
+| step_stars                              | 0000e118 | Function          | step_stars                             | 000093d0 |
+| stars_light_p1                          | 0000e200 | Function          | stars_light_p1                         | 000094cc |
+| stars_light_p2                          | 0000e28c | Function          | stars_light_p2                         | 00009516 |
+| stars_unlight_p1                        | 0000e318 | Function          | stars_unlight_p1                       | 00009560 |
+| stars_unlight_p2                        | 0000e32e | Function          | stars_unlight_p2                       | 0000958c |
+| stars_unlight_all_p1                    | 0000e3a6 | Function          | stars_unlight_all_p1                   | 000095b8 |
+| stars_unlight_all_p2                    | 0000e3b6 | Function          | stars_unlight_all_p2                   | 000095c6 |
+| step_bumpers                            | 0000e3c6 | Function          | step_bumpers                           | 000095d4 |
+| step_bumper                             | 0000e3ea | Function          | step_bumper                            | 000095fe |
+| step_zappers                            | 0000e498 | Function          | step_zappers                           | 000096ae |
+| step_zapper                             | 0000e4cc | Function          | step_zapper                            | 00009702 |
+| light_zapper                            | 0000e548 | Function          | light_zapper                           | 0000977e |
+|                                         |          | Function          | unlight_zapper                         | 000097b4 |
+| set_goal_scored_animation               | 0000e55e | Function          | set_goal_scored_animation              | 000097e2 |
+| constrain_sprites                       | 0000e5de | Function          | constrain_sprites                      | 00009870 |
+| constrain_sprite                        | 0000e62a | Function          | constrain_sprite                       | 000098c8 |
+| update_camera                           | 0000e71c | Function          | update_camera                          | 0000998e |
+| get_camera_speed                        | 0000e7b2 | Function          | get_camera_speed                       | 00009a5e |
+| step_sprites                            | 0000e7ce | Function          | step_sprites                           | 00009a7a |
+| step_player                             | 0000e86c | Function          | step_player                            | 00009b28 |
+| spawn_cash                              | 0000e894 | Function          | spawn_cash                             | 00009b50 |
+| spawn_powerup                           | 0000e8f2 | Function          | spawn_powerup                          | 00009bba |
+| spawn_armour                            | 0000e924 | Function          | spawn_armour                           | 00009bee |
+| control_player                          | 0000e95e | Function          | control_player                         | 00009c2c |
+| check_player_onscreen                   | 0000ea92 | Function          | check_player_onscreen                  | 00009d6e |
+| handle_collisions                       | 0000eac8 | Function          | handle_collisions                      | 00009da8 |
+| handle_collision                        | 0000eb28 | Function          | handle_collision                       | 00009e0e |
+| get_ball                                | 0000eb9c | Function          | get_ball                               | 00009e82 |
+| zap_player                              | 0000ed12 | Function          | zap_player                             | 00009fa0 |
+| goalie_deflect_ball                     | 0000ed52 | Function          | goalie_deflect_ball                    | 00009fe8 |
+| deflection_direction                    | 0000edf4 | Data Label        | deflection_direction                   | 0000a092 |
+| user_controlled_player                  | 0000ee04 | Function          | user_controlled_player                 | 0000a0a2 |
+| active_player_ai                        | 0000ee22 | Function          | active_player_ai                       | 0000a0c0 |
+| get_opposing_player_directions          | 0000efe2 | Function          | get_opposing_player_directions         | 0000a28c |
+| check_collectibles                      | 0000f05a | Function          | check_collectibles                     | 0000a30a |
+| check_collectible                       | 0000f0b8 | Function          | check_collectible                      | 0000a376 |
+| try_moving_mostly_forward               | 0000f0fc | Function          | try_moving_mostly_forward              | 0000a3ba |
+| try_moving_left                         | 0000f132 | Function          | try_moving_left                        | 0000a3f0 |
+| try_moving_right                        | 0000f14a | Function          | try_moving_right                       | 0000a408 |
+| find_route_left_first                   | 0000f162 | Function          | find_route_left_first                  | 0000a420 |
+| find_route_right_first                  | 0000f20e | Function          | find_route_right_first                 | 0000a4cc |
+| active_defensive_player_pass_ai         | 0000f2c4 | Function          | active_defensive_player_pass_ai        | 0000a582 |
+| use_court_hardware_ai                   | 0000f3a8 | Function          | use_court_hardware_ai                  | 0000a66a |
+| use_zapper                              | 0000f50c | Function          | use_zapper                             | 0000a7d6 |
+| get_player_observe_distance             | 0000f55a | Function          | get_player_observe_distance            | 0000a824 |
+| get_sustain                             | 0000f564 | Function          | get_sustain                            | 0000a82e |
+| set_goal_throw_location                 | 0000f580 | Function          | set_goal_throw_location                | 0000a84e |
+| active_forward_player_with_ball_ai      | 0000f60a | Function          | active_forward_player_with_ball_ai     | 0000a8d8 |
+| is_teammate_blocked                     | 0000f738 | Function          | is_teammate_blocked                    | 0000aa0c |
+| base_player_ai                          | 0000f752 | Function          | base_player_ai                         | 0000aa26 |
+| find_closest_available_enemy            | 0000f866 | Function          | find_closest_available_enemy           | 0000ab3c |
+| is_point_in_player_bounds               | 0000f8cc | Function          | is_point_in_player_bounds              | 0000aba6 |
+| get_defender_to_support                 | 0000f8f2 | Function          | get_defender_to_support                | 0000abcc |
+| adjust_support_nearby_attacker          | 0000f920 | Function          | adjust_support_nearby_attacker         | 0000abfe |
+| adjust_support_target                   | 0000f992 | Function          | adjust_support_target                  | 0000ac70 |
+| centre_x                                | 0000fa12 | Function          | centre_x                               | 0000acf0 |
+| constrain_y_diagonally                  | 0000fa1e | Function          | constrain_y_diagonally                 | 0000acfc |
+| attackers_targeting                     | 0000fa5c | Function          | attackers_targeting                    | 0000ad3a |
+| dead_unknown                            | 0000fae8 | Function          | dead_unknown                           | 0000adca |
+| constrain_x                             | 0000faf4 | Function          | constrain_x                            | 0000add6 |
+| constrain_y                             | 0000fb12 | Function          | constrain_y                            | 0000adf4 |
+| base_goalie_set_intercept_position      | 0000fb30 | Function          | base_goalie_set_intercept_position     | 0000ae12 |
+| get_goalie_back_y                       | 0000fca6 | Function          | get_goalie_back_y                      | 0000af8c |
+| get_active_goalie_back_y                | 0000fcbc | Function          | get_active_goalie_back_y               | 0000afa2 |
+| get_diagonal_left_goal_intercept        | 0000fcd2 | Function          | get_diagonal_left_goal_intercept       | 0000afb8 |
+| get_diagonal_right_goal_intercept       | 0000fce4 | Function          | get_diagonal_right_goal_intercept      | 0000afca |
+| active_goalie_no_ball_ai                | 0000fcf4 | Function          | active_goalie_no_ball_ai               | 0000afda |
+| get_predicted_ball_position_for_goalie  | 0000fed0 | Function          | get_predicted_ball_position_for_goalie | 0000b1ba |
+| handle_local_interaction_ai             | 0000ff2e | Function          | handle_local_interaction_ai            | 0000b21c |
+| distance_check                          | 00010030 | Function          | distance_check                         | 0000b332 |
+| slide_or_jump_at_target                 | 00010058 | Function          | slide_or_jump_at_target                | 0000b35a |
+| active_player_slide_or_jump             | 0001012c | Function          | active_player_slide_or_jump            | 0000b43e |
+| do_slide                                | 00010138 | Function          | do_slide                               | 0000b44a |
+| base_player_attack                      | 000101ca | Function          | base_player_attack                     | 0000b4ee |
+| avoid_enemy_player                      | 0001020e | Function          | avoid_enemy_player                     | 0000b536 |
+| start_player_move_action_fn             | 00010250 | Function          | start_player_move_action_fn            | 0000b578 |
+| player_moving_action_fn                 | 000102e2 | Function          | player_moving_action_fn                | 0000b60a |
+| preconfigure_player_move                | 000103cc | Function          | preconfigure_player_move               | 0000b700 |
+| hitting_action_fn                       | 0001042c | Function          | hitting_action_fn                      | 0000b770 |
+| do_tackle                               | 00010468 | Function          | do_tackle                              | 0000b7b2 |
+| get_tackle_difficulty                   | 000105ba | Function          | get_tackle_difficulty                  | 0000b8c4 |
+| damage_player                           | 0001061a | Function          | damage_player                          | 0000b92a |
+| do_goal_throw_ai                        | 0001066e | Function          | do_goal_throw_ai                       | 0000b97e |
+| do_throw_punt_ai                        | 0001069a | Function          | do_throw_punt_ai                       | 0000b9ac |
+| do_throw_high_ai                        | 0001071e | Function          | do_throw_high_ai                       | 0000ba0a |
+| do_throw_low_ai                         | 00010742 | Function          | do_throw_low_ai                        | 0000ba2e |
+| do_throw_common_ai                      | 00010766 | Function          | do_throw_common_ai                     | 0000ba52 |
+| throwing_action_fn                      | 000107be | Function          | throwing_action_fn                     | 0000bab0 |
+| set_ball_speed                          | 000108e0 | Function          | set_ball_speed                         | 0000bbe8 |
+| set_standing_catch_animation            | 000108fa | Function          | set_standing_catch_animation           | 0000bc08 |
+| start_player_standing_action_fn         | 00010958 | Function          | start_player_standing_action_fn        | 0000bc6c |
+| preconfigure_player_standing            | 000109a2 | Function          | preconfigure_player_standing           | 0000bcb8 |
+| jumping_action_fn                       | 000109d6 | Function          | jumping_action_fn                      | 0000bcf6 |
+| complete_action_fn                      | 00010a28 | Function          | complete_action_fn                     | 0000bd4a |
+| goalie_sliding_action_fn                | 00010a7a | Function          | goalie_sliding_action_fn               | 0000bd9e |
+| sliding_action_fn                       | 00010a82 | Function          | sliding_action_fn                      | 0000bda6 |
+| noop                                    | 00010a8a | Function          | noop                                   | 0000bdae |
+| reset_player_timer                      | 00010a8c | Function          | reset_player_timer                     | 0000bdb0 |
+| target_predicted_position               | 00010aaa | Function          | target_predicted_position              | 0000bdd2 |
+| reflect_x                               | 00010ae8 | Function          | reflect_x                              | 0000be14 |
+| reflect_y                               | 00010b0a | Function          | reflect_y                              | 0000be36 |
+| get_object_to_point_direction           | 00010b2c | Function          | get_object_to_point_direction          | 0000be58 |
+| get_direction_to_target                 | 00010b90 | Function          | get_direction_to_target                | 0000bebc |
+| handle_user_input                       | 00010bc4 | Function          | handle_user_input                      | 0000bef0 |
+| convert_move_dir_to_facing_dir          | 00010cde | Function          | convert_move_dir_to_facing_dir         | 0000c01a |
+| configure_sprite_for_direction          | 00010cee | Function          | configure_sprite_for_direction         | 0000c02c |
+| step_sprite_animations                  | 00010d04 | Function          | step_sprite_animations                 | 0000c042 |
+| set_player_sprite_offset                | 00010dfe | Function          | set_player_sprite_offset               | 0000c13e |
+| start_injury                            | 00010e16 | Function          | start_injury                           | 0000c164 |
+| step_injury                             | 00010fac | Function          | step_injury                            | 0000c2f4 |
+| step_injury_0                           | 0001100a | Function          | step_injury_0                          | 0000c35c |
+| step_injury_1                           | 000110aa | Function          | step_injury_1                          | 0000c41c |
+| step_injury_2                           | 000111aa | Function          | step_injury_2                          | 0000c54a |
+| step_injury_3                           | 0001122e | Function          | step_injury_3                          | 0000c5ca |
+| limit_player_movement                   | 00011304 | Function          | limit_player_movement                  | 0000c6a8 |
+| test_powerup_reverse                    | 0001137c | Function          | test_powerup_reverse                   | 0000c726 |
+| test_block_powerup                      | 00011398 | Function          | test_block_powerup                     | 0000c746 |
+| test_shield_powerup                     | 000113bc | Function          | test_shield_powerup                    | 0000c772 |
+| collect_coin                            | 000113d4 | Function          | collect_coin                           | 0000c78e |
+| randomise_coin                          | 00011418 | Function          | randomise_coin                         | 0000c7de |
+| collect_powerup                         | 00011436 | Function          | collect_powerup                        | 0000c7fa |
+| draw_status_bar_powerup                 | 0001147e | Function          | draw_status_bar_powerup                | 0000c848 |
+|                                         |          | Function          | overwrite_cell                         | 0000c890 |
+| randomise_powerup                       | 0001151a | Function          | randomise_powerup                      | 0000c900 |
+| collect_armour                          | 00011558 | Function          | collect_armour                         | 0000c944 |
+| randomise_armour                        | 0001158c | Function          | randomise_armour                       | 0000c97c |
+| distance_to_collectable                 | 000115c2 | Function          | distance_to_collectable                | 0000c9b6 |
+| randomise_powerup_positions             | 00011612 | Function          | randomise_powerup_position             | 0000ca08 |
+| randomise_coin_position                 | 00011646 | Function          | randomise_coin_position                | 0000ca38 |
+| randomise_armour_position               | 00011692 | Function          | randomise_armour_position              | 0000ca80 |
+| apply_armour                            | 000116b8 | Function          | apply_armour                           | 0000caa2 |
+| tackle_drop_armour                      | 0001170e | Function          | tackle_drop_armour                     | 0000cafe |
+| clear_powerup                           | 00011794 | Function          | clear_powerup                          | 0000cb8c |
+| powerup_shield                          | 000117f4 | Function          |                                        |          |
+| powerup_freeze                          | 0001180c | Function          | powerup_freeze                         | 0000cbfc |
+|                                         |          | Function          | powerup_reverse                        | 0000cc1a |
+| powerup_stats_down                      | 00011824 | Function          | powerup_stats_down                     | 0000cc3a |
+| powerdown_stats_down                    | 0001185a | Function          | powerdown_stats_down                   | 0000cc7a |
+| powerup_stats_up                        | 00011872 | Function          | powerup_stats_up                       | 0000cc96 |
+| powerdown_stats_up                      | 000118aa | Function          | powerdown_stats_up                     | 0000ccd8 |
+| powerup_stats_up_both                   | 000118c2 | Function          | powerup_stats_up_both                  | 0000ccf4 |
+| powerdown_stats_up_both                 | 000118f0 | Function          | powerdown_stats_up_both                | 0000cd2c |
+| powerup_slow                            | 00011902 | Function          | powerup_slow                           | 0000cd42 |
+| powerdown_slow                          | 00011936 | Function          | powerdown_slow                         | 0000cd80 |
+| powerup_grab                            | 0001194e | Function          | powerup_grab                           | 0000cd9c |
+| powerup_teleport                        | 00011972 | Function          | powerup_teleport                       | 0000cdc4 |
+| powerup_reverse                         | 000119b6 | Function          |                                        |          |
+| powerup_block                           | 000119d0 | Function          | powerup_block                          | 0000ce10 |
+|                                         |          | Function          | powerup_shield                         | 0000ce30 |
+| powerup_energy                          | 000119ea | Function          | powerup_energy                         | 0000ce50 |
+| powerup_zap                             | 00011a00 | Function          | powerup_zap                            | 0000ce66 |
+| for_all_active_players                  | 00011a96 | Function          | for_all_active_players                 | 0000cf0a |
+| set_stats                               | 00011aa6 | Function          | set_stats                              | 0000cf1a |
+| revert_stats                            | 00011ab0 | Function          | revert_stats                           | 0000cf24 |
+| set_slow_down                           | 00011aba | Function          | set_slow_down                          | 0000cf2e |
+| revert_slow_down                        | 00011ac4 | Function          | revert_slow_down                       | 0000cf38 |
+| set_stats_aux                           | 00011ace | Function          | set_stats_aux                          | 0000cf42 |
+| revert_stats_aux                        | 00011aec | Function          | revert_stats_aux                       | 0000cf60 |
+| set_slow_down_aux                       | 00011b0c | Function          | set_slow_down_aux                      | 0000cf80 |
+| revert_slow_down_aux                    | 00011b1a | Function          | revert_slow_down_aux                   | 0000cf8e |
+| dirty_map_all                           | 00011b28 | Function          |                                        |          |
+| dirty_map_edge                          | 00011b3a | Function          |                                        |          |
+| redraw_pitch                            | 00011b88 | Function          |                                        |          |
+|                                         |          | Function          | init_vdp                               | 0000cf9c |
+|                                         |          | Function          | display_configure_non_match            | 0000d074 |
+|                                         |          | Function          | display_configure_match                | 0000d1d6 |
+|                                         |          | Function          | vdp_data_write                         | 0000d3c2 |
+|                                         |          | Function          | display_push_start_match               | 0000d3d2 |
+|                                         |          | Function          | display_push_start_non_match           | 0000d3d8 |
+|                                         |          | Data Label        | push_start_indices                     | 0000d414 |
+|                                         |          | Function          | init_pitch_cell_map                    | 0000d428 |
+|                                         |          | Function          | write_background_cell_mapping          | 0000d574 |
+|                                         |          | Function          | transfer_cell_map_with_scroll          | 0000d596 |
+|                                         |          | Function          | set_hw_scroll                          | 0000d656 |
+|                                         |          | Function          | display_match                          | 0000d68c |
+| display_scores                          | 00011d7e | Function          | display_scores                         | 0000d6b4 |
+| display_scores_inner                    | 00011d92 | Function          |                                        |          |
+| display_score                           | 00011dae | Function          |                                        |          |
+| display_digit                           | 00011dbc | Function          |                                        |          |
+| display_digit_inner                     | 00011dce | Function          |                                        |          |
+|                                         |          | Function          | display_score_digit                    | 0000d6e8 |
+|                                         |          | Function          | display_time                           | 0000d782 |
+|                                         |          | Function          | display_time_digit                     | 0000d7b8 |
+| draw_game                               | 00011e0c | Function          | draw_game                              | 0000d852 |
+| draw_score_multipliers                  | 00011ece | Function          | draw_score_multipliers                 | 0000d922 |
+| draw_powerups                           | 00011ee0 | Function          |                                        |          |
+| draw_player_markers                     | 00011f1a | Function          | draw_player_markers                    | 0000d938 |
+| sort_players_vertically                 | 00011f40 | Function          | sort_players_vertically                | 0000d966 |
+| players_sorted_vertically               | 00011f8c | Data Label        |                                        |          |
+| draw_all_players                        | 00011fdc | Function          | draw_all_players                       | 0000d9b6 |
+| draw_ball                               | 00011ff0 | Function          | draw_ball                              | 0000d9ce |
+| save_replay_origin                      | 00011ffa | Function          | save_replay_origin                     | 0000d9da |
+| write_replay_buf                        | 00012018 | Function          | write_replay_buf                       | 0000d9fe |
+| read_replay_buffer                      | 00012050 | Function          | read_replay_buffer                     | 0000da42 |
+| run_replay                              | 00012062 | Function          | run_replay                             | 0000da56 |
+| save_replay                             | 000121b8 | Function          | dead_save_replay                       | 0000dbc0 |
+|                                         |          | Function          | dead_something_3                       | 0000dc5a |
+| disk_error_message                      | 00012272 | Function          | dead_disk_error                        | 0000dc5c |
+| replay_frame                            | 00012302 | Function          | replay_frame                           | 0000dcda |
+|                                         |          | Function          | dead_disk_error_aux                    | 0000dd62 |
+| add_monitor_overlay                     | 000123ce | Function          |                                        |          |
+| dirty_map_top_left                      | 00012492 | Function          |                                        |          |
+| draw_sprite                             | 000124ca | Function          | draw_sprite                            | 0000dd64 |
+| save_sprite_for_replay                  | 0001256c | Function          | save_sprite_for_replay                 | 0000ddf4 |
+| mark_sprite_dirty                       | 000125ca | Function          |                                        |          |
+| sprite_fn_32x32_masked                  | 00012662 | Function          |                                        |          |
+| blit_16x16_masked_right                 | 00012780 | Function          |                                        |          |
+| blit_16x16_masked_left                  | 00012792 | Function          |                                        |          |
+| blit_16x16_masked_onscreen              | 000127a6 | Function          |                                        |          |
+| blit_32x32_red_onscreen                 | 000127c6 | Function          |                                        |          |
+| blit_32x32_red_shared                   | 000127e2 | Function          |                                        |          |
+| sprite_is_5_bits                        | 000129f4 | Data Label        |                                        |          |
+| bitplane_stride                         | 000129f6 | Data Label        |                                        |          |
+| source_mod_adjust                       | 000129fa | Data Label        |                                        |          |
+| sprite_16x16_size                       | 000129fc | Data Label        |                                        |          |
+| blit_32x32_red_near_right               | 000129fe | Function          |                                        |          |
+| blit_32x32_red_near_left                | 00012a28 | Function          |                                        |          |
+| blit_32x32_red_far_right                | 00012a48 | Function          |                                        |          |
+| blit_32x32_red_far_left                 | 00012a7a | Function          |                                        |          |
+| sprite_fn_32x32_no_mask                 | 00012ab0 | Function          |                                        |          |
+| sprite_prepare_16x16                    | 00012bbc | Function          |                                        |          |
+| sprite_fn_16x16_masked                  | 00012c64 | Function          |                                        |          |
+| sprite_fn_16x16_no_mask                 | 00012cce | Function          |                                        |          |
+| blit_16x16_no_mask_right                | 00012d38 | Function          |                                        |          |
+| blit_16x16_no_mask_left                 | 00012d4a | Function          |                                        |          |
+| blit_16x16_no_mask_onscreen             | 00012d68 | Function          |                                        |          |
+| blit_16x16_no_mask_shared               | 00012d6e | Function          |                                        |          |
+| blit_32x32_no_mask_near_right           | 00012d8c | Function          |                                        |          |
+| blit_32x32_no_mask_near_left            | 00012db6 | Function          |                                        |          |
+| blit_32x32_no_mask_far_right            | 00012dd6 | Function          |                                        |          |
+| blit_32x32_no_mask_far_left             | 00012e0c | Function          |                                        |          |
+| blit_32x32_no_mask_onscreen             | 00012e44 | Function          |                                        |          |
+| blit_32x32_no_mask_shared               | 00012e62 | Function          |                                        |          |
+| ones_mask                               | 0001309e | Data Label        |                                        |          |
+| blanks                                  | 000130a2 | Data Label        |                                        |          |
+| blit_screen                             | 000130d2 | Function          |                                        |          |
+| copy_to_screen                          | 00013184 | Function          |                                        |          |
+| config_blitter_for_pitch_block          | 0001323a | Function          |                                        |          |
+| zero_pitch_block                        | 00013274 | Function          |                                        |          |
+| pitch_block_positive                    | 000132f6 | Function          |                                        |          |
+| pitch_block_negative                    | 000133b4 | Function          |                                        |          |
+| blit_32x32_blue_onscreen                | 0001347a | Function          |                                        |          |
+| blit_32x32_blue_shared                  | 00013496 | Function          |                                        |          |
+| blit_32x32_blue_near_left               | 000136bc | Function          |                                        |          |
+| blit_32x32_blue_far_right               | 000136dc | Function          |                                        |          |
+| blit_32x32_blue_far_left                | 0001370e | Function          |                                        |          |
+| blit_32x32_blue_near_right              | 00013748 | Function          |                                        |          |
+| generate_player_team_masks              | 00013772 | Function          |                                        |          |
+|                                         |          | Function          | clear_hw_sprites                       | 0000de5e |
+|                                         |          | Function          | build_hw_sprite                        | 0000de86 |
+|                                         |          | Function          | transfer_hw_sprites                    | 0000dee6 |
+|                                         |          | Function          | init_background_save_stack             | 0000dfb2 |
+|                                         |          | Function          | draw_background_sprites                | 0000dfbe |
+|                                         |          | Function          | restore_background                     | 0000e00a |
+|                                         |          | Function          | update_background_sides                | 0000e040 |
+|                                         |          | Function          | draw_left_edge_piece                   | 0000e102 |
+|                                         |          | Function          | draw_right_edge_piece                  | 0000e10e |
+|                                         |          | Function          | nuke_offscreen_markers                 | 0000e144 |
+|                                         |          | Function          | clear_offscreen_markers                | 0000e156 |
+|                                         |          | Function          | clear_offscreen_markers_aux            | 0000e172 |
+|                                         |          | Function          | draw_cell_marker                       | 0000e1ac |
+|                                         |          | Function          | draw_cell_markers_aux                  | 0000e1d6 |
+|                                         |          | Function          | sprite_fn_player                       | 0000e43a |
+|                                         |          | Function          | sprite_fn_ball_launcher                | 0000e472 |
+|                                         |          | Function          | sprite_fn_bumper                       | 0000e4a0 |
+|                                         |          | Function          | sprite_fn_big_ball                     | 0000e4dc |
+|                                         |          | Function          | sprite_fn_ball                         | 0000e510 |
+|                                         |          | Function          | sprite_fn_coin                         | 0000e542 |
+|                                         |          | Function          | sprite_fn_power_up_1                   | 0000e55e |
+|                                         |          | Function          | sprite_fn_power_up_2                   | 0000e568 |
+|                                         |          | Function          | sprite_fn_power_up_3                   | 0000e572 |
+|                                         |          | Function          | sprite_fn_power_up_common              | 0000e57a |
+|                                         |          | Function          | draw_background_sprite                 | 0000e59c |
+|                                         |          | Function          | sprite_fn_blue_marker                  | 0000e5f0 |
+|                                         |          | Function          | sprite_fn_red_marker                   | 0000e622 |
+|                                         |          | Function          | sprite_fn_player_number                | 0000e654 |
+|                                         |          | Function          | sprite_fn_medibot_1                    | 0000e686 |
+|                                         |          | Function          | sprite_fn_medibot_2                    | 0000e6ba |
+|                                         |          | Function          | sprite_fn_multiplier_top               | 0000e6ee |
+|                                         |          | Function          | sprite_fn_multiplier_bottom            | 0000e7a0 |
+|                                         |          | Function          | display_splash                         | 0000e852 |
+|                                         |          | Function          | sprite_fn_simple_unmasked              | 0000e9a4 |
+|                                         |          | Function          | sprite_fn_simple_masked                | 0000e9e2 |
+|                                         |          | Function          | dead_put_4x4                           | 0000ea20 |
+|                                         |          | Function          | dead_put_4x1                           | 0000ea4e |
+|                                         |          | Function          | sprite_fn_armour                       | 0000ea7a |
+|                                         |          | Function          | put_4x1_masked                         | 0000eaa8 |
+|                                         |          | Function          | sprite_fn_keypad                       | 0000ead4 |
+|                                         |          | Function          | put_3x1                                | 0000eb00 |
+|                                         |          | Function          | put_3x3_masked                         | 0000eb22 |
+|                                         |          | Function          | put_3x1_masked                         | 0000eb46 |
+|                                         |          | Function          | display_2x2_char                       | 0000eb68 |
+|                                         |          | Function          | put_cell                               | 0000ebaa |
+|                                         |          | Function          | put_masked_cell                        | 0000ec08 |
+|                                         |          | Function          | schedule_cell_transfer                 | 0000ec80 |
+|                                         |          | Function          | transfer_cells                         | 0000ecde |
+|                                         |          | Function          | draw_box_colour                        | 0000ed82 |
+|                                         |          | Function          | draw_xor_square_48x48                  | 0000edc6 |
+|                                         |          | Function          | draw_xor_square_16x16                  | 0000edd2 |
+|                                         |          | Function          | draw_xor_square                        | 0000edda |
+|                                         |          | Function          | schedule_box                           | 0000ee62 |
+|                                         |          | Function          | draw_colour_h_line                     | 0000eede |
+|                                         |          | Data Label        | lhs_mask                               | 0000ef84 |
+|                                         |          | Data Label        | rhs_mask                               | 0000efa4 |
+|                                         |          | Function          | draw_xor_horizontal_line               | 0000efc4 |
+|                                         |          | Data Label        | horizontal_start_bitmask_table         | 0000f042 |
+|                                         |          | Data Label        | horizontal_end_bitmask_table           | 0000f062 |
+|                                         |          | Function          | draw_xor_vertical_line                 | 0000f082 |
+|                                         |          | Data Label        | vertical_bitmask_table                 | 0000f0b2 |
+| strlen                                  | 000137a8 | Function          | strlen                                 | 0000f0d4 |
+| reset_team                              | 000137b8 | Function          | reset_team                             | 0000f0e4 |
+| reset_player                            | 000137ca | Function          | reset_player                           | 0000f0f6 |
+| swap_x_constraints                      | 0001380a | Function          | swap_x_constraints                     | 0000f136 |
+| swap_y_constraints                      | 0001381a | Function          | swap_y_constraints                     | 0000f146 |
+| swap_facing_direction                   | 0001382a | Function          | swap_facing_direction                  | 0000f156 |
+| swap_playing_direction                  | 0001383a | Function          | swap_playing_direction                 | 0000f166 |
+| change_ends                             | 00013860 | Function          | change_ends                            | 0000f18c |
+|                                         |          | Function          | init_rand                              | 0000f1f6 |
+|                                         |          | Function          | rand                                   | 0000f20c |
+|                                         |          | Function          | dead_read_write_palette_entry          | 0000f242 |
+|                                         |          | Function          | init_hardware                          | 0000f272 |
+|                                         |          | Function          | h_interrupt_handler                    | 0000f2bc |
+|                                         |          | Function          | v_interrupt_handler                    | 0000f2d2 |
+|                                         |          | Function          | qpac_decompress                        | 0000f3bc |
+|                                         |          | Function          | read_8_bits                            | 0000f54e |
+|                                         |          | Data Label        | QPAC_MAGIC_ID                          | 0000f5d2 |
+|                                         |          | Function          | sound_init_dac                         | 0000f5e2 |
+|                                         |          | Function          | sound_set_sharp_decay                  | 0000f664 |
+|                                         |          | Function          | sound_wait_idle                        | 0000f68e |
+|                                         |          | Instruction Label | sound_start_note                       | 0000f6a0 |
+|                                         |          | Data Label        | dt1_mul_reg_for_channel_again          | 0000f8c8 |
+|                                         |          | Data Label        | offset_for_channel_again2              | 0000f8ce |
+|                                         |          | Data Label        | fb_algo_for_channel                    | 0000f8d4 |
+|                                         |          | Instruction Label | sound_step_note                        | 0000f8da |
+|                                         |          | Data Label        | offset_for_channel_again               | 0000f942 |
+|                                         |          | Instruction Label | sound_stop                             | 0000f948 |
+|                                         |          | Data Label        | dt1_mul_reg_for_channel                | 0000f9a6 |
+|                                         |          | Data Label        | offset_for_channel                     | 0000f9ac |
+|                                         |          | Function          | sound_set_freq                         | 0000f9b2 |
+|                                         |          | Data Label        | freq_reg_for_channel                   | 0000fa32 |
+|                                         |          | Function          | sound_buggy_dual_divide                | 0000fa38 |
+|                                         |          | Data Label        | vibrato_table                          | 0000fa6e |
+|                                         |          | Data Label        | sound_note_table                       | 0000faae |
+|                                         |          | Data Label        | sound_note_table_2                     | 0000fb0e |
+|                                         |          | Data Label        | sound_note_table_3                     | 0000fb6e |
+|                                         |          | Data Label        | sound_note_table_4                     | 0000fbce |
+|                                         |          | Data Label        | sound_note_table_5                     | 0000fc2e |
+|                                         |          | Data Label        | sound_note_table_6                     | 0000fc8e |
+|                                         |          | Data Label        | sound_note_table_7                     | 0000fcee |
+|                                         |          | Data Label        | sound_note_table_8                     | 0000fd4e |
+|                                         |          | Function          | sound_convert_to_fm_freq               | 0000fdae |
+| int_audio                               | 000138b6 | Function          |                                        |          |
+| sound_table                             | 00013958 | Data Label        |                                        |          |
+| sound_play                              | 00013aa8 | Function          | sound_play                             | 0000fde4 |
+| sound_effects                           | 00013b5a | Data Label        |                                        |          |
+| sound_envelopes                         | 00013cb4 | Data Label        |                                        |          |
+| sound_service_channel                   | 00013cc4 | Function          |                                        |          |
+| sound_update                            | 00013d24 | Function          | sound_int_handler                      | 0000fe66 |
+| sound_update_hardware                   | 00013d48 | Function          |                                        |          |
+| sound_update_hardware_channel           | 00013d66 | Function          |                                        |          |
+| sound_envelope                          | 00013dc2 | Function          |                                        |          |
+| sound_envelope_channel                  | 00013de6 | Function          |                                        |          |
+| sound_envelope_channel_aux              | 00013e08 | Function          |                                        |          |
+| sound_init                              | 00013e9a | Function          | sound_init                             | 0000fe9e |
+| sound_channel_settings                  | 0001407c | Data Label        |                                        |          |
+|                                         |          | Data Label        | sound_seq_stack_table_again            | 0000ff6c |
+|                                         |          | Function          | sound_play_sample                      | 0000ff7c |
+|                                         |          | Function          | z80_program_main_code                  | 0000ffda |
+| sound_play_channel                      | 0001408c | Function          | sound_init_sequence                    | 0000fff4 |
+|                                         |          | Data Label        | sound_voice_table                      | 00010048 |
+| sound_stack_pointers                    | 00014158 | Data Label        | sound_seq_stack_table                  | 00010058 |
+| sound_update_channels                   | 00014168 | Function          | sound_update                           | 00010068 |
+| sound_next_command                      | 000141d8 | Instruction Label | sound_next_command                     | 00010096 |
+| sound_switch                            | 000141ea | Data Label        | sound_command_table                    | 000100a8 |
+| sound_op_cont                           | 000142b2 | Function          | sound_op_cont                          | 00010108 |
+|                                         |          | Function          | sound_process_voice                    | 0001014c |
+| sound_op_set_vol                        | 00014398 | Function          | sound_op_set_36                        | 0001016e |
+| sound_op_noop_84                        | 000143a2 | Function          |                                        |          |
+| sound_op_goto_start                     | 000143a8 | Function          | sound_op_goto_start                    | 00010178 |
+| sound_op_set_note_len                   | 000143b4 | Function          | sound_op_set_note_len                  | 00010184 |
+| sound_op_set_tempo                      | 000143c2 | Function          | sound_op_set_tempo                     | 00010192 |
+| sound_op_silence                        | 000143d2 | Function          |                                        |          |
+| sound_op_effect                         | 000143f0 | Function          | sound_op_noop_1b_operand               | 0001019c |
+| sound_op_noop_a0                        | 00014434 | Function          |                                        |          |
+| sound_op_noop_a4                        | 0001443a | Function          |                                        |          |
+| sound_op_set_loop_flags                 | 00014440 | Function          | sound_op_or_38                         | 000101a2 |
+| sound_op_stop                           | 0001444a | Function          | sound_op_stop                          | 000101ac |
+| sound_op_call                           | 00014484 | Function          | sound_op_call                          | 000101d6 |
+| sound_op_return                         | 000144a6 | Function          | sound_op_ret                           | 000101ec |
+| sound_op_add_transposition              | 000144ac | Function          | sound_op_add_3a                        | 000101f2 |
+| sound_op_set_transposition              | 000144c2 | Function          | sound_op_set_3a                        | 00010208 |
+| sound_op_for                            | 000144ce | Function          | sound_op_for                           | 00010214 |
+| sound_op_next                           | 000144e2 | Function          | sound_op_next                          | 00010228 |
+| sound_op_set_envelope                   | 00014502 | Function          |                                        |          |
+| sound_op_clear_envelope                 | 00014514 | Function          |                                        |          |
+| sound_op_set_instrument                 | 0001451c | Function          | sound_op_set_instrument                | 00010248 |
+| sound_init_pitch_table                  | 00014552 | Function          |                                        |          |
+| sound_op_jump                           | 00014576 | Function          | sound_op_jmp                           | 0001026c |
+| sound_vibrato_reset                     | 00014596 | Function          |                                        |          |
+| sound_tremolo_reset                     | 000145ae | Function          |                                        |          |
+| sound_channel_0                         | 000145c6 | Data Label        |                                        |          |
+| sound_channel_1                         | 0001465a | Data Label        |                                        |          |
+| sound_channel_2                         | 000146ee | Data Label        |                                        |          |
+| sound_channel_3                         | 00014782 | Data Label        |                                        |          |
+| sound_stack_0                           | 00014896 | Data Label        |                                        |          |
+| sound_stack_1                           | 00014916 | Data Label        |                                        |          |
+| sound_stack_2                           | 00014996 | Data Label        |                                        |          |
+| sound_stack_3                           | 00014a16 | Data Label        |                                        |          |
+| sound_tempo                             | 00014a1a | Data Label        |                                        |          |
+| sound_priorities                        | 00014a1c | Data Label        |                                        |          |
+| sound_weird_broken_lookup               | 00014a2c | Data Label        |                                        |          |
+| sound_lock                              | 00014a34 | Data Label        |                                        |          |
+| sound_pitch_table_0                     | 00014a9a | Data Label        |                                        |          |
+| sound_pitch_table_1                     | 00014afa | Data Label        |                                        |          |
+| sound_pitch_table_2                     | 00014b5a | Data Label        |                                        |          |
+| sound_default_instrument                | 00014e5a | Data Label        |                                        |          |
+| sound_zero_sample                       | 00014e68 | Data Label        |                                        |          |
+| rand                                    | 00014e78 | Function          |                                        |          |
+| init_rand                               | 00014eae | Function          |                                        |          |
+| rand_seed_1                             | 00014ec4 | Data Label        |                                        |          |
+| rand_seed_2                             | 00014ec8 | Data Label        |                                        |          |
+| rand_val                                | 00014ecc | Data Label        |                                        |          |
+| dead_init_sprites                       | 00014ed0 | Function          |                                        |          |
+| init_hw_aux                             | 00014f0a | Function          |                                        |          |
+| init_periodic                           | 00014f2a | Function          |                                        |          |
+| trap0                                   | 00014f88 | Function          |                                        |          |
+| wait_vertb                              | 00014f94 | Function          |                                        |          |
+| line_table                              | 00014fac | Data Label        |                                        |          |
+| trap_f_1                                | 0001506c | Function          |                                        |          |
+| trap_illegal_1                          | 0001507c | Function          |                                        |          |
+| trap_illegal_2                          | 0001509c | Function          |                                        |          |
+| cp_end                                  | 000159bc | Instruction Label |                                        |          |
+| int_vertb                               | 000159c0 | Function          |                                        |          |
+| current_screen                          | 00015a44 | Data Label        |                                        |          |
+| controllers_update                      | 00015a48 | Function          |                                        |          |
+| read_joystick                           | 00015ac2 | Function          |                                        |          |
+| dead_update_colours                     | 00015af8 | Function          |                                        |          |
+| dead_update_colours_aux                 | 00015b3e | Function          |                                        |          |
+| disable_status_bar                      | 00015b70 | Function          |                                        |          |
+| init_screen_line_table                  | 00015bca | Function          |                                        |          |
+| copper_tweak                            | 00015be8 | Function          |                                        |          |
+| enable_status_bar                       | 00015c44 | Function          |                                        |          |
+| init_copper                             | 00015c6a | Function          |                                        |          |
+| init_copper_set                         | 00015d04 | Function          |                                        |          |
+| set_int_keyboard                        | 00015d96 | Function          |                                        |          |
+| set_int_keyboard_aux                    | 00015dbc | Function          |                                        |          |
+| int_keyboard                            | 00015dda | Function          |                                        |          |
+| read_write_palette_entry                | 00015e4c | Function          |                                        |          |
+| switch_screens                          | 00015ea8 | Function          |                                        |          |
+| read_overlay                            | 00015ee4 | Function          |                                        |          |
+| read_check_overlay_index                | 00015f3a | Function          |                                        |          |
+| write_data                              | 00015f68 | Function          |                                        |          |
+| read_overlay_index                      | 00015fbe | Function          |                                        |          |
 
 ## Disk I/O
 
@@ -2216,130 +2215,130 @@ FM-synthesis-based system, there are much fewer samples, and the
 system has a certain amount of mapping from the Amiga-hardware-based
 descriptions to what's needed for the Megadrive.
 
-| Megadrive Name           | Location |
-|--------------------------|----------|
-| sound_instrument_table   | 000102a2 |
-| sound_table              | 00011a42 |
-| sound_seq_01             | 00011b22 |
-| sound_seq_02             | 00011b2d |
-| sound_seq_03             | 00011b38 |
-| sound_seq_04             | 00011b46 |
-| sound_seq_05             | 00011b57 |
-| sound_seq_06             | 00011b65 |
-| sound_seq_48             | 00011b73 |
-| sound_seq_49             | 00011b81 |
-| sound_seq_4a             | 00011b8f |
-| sound_seq_4b             | 00011b9d |
-| sound_seq_07             | 00011bab |
-| sound_seq_08             | 00011bb9 |
-| sound_seq_09             | 00011bc7 |
-| sound_seq_44             | 00011bda |
-| sound_seq_45             | 00011bed |
-| sound_seq_46             | 00011c00 |
-| sound_seq_0a             | 00011c13 |
-| sound_seq_0b             | 00011c30 |
-| sound_seq_0d             | 00011c3b |
-| sound_seq_0e             | 00011c46 |
-| sound_seq_0f             | 00011c54 |
-| sound_seq_11             | 00011c63 |
-| sound_seq_12             | 00011c76 |
-| sound_seq_13             | 00011c85 |
-| sound_seq_14             | 00011c8f |
-| sound_seq_15             | 00011c9c |
-| sound_seq_16             | 00011cb4 |
-| sound_seq_17             | 00011cb5 |
-| sound_seq_18             | 00011cc1 |
-| sound_seq_19             | 00011cd0 |
-| sound_seq_1a             | 00011cde |
-| sound_seq_1b             | 00011ced |
-| sound_seq_1c             | 00011cf6 |
-| sound_seq_1d             | 00011d04 |
-| sound_seq_47             | 00011d14 |
-| sound_seq_1e             | 00011d22 |
-| sound_seq_4c             | 00011d2e |
-| sound_seq_1f             | 00011d41 |
-| sound_seq_20             | 00011d74 |
-| sound_seq_21             | 00011d94 |
-| sound_seq_22             | 00011db4 |
-| sound_seq_23             | 00011dbe |
-| sound_seq_24             | 00011dcb |
-| sound_seq_25             | 00011dd5 |
-| sound_seq_26             | 00011deb |
-| sound_seq_27             | 00011df5 |
-| sound_seq_28             | 00011dff |
-| sound_seq_29             | 00011e15 |
-| sound_seq_4d             | 00011e2b |
-| sound_seq_2a             | 00011e32 |
-| sound_seq_2b             | 00011e42 |
-| sound_seq_2c             | 00011e55 |
-| sound_seq_2d             | 00011e65 |
-| sound_seq_2e             | 00011e75 |
-| sound_seq_2f             | 00011e8e |
-| sound_seq_30             | 00011f1b |
-| sound_seq_3e             | 00011f70 |
-| sound_seq_0c             | 00011f96 |
-| sound_seq_3f             | 00011feb |
-| sound_seq_40             | 0001202e |
-| sound_seq_31             | 00012081 |
-| sound_seq_32             | 000120a7 |
-| sound_seq_33             | 000120db |
-| sound_seq_34             | 000120fc |
-| sound_seq_35             | 00012126 |
-| sound_seq_36             | 0001212d |
-| sound_seq_37             | 00012142 |
-| sound_seq_38             | 00012158 |
-| sound_seq_39             | 0001217a |
-| sound_seq_3a             | 0001218d |
-| sound_seq_3b             | 0001219b |
-| sound_seq_3c             | 000121b4 |
-| sound_seq_4e             | 000121d0 |
-| sound_seq_3d             | 000121f1 |
-| sound_seq_41             | 000121ff |
-| sound_seq_42             | 0001220f |
-| sound_seq_43             | 00012222 |
-| sound_seq_50             | 00012234 |
-| sound_seq_57             | 0001224f |
-| sound_seq_5a             | 00012321 |
-| sound_seq_5d             | 000123ac |
-| sound_seq_5f             | 000125a2 |
-| sound_seq_64             | 00012654 |
-| sound_seq_51             | 000126d4 |
-| sound_seq_56             | 000127a9 |
-| sound_seq_60             | 000127ba |
-| sound_seq_58             | 00012940 |
-| sound_seq_5c             | 00012951 |
-| sound_seq_65             | 00012a21 |
-| sound_seq_52             | 00012b11 |
-| sound_seq_54             | 00012bc7 |
-| sound_seq_55             | 00012bda |
-| sound_seq_5e             | 00012bff |
-| sound_seq_62             | 00012d05 |
-| sound_seq_66             | 00012d6f |
-| sound_seq_53             | 00012e2b |
-| sound_seq_59             | 00012fb6 |
-| sound_seq_5b             | 0001300a |
-| sound_seq_61             | 00013203 |
-| sound_seq_63             | 000132b1 |
-| sound_seq_6a             | 00013526 |
-| sound_seq_6b             | 0001353e |
-| sound_seq_6c             | 0001354c |
-| sound_seq_6d             | 0001355b |
-| sound_seq_6e             | 0001356a |
-| sound_seq_6f             | 00013579 |
-| sound_seq_67             | 00013588 |
-| sound_seq_68             | 00013598 |
-| sound_seq_69             | 000135a4 |
-| sound_sequence_table     | 000135b0 |
-| sound_instrument_mapping | 00013770 |
-| sample_start             | 00013806 |
-| sample_start_data        | 0001386e |
-| sample_end               | 0001736e |
-| sample_end_data          | 000173d6 |
-| sample_getready          | 0001ae16 |
-| sample_getready_data     | 0001ae7e |
-| sample_replay            | 0001e392 |
-| sample_replay_data       | 0001e3fa |
-| sound_samples            | 0002246c |
+| Megadrive Name           | Location | Type       |
+|--------------------------|----------|------------|
+| sound_instrument_table   | 000102a2 | Data Label |
+| sound_table              | 00011a42 | Data Label |
+| sound_seq_01             | 00011b22 | Data Label |
+| sound_seq_02             | 00011b2d | Data Label |
+| sound_seq_03             | 00011b38 | Data Label |
+| sound_seq_04             | 00011b46 | Data Label |
+| sound_seq_05             | 00011b57 | Data Label |
+| sound_seq_06             | 00011b65 | Data Label |
+| sound_seq_48             | 00011b73 | Data Label |
+| sound_seq_49             | 00011b81 | Data Label |
+| sound_seq_4a             | 00011b8f | Data Label |
+| sound_seq_4b             | 00011b9d | Data Label |
+| sound_seq_07             | 00011bab | Data Label |
+| sound_seq_08             | 00011bb9 | Data Label |
+| sound_seq_09             | 00011bc7 | Data Label |
+| sound_seq_44             | 00011bda | Data Label |
+| sound_seq_45             | 00011bed | Data Label |
+| sound_seq_46             | 00011c00 | Data Label |
+| sound_seq_0a             | 00011c13 | Data Label |
+| sound_seq_0b             | 00011c30 | Data Label |
+| sound_seq_0d             | 00011c3b | Data Label |
+| sound_seq_0e             | 00011c46 | Data Label |
+| sound_seq_0f             | 00011c54 | Data Label |
+| sound_seq_11             | 00011c63 | Data Label |
+| sound_seq_12             | 00011c76 | Data Label |
+| sound_seq_13             | 00011c85 | Data Label |
+| sound_seq_14             | 00011c8f | Data Label |
+| sound_seq_15             | 00011c9c | Data Label |
+| sound_seq_16             | 00011cb4 | Data Label |
+| sound_seq_17             | 00011cb5 | Data Label |
+| sound_seq_18             | 00011cc1 | Data Label |
+| sound_seq_19             | 00011cd0 | Data Label |
+| sound_seq_1a             | 00011cde | Data Label |
+| sound_seq_1b             | 00011ced | Data Label |
+| sound_seq_1c             | 00011cf6 | Data Label |
+| sound_seq_1d             | 00011d04 | Data Label |
+| sound_seq_47             | 00011d14 | Data Label |
+| sound_seq_1e             | 00011d22 | Data Label |
+| sound_seq_4c             | 00011d2e | Data Label |
+| sound_seq_1f             | 00011d41 | Data Label |
+| sound_seq_20             | 00011d74 | Data Label |
+| sound_seq_21             | 00011d94 | Data Label |
+| sound_seq_22             | 00011db4 | Data Label |
+| sound_seq_23             | 00011dbe | Data Label |
+| sound_seq_24             | 00011dcb | Data Label |
+| sound_seq_25             | 00011dd5 | Data Label |
+| sound_seq_26             | 00011deb | Data Label |
+| sound_seq_27             | 00011df5 | Data Label |
+| sound_seq_28             | 00011dff | Data Label |
+| sound_seq_29             | 00011e15 | Data Label |
+| sound_seq_4d             | 00011e2b | Data Label |
+| sound_seq_2a             | 00011e32 | Data Label |
+| sound_seq_2b             | 00011e42 | Data Label |
+| sound_seq_2c             | 00011e55 | Data Label |
+| sound_seq_2d             | 00011e65 | Data Label |
+| sound_seq_2e             | 00011e75 | Data Label |
+| sound_seq_2f             | 00011e8e | Data Label |
+| sound_seq_30             | 00011f1b | Data Label |
+| sound_seq_3e             | 00011f70 | Data Label |
+| sound_seq_0c             | 00011f96 | Data Label |
+| sound_seq_3f             | 00011feb | Data Label |
+| sound_seq_40             | 0001202e | Data Label |
+| sound_seq_31             | 00012081 | Data Label |
+| sound_seq_32             | 000120a7 | Data Label |
+| sound_seq_33             | 000120db | Data Label |
+| sound_seq_34             | 000120fc | Data Label |
+| sound_seq_35             | 00012126 | Data Label |
+| sound_seq_36             | 0001212d | Data Label |
+| sound_seq_37             | 00012142 | Data Label |
+| sound_seq_38             | 00012158 | Data Label |
+| sound_seq_39             | 0001217a | Data Label |
+| sound_seq_3a             | 0001218d | Data Label |
+| sound_seq_3b             | 0001219b | Data Label |
+| sound_seq_3c             | 000121b4 | Data Label |
+| sound_seq_4e             | 000121d0 | Data Label |
+| sound_seq_3d             | 000121f1 | Data Label |
+| sound_seq_41             | 000121ff | Data Label |
+| sound_seq_42             | 0001220f | Data Label |
+| sound_seq_43             | 00012222 | Data Label |
+| sound_seq_50             | 00012234 | Data Label |
+| sound_seq_57             | 0001224f | Data Label |
+| sound_seq_5a             | 00012321 | Data Label |
+| sound_seq_5d             | 000123ac | Data Label |
+| sound_seq_5f             | 000125a2 | Data Label |
+| sound_seq_64             | 00012654 | Data Label |
+| sound_seq_51             | 000126d4 | Data Label |
+| sound_seq_56             | 000127a9 | Data Label |
+| sound_seq_60             | 000127ba | Data Label |
+| sound_seq_58             | 00012940 | Data Label |
+| sound_seq_5c             | 00012951 | Data Label |
+| sound_seq_65             | 00012a21 | Data Label |
+| sound_seq_52             | 00012b11 | Data Label |
+| sound_seq_54             | 00012bc7 | Data Label |
+| sound_seq_55             | 00012bda | Data Label |
+| sound_seq_5e             | 00012bff | Data Label |
+| sound_seq_62             | 00012d05 | Data Label |
+| sound_seq_66             | 00012d6f | Data Label |
+| sound_seq_53             | 00012e2b | Data Label |
+| sound_seq_59             | 00012fb6 | Data Label |
+| sound_seq_5b             | 0001300a | Data Label |
+| sound_seq_61             | 00013203 | Data Label |
+| sound_seq_63             | 000132b1 | Data Label |
+| sound_seq_6a             | 00013526 | Data Label |
+| sound_seq_6b             | 0001353e | Data Label |
+| sound_seq_6c             | 0001354c | Data Label |
+| sound_seq_6d             | 0001355b | Data Label |
+| sound_seq_6e             | 0001356a | Data Label |
+| sound_seq_6f             | 00013579 | Data Label |
+| sound_seq_67             | 00013588 | Data Label |
+| sound_seq_68             | 00013598 | Data Label |
+| sound_seq_69             | 000135a4 | Data Label |
+| sound_sequence_table     | 000135b0 | Data Label |
+| sound_instrument_mapping | 00013770 | Data Label |
+| sample_start             | 00013806 | Data Label |
+| sample_start_data        | 0001386e | Data Label |
+| sample_end               | 0001736e | Data Label |
+| sample_end_data          | 000173d6 | Data Label |
+| sample_getready          | 0001ae16 | Data Label |
+| sample_getready_data     | 0001ae7e | Data Label |
+| sample_replay            | 0001e392 | Data Label |
+| sample_replay_data       | 0001e3fa | Data Label |
+| sound_samples            | 0002246c | Data Label |
 
 # Intro sequence
 
@@ -2349,48 +2348,48 @@ overwritten by the game data (both management and match) overlays. On
 the Megadrive this also lives after the sound code, although it
 obviously doesn't get overwritten.
 
-| Amiga Name                       | Location | Type       | Megadrive Name            | Location |
-|----------------------------------|----------|------------|---------------------------|----------|
-| intro_presents                   | 0004963a | Function   |                           |          |
-|                                  |          |            | show_sega_logo            | 00022494 |
-|                                  |          |            | show_publisher            | 00022582 |
-|                                  |          |            | wait_3s                   | 000225c4 |
-|                                  |          |            | splash_start1             | 0002260a |
-|                                  |          |            | splash_start2             | 00025a5c |
-|                                  |          |            | palette_sega              | 0002914e |
-|                                  |          |            | palette_sega_cycle        | 0002916e |
-|                                  |          |            | show_sega_logo_cell       | 000291ac |
-|                                  |          |            | sprites_sega_logo         | 000291da |
-|                                  |          |            | sprites_sega_logo_mapping | 000297fa |
-| intro                            | 00049650 | Function   | intro                     | 0002982a |
-|                                  |          |            | intro_break               | 00029888 |
-|                                  |          |            | show_title_with_sound     | 000298aa |
-|                                  |          |            | show_title                | 000298e0 |
-|                                  |          |            | show_arena                | 00029906 |
-| display_text_presents            | 00049718 | Function   |                           |          |
-| display_string_and_wait_presents | 00049738 | Function   |                           |          |
-| display_text_intro               | 0004979a | Function   | display_text_intro        | 00029920 |
-| display_string_and_wait_intro    | 000497f0 | Function   |                           |          |
-| display_text_credits             | 00049846 | Function   | display_text_credits      | 00029972 |
-| display_string_and_wait_credits  | 00049892 | Function   |                           |          |
-|                                  |          |            | display_string_and_wait   | 000299d8 |
-| draw_arena_backdrop              | 000498e8 | Function   |                           |          |
-| wait_100ms                       | 00049906 | Function   | wait_100ms                | 00029a12 |
-| display_string                   | 00049940 | Function   | display_string            | 00029a30 |
-| display_title_font_char          | 00049a12 | Function   | display_title_font_char   | 00029a94 |
-| mask_char_to_screen              | 00049a36 | Function   |                           |          |
-| copy_16x16_to_screen             | 00049aaa | Function   |                           |          |
-| copy_16x16_from_screen           | 00049ad2 | Function   |                           |          |
-| fill_screen_zero                 | 00049afa | Function   |                           |          |
-| display_fade_transition_sound    | 00049b34 | Function   |                           |          |
-|                                  |          |            | vdp_write_2_cells         | 00029ada |
-|                                  |          |            | display_clear_11_rows     | 00029af6 |
-|                                  |          |            | dead_checksum_rom         | 00029e20 |
-|                                  |          |            | dead_run_in_ram           | 00029e4a |
-| splash_title_screen              | 00049e5e | Data Label |                           |          |
-| splash_arena_backdrop            | 00052d0e | Data Label |                           |          |
-| sprites_title_font               | 0005ae00 | Data Label |                           |          |
-| skip_flags                       | 0005ca20 | Data Label |                           |          |
+| Amiga Name                       | Location | Type              | Megadrive Name            | Location |
+|----------------------------------|----------|-------------------|---------------------------|----------|
+| intro_presents                   | 0004963a | Function          |                           |          |
+|                                  |          | Function          | show_sega_logo            | 00022494 |
+|                                  |          | Function          | show_publisher            | 00022582 |
+|                                  |          | Function          | wait_3s                   | 000225c4 |
+|                                  |          | Data Label        | splash_start1             | 0002260a |
+|                                  |          | Data Label        | splash_start2             | 00025a5c |
+|                                  |          | Data Label        | palette_sega              | 0002914e |
+|                                  |          | Data Label        | palette_sega_cycle        | 0002916e |
+|                                  |          | Function          | show_sega_logo_cell       | 000291ac |
+|                                  |          | Data Label        | sprites_sega_logo         | 000291da |
+|                                  |          | Data Label        | sprites_sega_logo_mapping | 000297fa |
+| intro                            | 00049650 | Function          | intro                     | 0002982a |
+|                                  |          | Instruction Label | intro_break               | 00029888 |
+|                                  |          | Function          | show_title_with_sound     | 000298aa |
+|                                  |          | Function          | show_title                | 000298e0 |
+|                                  |          | Function          | show_arena                | 00029906 |
+| display_text_presents            | 00049718 | Function          |                           |          |
+| display_string_and_wait_presents | 00049738 | Function          |                           |          |
+| display_text_intro               | 0004979a | Function          | display_text_intro        | 00029920 |
+| display_string_and_wait_intro    | 000497f0 | Function          |                           |          |
+| display_text_credits             | 00049846 | Function          | display_text_credits      | 00029972 |
+| display_string_and_wait_credits  | 00049892 | Function          |                           |          |
+|                                  |          | Function          | display_string_and_wait   | 000299d8 |
+| draw_arena_backdrop              | 000498e8 | Function          |                           |          |
+| wait_100ms                       | 00049906 | Function          | wait_100ms                | 00029a12 |
+| display_string                   | 00049940 | Function          | display_string            | 00029a30 |
+| display_title_font_char          | 00049a12 | Function          | display_title_font_char   | 00029a94 |
+| mask_char_to_screen              | 00049a36 | Function          |                           |          |
+| copy_16x16_to_screen             | 00049aaa | Function          |                           |          |
+| copy_16x16_from_screen           | 00049ad2 | Function          |                           |          |
+| fill_screen_zero                 | 00049afa | Function          |                           |          |
+| display_fade_transition_sound    | 00049b34 | Function          |                           |          |
+|                                  |          | Function          | vdp_write_2_cells         | 00029ada |
+|                                  |          | Function          | display_clear_11_rows     | 00029af6 |
+|                                  |          | Function          | dead_checksum_rom         | 00029e20 |
+|                                  |          | Function          | dead_run_in_ram           | 00029e4a |
+| splash_title_screen              | 00049e5e | Data Label        |                           |          |
+| splash_arena_backdrop            | 00052d0e | Data Label        |                           |          |
+| sprites_title_font               | 0005ae00 | Data Label        |                           |          |
+| skip_flags                       | 0005ca20 | Data Label        |                           |          |
 
 ## Overlay #1: Management graphics
 
@@ -2469,14 +2468,14 @@ disk (or cached) on the Amiga.
 | splash_title                | 00059838 | Data Label |
 | splash_arena                | 0005d8ca | Data Label |
 | sprites_menu_font           | 000610c4 | Data Label |
-| sprites_mgmt_background     | 000623c4 |            |
-| sprites_mgmt_lights         | 00067a44 |            |
-| sprites_mgmt_buttons        | 00068244 |            |
-| sprites_mgmt_armour         | 0006da44 |            |
-| sprites_fonts_orange        | 00072444 |            |
-| sprites_fonts_title_top     | 00072aa4 |            |
-| sprites_fonts_title_bottom  | 00072e44 |            |
-| sprites_fonts_mgr_xfer_gym  | 00073284 |            |
+| sprites_mgmt_background     | 000623c4 | Data Label |
+| sprites_mgmt_lights         | 00067a44 | Data Label |
+| sprites_mgmt_buttons        | 00068244 | Data Label |
+| sprites_mgmt_armour         | 0006da44 | Data Label |
+| sprites_fonts_orange        | 00072444 | Data Label |
+| sprites_fonts_title_top     | 00072aa4 | Data Label |
+| sprites_fonts_title_bottom  | 00072e44 | Data Label |
+| sprites_fonts_mgr_xfer_gym  | 00073284 | Data Label |
 | sprites_font_cash           | 000734e4 | Data Label |
 | sprites_fonts_small_green   | 00073964 | Data Label |
 | sprites_fonts_white         | 00073e04 | Data Label |
