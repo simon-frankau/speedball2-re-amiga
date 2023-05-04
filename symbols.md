@@ -12,27 +12,22 @@ In practice, I am including all of the symbols from the Megadrive
 side, too, and doing my best to keep them ordered by memory
 location. The main exceptions are for variables in RAM, which face
 plenty of rearrangements to put them where they can be overwrriten on
-the Megadrive, and big blocks of sprites, which are a) represented
-differently on the different platforms (and hence subject to different
-groupings) and b) are overlayed into the same locations at different
-times on the Amiga. I try to highlight when these rearrangements
-occur.
+the Megadrive. I try to highlight when these rearrangements occur.
 
 The layout is split across the following sections as below:
 
-| Section                          | Amiga             | Megadrive                                        |
-|----------------------------------|-------------------|--------------------------------------------------|
-| Data                             | 0x000000-0x007f93 | 0x029e5e-0x02e6c9 (ROM), 0xff0000-00ffedbb (RAM) |
-| Code                             | 0x007f94-0x015fe3 | 0x0000fc-0x102a1                                 |
-| Disk I/O                         | 0x015fe4-0x016862 | N/A                                              |
-| Amiga misc                       | 0x016862-0x01bc3d | N/A                                              |
-| Amiga intro sound                | 0x01bc3e-0x049639 | N/A                                              |
-| Amiga main sound                 | 0x01bc3e-0x036bd5 | N/A                                              |
-| Megadrive sound                  | N/A               | 0x0102a2-0x022493                                |
-| Intro                            | 0x04963a-0x05ca23 | 0x022494-0x029e5d                                |
-| Overlay #1: Management graphics  | 0x0361d6-0x05df23 | N/A                                              |
-| Overlays #18& #26: Game graphics | 0x0361d6-0x05e896 | N/A                                              |
-| Megadrive graphics               | N/A               | 0x02e6ca-0x07e006                                |
+| Section                           | Amiga             | Megadrive                                        |
+|-----------------------------------|-------------------|--------------------------------------------------|
+| Data                              | 0x000000-0x007f93 | 0x029e5e-0x02e6c9 (ROM), 0xff0000-00ffedbb (RAM) |
+| Code                              | 0x007f94-0x015fe3 | 0x0000fc-0x102a1                                 |
+| Disk I/O                          | 0x015fe4-0x016862 | N/A                                              |
+| Amiga misc                        | 0x016862-0x01bc3d | N/A                                              |
+| Amiga intro sound                 | 0x01bc3e-0x049639 | N/A                                              |
+| Amiga main sound                  | 0x01bc3e-0x036bd5 | N/A                                              |
+| Megadrive sound                   | N/A               | 0x0102a2-0x022493                                |
+| Intro                             | 0x04963a-0x05ca23 | 0x022494-0x029e5d                                |
+| Overlays #18 & #26: Game graphics | 0x0361d6-0x05e896 | 0x02e6ca-0x0454c9                                |
+| Overlay #1: Management graphics   | 0x0361d6-0x05df23 | 0x0454ca-0x07e005                                |
 
 The end of Amiga main sound (aka Overlay #0) overlaps with the start
 of Overlay #1, because the final symbol `base_status_bar` gets copied
@@ -2065,7 +2060,8 @@ Once the intro sequence is complete, the associated sounds are
 replaced with the contents of this overlay.
 
 Also includes `status_bar_base`, which I guess is a convenient
-reasonably-large piece of data not needed for the intro.
+reasonably-large piece of data not needed for the intro. Once loaded,
+it is copied out and overwritten by other overlays.
 
 I have also included Overlays #27 and #28, which patch up a few
 samples within this range.
@@ -2391,95 +2387,86 @@ obviously doesn't get overwritten.
 | sprites_title_font               | 0005ae00 | Data Label        |                           |          |
 | skip_flags                       | 0005ca20 | Data Label        |                           |          |
 
-## Overlay #1: Management graphics
-
-TODO: Line up with Megadrive?
-
-Megadrive has pretty much the same symbols, but different encoding to
-match the machine's hardware. The symbols are mostly in a different
-order, so I'm not going to match them up.
-
-| Amiga Name                  | Location           | Type       |
-|-----------------------------|--------------------|------------|
-| splash_backdrop             | overlay1::000361d6 | Data Label |
-| sprites_mgmt_background     | overlay1::0003d744 | Data Label |
-| sprites_font_orange         | overlay1::00044364 | Data Label |
-| sprites_menu_font           | overlay1::00044b5c | Data Label |
-| sprites_fonts_titles_top    | overlay1::0004631c | Data Label |
-| sprites_fonts_titles_bottom | overlay1::0004677c | Data Label |
-| sprites_fonts_cash          | overlay1::00046a9c | Data Label |
-| sprites_fonts_mgr_xfer_gym  | overlay1::00046bdc | Data Label |
-| sprites_fonts_small_green   | overlay1::0004703c | Data Label |
-| sprites_fonts_white         | overlay1::000475dc | Data Label |
-| sprites_mgmt_lights         | overlay1::00047b7c | Data Label |
-| sprites_mgmt_buttons        | overlay1::0004857c | Data Label |
-| sprites_mgmt_armour         | overlay1::0004d57c | Data Label |
-| sprites_player_faces        | overlay1::000531fc | Data Label |
-| sprites_group_logo          | overlay1::0005b8fc | Data Label |
-| scores_table                | overlay1::0005d51c | Data Label |
-| gym_tile_map                | overlay1::0005dd1c | Data Label |
-| manager_transfer_tile_map   | overlay1::0005de20 | Data Label |
-
 ## Overlays #18 and #26: Game graphics
 
-Similar to overlay #1.
+The Megadrive places the in-game graphics before the management
+graphics. It stores the monitors and some of the sprites here, unlike
+the Amiga which stores them with other data.
 
-| Amiga Name                | Location            | Type       |
-|---------------------------|---------------------|------------|
-| sprites_players_team_mask | overlay18::000361d6 | Data Label |
-| sprites_game_misc         | overlay18::0003a2d6 | Data Label |
-| sprites_players           | overlay18::0003cf56 | Data Label |
-| sprites_big_ball          | overlay18::0004d356 | Data Label |
-| sprites_launcher          | overlay18::0004dd56 | Data Label |
-| sprites_arena_offset      | overlay26::0004fe36 | Data Label |
-| sprites_arena             | overlay26::0004fed6 | Data Label |
+Most of the later mismatches are due to symbols not being present
+because the sprites are accessed in slight different ways between the
+platforms.
 
-## Megadrive graphics
+| Amiga Name                | Location            | Type       | Megadrive Name              | Location |
+|---------------------------|---------------------|------------|-----------------------------|----------|
+| sprites_players_team_mask | overlay18::000361d6 | Data Label |                             |          |
+|                           |                     | Data Label | sprites_title_font          | 0002e6ca |
+|                           |                     | Data Label | ascii_to_title_font_index   | 0002fcaa |
+|                           |                     | Data Label | sprites_status_bar          | 0002fd0a |
+|                           |                     | Data Label | sprites_score_digits        | 0003070a |
+|                           |                     | Data Label | sprites_monitor_goal        | 0003084a |
+|                           |                     | Data Label | sprites_monitor_injury      | 0003144a |
+|                           |                     | Data Label | sprites_monitor_final_score | 0003204a |
+|                           |                     | Data Label | sprites_game_font           | 00032c4a |
+| sprites_game_misc         | overlay18::0003a2d6 | Data Label | sprites_game_misc           | 000330ca |
+|                           |                     | Data Label | sprites_game_tokens         | 00034c4a |
+| sprites_players           | overlay18::0003cf56 | Data Label | sprites_players             | 00035dca |
+|                           |                     | Data Label | sprites_medibot             | 0003efca |
+| sprites_big_ball          | overlay18::0004d356 | Data Label | sprites_ball_stuff          | 000403ca |
+| sprites_launcher          | overlay18::0004dd56 | Data Label |                             |          |
+| sprites_arena_offset      | overlay26::0004fe36 | Data Label |                             |          |
+| sprites_arena             | overlay26::0004fed6 | Data Label |                             |          |
+|                           |                     | Data Label | sprites_arena_1x1           | 000425ca |
+|                           |                     | Data Label | sprites_arena_4x4           | 0004286a |
 
-The Megadrive graphics equivalent to the last couple of sections. The
-various bits of graphics include splash screens which are loaded from
-disk (or cached) on the Amiga.
+## Overlay #1: Management graphics
 
-| Megadrive Name              | Location | Type       |
-|-----------------------------|----------|------------|
-| sprites_title_font          | 0002e6ca | Data Label |
-| ascii_to_title_font_index   | 0002fcaa | Data Label |
-| sprites_status_bar          | 0002fd0a | Data Label |
-| sprites_score_digits        | 0003070a | Data Label |
-| sprites_monitor_goal        | 0003084a | Data Label |
-| sprites_monitor_injury      | 0003144a | Data Label |
-| sprites_monitor_final_score | 0003204a | Data Label |
-| sprites_game_font           | 00032c4a | Data Label |
-| sprites_game_misc           | 000330ca | Data Label |
-| sprites_game_tokens         | 00034c4a | Data Label |
-| sprites_players             | 00035dca | Data Label |
-| sprites_medibot             | 0003efca | Data Label |
-| sprites_ball_stuff          | 000403ca | Data Label |
-| sprites_arena_1x1           | 000425ca | Data Label |
-| sprites_arena_4x4           | 0004286a | Data Label |
-| splash_backdrop             | 000454ca | Data Label |
-| splash_backdrop_plus_1      | 000454cc | Data Label |
-| splash_victory              | 00049bfc | Data Label |
-| splash_defeat               | 0004e66e | Data Label |
-| splash_win_league           | 00051fe0 | Data Label |
-| splash_win_promo            | 00053e1a | Data Label |
-| splash_win_cup              | 00055c34 | Data Label |
-| splash_win_knockout         | 00057a52 | Data Label |
-| splash_title                | 00059838 | Data Label |
-| splash_arena                | 0005d8ca | Data Label |
-| sprites_menu_font           | 000610c4 | Data Label |
-| sprites_mgmt_background     | 000623c4 | Data Label |
-| sprites_mgmt_lights         | 00067a44 | Data Label |
-| sprites_mgmt_buttons        | 00068244 | Data Label |
-| sprites_mgmt_armour         | 0006da44 | Data Label |
-| sprites_fonts_orange        | 00072444 | Data Label |
-| sprites_fonts_title_top     | 00072aa4 | Data Label |
-| sprites_fonts_title_bottom  | 00072e44 | Data Label |
-| sprites_fonts_mgr_xfer_gym  | 00073284 | Data Label |
-| sprites_font_cash           | 000734e4 | Data Label |
-| sprites_fonts_small_green   | 00073964 | Data Label |
-| sprites_fonts_white         | 00073e04 | Data Label |
-| sprites_player_faces        | 00074284 | Data Label |
+The management graphics occur after the in-game graphics on the
+Megadrive. On the Amiga, they occupy the same memory locations, as
+overlays.
+
+The Megadrive has spash screens stored in ROM here, too (some
+compressed). The Amiga version loads them from disk (or retrieves them
+from a cache in high RAM, if present).
+
+You can see that some of the mismatches here come from a bit of
+rearrnagement, unlike most of the code and data, where rearrangement
+is minimal.
+
+| Amiga Name                  | Location           | Type       | Megadrive Name             | Location |
+|-----------------------------|--------------------|------------|----------------------------|----------|
+| splash_backdrop             | overlay1::000361d6 | Data Label | splash_backdrop            | 000454ca |
+|                             |                    | Data Label | splash_backdrop_plus_1     | 000454cc |
+|                             |                    | Data Label | splash_victory             | 00049bfc |
+|                             |                    | Data Label | splash_defeat              | 0004e66e |
+|                             |                    | Data Label | splash_win_league          | 00051fe0 |
+|                             |                    | Data Label | splash_win_promo           | 00053e1a |
+|                             |                    | Data Label | splash_win_cup             | 00055c34 |
+|                             |                    | Data Label | splash_win_knockout        | 00057a52 |
+|                             |                    | Data Label | splash_title               | 00059838 |
+|                             |                    | Data Label | splash_arena               | 0005d8ca |
+|                             |                    | Data Label | sprites_menu_font          | 000610c4 |
+| sprites_mgmt_background     | overlay1::0003d744 | Data Label | sprites_mgmt_background    | 000623c4 |
+|                             |                    | Data Label | sprites_mgmt_lights        | 00067a44 |
+|                             |                    | Data Label | sprites_mgmt_buttons       | 00068244 |
+|                             |                    | Data Label | sprites_mgmt_armour        | 0006da44 |
+| sprites_font_orange         | overlay1::00044364 | Data Label | sprites_fonts_orange       | 00072444 |
+| sprites_menu_font           | overlay1::00044b5c | Data Label |                            |          |
+| sprites_fonts_titles_top    | overlay1::0004631c | Data Label | sprites_fonts_title_top    | 00072aa4 |
+| sprites_fonts_titles_bottom | overlay1::0004677c | Data Label | sprites_fonts_title_bottom | 00072e44 |
+| sprites_fonts_cash          | overlay1::00046a9c | Data Label |                            |          |
+| sprites_fonts_mgr_xfer_gym  | overlay1::00046bdc | Data Label | sprites_fonts_mgr_xfer_gym | 00073284 |
+|                             |                    | Data Label | sprites_font_cash          | 000734e4 |
+| sprites_fonts_small_green   | overlay1::0004703c | Data Label | sprites_fonts_small_green  | 00073964 |
+| sprites_fonts_white         | overlay1::000475dc | Data Label | sprites_fonts_white        | 00073e04 |
+| sprites_mgmt_lights         | overlay1::00047b7c | Data Label |                            |          |
+| sprites_mgmt_buttons        | overlay1::0004857c | Data Label |                            |          |
+| sprites_mgmt_armour         | overlay1::0004d57c | Data Label |                            |          |
+| sprites_player_faces        | overlay1::000531fc | Data Label | sprites_player_faces       | 00074284 |
+| sprites_group_logo          | overlay1::0005b8fc | Data Label |                            |          |
+| scores_table                | overlay1::0005d51c | Data Label |                            |          |
+| gym_tile_map                | overlay1::0005dd1c | Data Label |                            |          |
+| manager_transfer_tile_map   | overlay1::0005de20 | Data Label |                            |          |
 
 # Amiga BSS & optional overlay saving
 
