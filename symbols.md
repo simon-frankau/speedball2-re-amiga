@@ -373,6 +373,8 @@ variables.
 | str_game_over                       | 000037e6 | Data Label        | str_game_over                       | 0002a8f5 |
 | str_replays_over                    | 000037f2 | Data Label        | str_replays_over                    | 0002a901 |
 | match_permutations                  | 00003801 | Data Label        | match_permutations                  | 0002a910 |
+|                                     |          |                   | gym_tile_map                        | 0002a948 |
+|                                     |          |                   | manager_transfer_tile_map           | 0002aa4c |
 | division_displayed_start            | 00003839 | Data Label        | division_displayed_start            | 00ff0d0c |
 | cup_teams                           | 0000383a | Data Label        | cup_teams                           | 00ff0d0e |
 | cup_teams_div2                      | 0000385a | Data Label        | cup_teams_div2                      | 00ff0d2e |
@@ -637,6 +639,7 @@ variables.
 | player_2_subs_2_stats               | 0000592c | Data Label        | player_2_subs_2_stats               | 00ffd0e6 |
 | player_2_subs_3_stats               | 00005937 | Data Label        | player_2_subs_3_stats               | 00ffd0f1 |
 | player_temp_stats                   | 00005942 | Data Label        | player_temp_stats                   | 00ffd0fc |
+|                                     |          |                   | scores_tables                       | 0002c088 |
 | player_1_player_stats_table         | 0000594e | Data Label        | player_1_player_stats_table         | 0002c888 |
 | player_2_player_stats_table         | 0000597e | Data Label        | player_2_player_stats_table         | 0002c8b8 |
 | player_1_defense_1                  | 000059ae | Data Label        | player_1_defense_1                  | 00ffd108 |
@@ -2360,7 +2363,7 @@ obviously doesn't get overwritten.
 |                                  |          |            | sprites_sega_logo         | 000291da |
 |                                  |          |            | sprites_sega_logo_mapping | 000297fa |
 | intro                            | 00049650 | Function   | intro                     | 0002982a |
-| intro_break                      | 00029888 |            |                           |          |
+|                                  |          |            | intro_break               | 00029888 |
 |                                  |          |            | show_title_with_sound     | 000298aa |
 |                                  |          |            | show_title                | 000298e0 |
 |                                  |          |            | show_arena                | 00029906 |
@@ -2386,10 +2389,12 @@ obviously doesn't get overwritten.
 |                                  |          |            | dead_run_in_ram           | 00029e4a |
 | splash_title_screen              | 00049e5e | Data Label |                           |          |
 | splash_arena_backdrop            | 00052d0e | Data Label |                           |          |
-| sprites_title_font               | 0005ae00 | Data Label |                           |          | 
+| sprites_title_font               | 0005ae00 | Data Label |                           |          |
 | skip_flags                       | 0005ca20 | Data Label |                           |          |
 
 ## Overlay #1: Management graphics
+
+TODO: Line up with Megadrive?
 
 Megadrive has pretty much the same symbols, but different encoding to
 match the machine's hardware. The symbols are mostly in a different
@@ -2445,6 +2450,16 @@ disk (or cached) on the Amiga.
 | sprites_monitor_goal        | 0003084a | Data Label |
 | sprites_monitor_injury      | 0003144a | Data Label |
 | sprites_monitor_final_score | 0003204a | Data Label |
+| sprites_game_font           | 00032c4a | Data Label |
+| sprites_game_misc           | 000330ca | Data Label |
+| sprites_game_tokens         | 00034c4a | Data Label |
+| sprites_players             | 00035dca | Data Label |
+| sprites_medibot             | 0003efca | Data Label |
+| sprites_ball_stuff          | 000403ca | Data Label |
+| sprites_arena_1x1           | 000425ca | Data Label |
+| sprites_arena_4x4           | 0004286a | Data Label |
+| splash_backdrop             | 000454ca | Data Label |
+| splash_backdrop_plus_1      | 000454cc | Data Label |
 | splash_victory              | 00049bfc | Data Label |
 | splash_defeat               | 0004e66e | Data Label |
 | splash_win_league           | 00051fe0 | Data Label |
@@ -2454,6 +2469,14 @@ disk (or cached) on the Amiga.
 | splash_title                | 00059838 | Data Label |
 | splash_arena                | 0005d8ca | Data Label |
 | sprites_menu_font           | 000610c4 | Data Label |
+| sprites_mgmt_background     | 000623c4 |            |
+| sprites_mgmt_lights         | 00067a44 |            |
+| sprites_mgmt_buttons        | 00068244 |            |
+| sprites_mgmt_armour         | 0006da44 |            |
+| sprites_fonts_orange        | 00072444 |            |
+| sprites_fonts_title_top     | 00072aa4 |            |
+| sprites_fonts_title_bottom  | 00072e44 |            |
+| sprites_fonts_mgr_xfer_gym  | 00073284 |            |
 | sprites_font_cash           | 000734e4 | Data Label |
 | sprites_fonts_small_green   | 00073964 | Data Label |
 | sprites_fonts_white         | 00073e04 | Data Label |
