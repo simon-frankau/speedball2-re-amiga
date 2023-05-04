@@ -20,13 +20,23 @@ occur.
 
 The layout is split across the following sections as below:
 
-| Section | Amiga | Megadrive |
-| - | - |
-| Data | 0x000000-0x007f93 | 0x029e5e-0x02e620 (ROM), 0xff0000-00ffedbb (RAM) |
-| Code | 0x007f94-0x015fe3 | 0x0000fc-0x102a1 |
-| Disk I/O | 0x015fe4-0x016862 | N/A |
+| Section                          | Amiga             | Megadrive                                        |
+|----------------------------------|-------------------|--------------------------------------------------|
+| Data                             | 0x000000-0x007f93 | 0x029e5e-0x02e6c9 (ROM), 0xff0000-00ffedbb (RAM) |
+| Code                             | 0x007f94-0x015fe3 | 0x0000fc-0x102a1                                 |
+| Disk I/O                         | 0x015fe4-0x016862 | N/A                                              |
+| Amiga misc                       | 0x016862-0x01bc3d | N/A                                              |
+| Amiga intro sound                | 0x01bc3e-0x049639 | N/A                                              |
+| Amiga main sound                 | 0x01bc3e-0x036bd5 | N/A                                              |
+| Megadrive sound                  | N/A               | 0x0102a2-0x022493                                |
+| Intro                            | 0x04963a-0x05ca23 | 0x022494-0x029e5d                                |
+| Overlay #1: Management graphics  | 0x0361d6-0x05df23 | N/A                                              |
+| Overlays #18& #26: Game graphics | 0x0361d6-0x05e896 | N/A                                              |
+| Megadrive graphics               | N/A               | 0x02e6ca-0x07e006                                |
 
-TODO: The rest!
+The end of Amiga main sound (aka Overlay #0) overlaps with the start
+of Overlay #1, because the final symbol `base_status_bar` gets copied
+out of the way before overlays are loaded.
 
 ## Data
 
@@ -44,7 +54,7 @@ matches pretty well with the Megadrive. There are relatively few
 rearrangements, so that most of the gaps are platform-specific
 variables.
 
-| Amiga Name                          | Location | Type              | Megadrive Name                      |          |
+| Amiga Name                          | Location | Type              | Megadrive Name                      | Location |
 |-------------------------------------|----------|-------------------|-------------------------------------|----------|
 | contains_3460                       | 00000000 | Data Label        |                                     |          |
 | reset_pc                            | 00000004 | Data Label        |                                     |          |
@@ -1915,185 +1925,150 @@ code used in the second-stage disk loader.
 | start_timer                 | 00016840 | Function   |
 | drives                      | 0001685a | Data Label |
 
-## TODO: Misc Amiga, mostly variables.
+## Miscellaneous Amiga functions
 
-TODO: Back to random
+Mostly Amiga-specific data, some functions. Not entirely sure why it's
+placed after the disk code.
 
+| Amiga Name                  | Location | Type       |
+|-----------------------------|----------|------------|
 | init_hw                     | 00016862 | Function   |
-| display_splash                          | 00016868            | Function          |
-| unpack_iff_image                        | 000168a8            | Function          |
-| palette_non_game                        | 00016994            | Data Label        |
-| copper_template                         | 000169d4            | Data Label        |
-| screen_status_bar                       | 00016b20            | Data Label        |
-| controller_2_cooked                     | 00016b28            | Data Label        |
-| controller_1_cooked                     | 00016b29            | Data Label        |
+| display_splash              | 00016868 | Function   |
+| unpack_iff_image            | 000168a8 | Function   |
+| palette_non_game            | 00016994 | Data Label |
+| copper_template             | 000169d4 | Data Label |
+| screen_status_bar           | 00016b20 | Data Label |
+| controller_2_cooked         | 00016b28 | Data Label |
+| controller_1_cooked         | 00016b29 | Data Label |
+| current_keyboard            | 00016b2a | Data Label |
+| controller_2_raw            | 00016b2c | Data Label |
+| controller_1_raw            | 00016b2d | Data Label |
+| screen_1                    | 00016b30 | Data Label |
+| screen_2                    | 00016b34 | Data Label |
+| screen_3                    | 00016b38 | Data Label |
+| copper_1                    | 00016b3c | Data Label |
+| copper_2                    | 00016b48 | Data Label |
+| copper_3                    | 00016b54 | Data Label |
+| screen_to_display           | 00016b60 | Data Label |
+| colours_copper_list         | 00016b64 | Data Label |
+| screen_1_bitplane_ptrs      | 00016ba4 | Data Label |
+| screen_2_bitplane_ptrs      | 00016bbc | Data Label |
+| screen_3_bitplane_ptrs      | 00016bd4 | Data Label |
+| copper_1_buf_no_sb          | 00016bec | Data Label |
+| copper_1_buf_sb             | 00016d38 | Data Label |
+| copper_2_buf_no_sb          | 00016e84 | Data Label |
+| copper_2_buf_sb             | 00016fd0 | Data Label |
+| copper_3_buf_no_sb          | 0001711c | Data Label |
+| copper_3_buf_sb             | 00017268 | Data Label |
+| copper_started              | 000173b4 | Data Label |
+| ints_started                | 000173b6 | Data Label |
+| vertb_count                 | 000173ba | Data Label |
+| sprites_monitor_goal        | 000173be | Data Label |
+| sprites_monitor_injury      | 000182be | Data Label |
+| sprites_monitor_final_score | 000191be | Data Label |
+| sprites_monitor_text        | 0001a0be | Data Label |
+| sprites_game_font           | 0001afbe | Data Label |
+| sprite_number_font          | 0001b55e | Data Label |
+| buffer                      | 0001b6ee | Data Label |
+| overlay_index               | 0001b7ee | Data Label |
+| trap_trace_3                | 0001bb22 | Function   |
+| trap_illegal_3              | 0001bb3e | Function   |
+| trap_trace_2                | 0001bb76 | Function   |
+| trap_trace                  | 0001bbc6 | Function   |
+| sprite_char_buf             | 0001bbee | Data Label |
+| stored_stack                | 0001bc3a | Data Label |
 
-| current_keyboard                        | 00016b2a            | Data Label        |
-| controller_2_raw                        | 00016b2c            | Data Label        |
-| controller_1_raw                        | 00016b2d            | Data Label        |
+## Amiga intro sound
 
+Sound loaded initially.
 
-| screen_1                                | 00016b30            | Data Label        |
-| screen_2                                | 00016b34            | Data Label        |
-| screen_3                                | 00016b38            | Data Label        |
-| copper_1                                | 00016b3c            | Data Label        |
-| copper_2                                | 00016b48            | Data Label        |
-| copper_3                                | 00016b54            | Data Label        |
-| screen_to_display                       | 00016b60            | Data Label        |
-| colours_copper_list                     | 00016b64            | Data Label        |
-| screen_1_bitplane_ptrs                  | 00016ba4            | Data Label        |
-| screen_2_bitplane_ptrs                  | 00016bbc            | Data Label        |
-| screen_3_bitplane_ptrs                  | 00016bd4            | Data Label        |
-| copper_1_buf_no_sb                      | 00016bec            | Data Label        |
-| copper_1_buf_sb                         | 00016d38            | Data Label        |
-| copper_2_buf_no_sb                      | 00016e84            | Data Label        |
-| copper_2_buf_sb                         | 00016fd0            | Data Label        |
-| copper_3_buf_no_sb                      | 0001711c            | Data Label        |
-| copper_3_buf_sb                         | 00017268            | Data Label        |
-| copper_started                          | 000173b4            | Data Label        |
-| ints_started                            | 000173b6            | Data Label        |
-| vertb_count                             | 000173ba            | Data Label        |
-| sprites_monitor_goal                    | 000173be            | Data Label        |
-| sprites_monitor_injury                  | 000182be            | Data Label        |
-| sprites_monitor_final_score             | 000191be            | Data Label        |
-| sprites_monitor_text                    | 0001a0be            | Data Label        |
-| sprites_game_font                       | 0001afbe            | Data Label        |
-| sprite_number_font                      | 0001b55e            | Data Label        |
-| buffer                                  | 0001b6ee            | Data Label        |
-| overlay_index                           | 0001b7ee            | Data Label        |
-| trap_trace_3                            | 0001bb22            | Function          |
-| trap_illegal_3                          | 0001bb3e            | Function          |
-| trap_trace_2                            | 0001bb76            | Function          |
-| trap_trace                              | 0001bbc6            | Function          |
-| sprite_char_buf                         | 0001bbee            | Data Label        |
-| stored_stack                            | 0001bc3a            | Data Label        |
+| Amiga Name             | Location | Type       |
+|------------------------|----------|------------|
+| sound_base             | 0001bc3e | Data Label |
+| sequence_table_index   | 0001bc3e | Data Label |
+| instrument_table_index | 0001bc42 | Data Label |
+| overlay28_index        | 0001bc46 | Data Label |
+| sound_sequence_1       | 0001bc4c | Data Label |
+| sound_sequence_8       | 0001bc67 | Data Label |
+| sound_sequence_11      | 0001bd3b | Data Label |
+| sound_sequence_14      | 0001bdc8 | Data Label |
+| sound_sequence_16      | 0001bfc0 | Data Label |
+| sound_sequence_21      | 0001c074 | Data Label |
+| sound_sequence_2       | 0001c0f6 | Data Label |
+| sound_sequence_7       | 0001c1cb | Data Label |
+| sound_sequence_17      | 0001c1de | Data Label |
+| sound_sequence_9       | 0001c366 | Data Label |
+| sound_sequence_13      | 0001c379 | Data Label |
+| sound_sequence_22      | 0001c44b | Data Label |
+| sound_sequence_3       | 0001c53d | Data Label |
+| sound_sequence_5       | 0001c5f3 | Data Label |
+| sound_sequence_6       | 0001c608 | Data Label |
+| sound_sequence_15      | 0001c62f | Data Label |
+| sound_sequence_19      | 0001c73d | Data Label |
+| sound_sequence_23      | 0001c7af | Data Label |
+| sound_sequence_4       | 0001c86f | Data Label |
+| sound_sequence_10      | 0001ca0f | Data Label |
+| sound_sequence_12      | 0001ca65 | Data Label |
+| sound_sequence_18      | 0001cc69 | Data Label |
+| sound_sequence_20      | 0001cd31 | Data Label |
+| sound_sequence_24      | 0001cfbc | Data Label |
+| sound_sequence_25      | 0001cfcc | Data Label |
+| sound_sequence_26      | 0001cfd8 | Data Label |
+| sequence_table         | 0001cfe4 | Data Label |
+| sound_sample_0         | 0001d050 | Data Label |
+| sound_sample_1         | 0001d060 | Data Label |
+| sound_sample_2         | 0001d070 | Data Label |
+| sound_sample_3         | 0001d080 | Data Label |
+| sound_sample_4         | 0001d088 | Data Label |
+| sound_sample_5         | 0001d0a8 | Data Label |
+| sound_sample_6         | 0001d0c0 | Data Label |
+| sound_sample_7         | 0001d0c8 | Data Label |
+| sound_sample_8         | 0001d0d8 | Data Label |
+| sound_sample_9         | 0001d0f8 | Data Label |
+| sound_sample_10        | 0001e4ca | Data Label |
+| sound_sample_11        | 0001f89e | Data Label |
+| sound_sample_12        | 0001fbda | Data Label |
+| sound_sample_13        | 00020694 | Data Label |
+| sound_sample_14        | 00021c6e | Data Label |
+| sound_sample_15        | 00022730 | Data Label |
+| sound_sample_16        | 000231ae | Data Label |
+| sound_sample_17        | 00023b56 | Data Label |
+| sound_sample_19        | 000244d0 | Data Label |
+| sound_sample_18        | 000244d0 | Data Label |
+| sound_sample_20        | 00026c62 | Data Label |
+| sound_sample_21        | 0002dada | Data Label |
+| sound_sample_22        | 0002fd66 | Data Label |
+| sound_sample_23        | 00032160 | Data Label |
+| sound_sample_24        | 00034544 | Data Label |
+| sound_sample_25        | 0003805a | Data Label |
+| sound_sample_26        | 00038876 | Data Label |
+| sound_sample_27        | 00038fe4 | Data Label |
+| sound_sample_28        | 000397d6 | Data Label |
+| sound_sample_29        | 0003ac62 | Data Label |
+| sound_sample_30        | 0003b7f6 | Data Label |
+| sound_sample_31        | 0003c4b4 | Data Label |
+| sound_sample_32        | 0003cfaa | Data Label |
+| sound_sample_33        | 0003dcfc | Data Label |
+| sound_sample_34        | 0003fa5a | Data Label |
+| sound_sample_35        | 00041964 | Data Label |
+| sound_sample_36        | 000438a6 | Data Label |
+| sound_sample_37        | 0004587e | Data Label |
+| sound_sample_38        | 000461a4 | Data Label |
+| sound_sample_39        | 00047b42 | Data Label |
+| instrument_table       | 0004940a | Data Label |
 
-# TODO: Soundy bit. Compare and contrast between Megadrive and Amiga
+## Overlay #0: Amiga main game sounds
 
-| sound_base                              | 0001bc3e            | Data Label        |
-| sequence_table_index                    | 0001bc3e            | Data Label        |
-| instrument_table_index                  | 0001bc42            | Data Label        |
-| overlay28_index                         | 0001bc46            | Data Label        |
-| sound_sequence_1                        | 0001bc4c            | Data Label        |
-| sound_sequence_8                        | 0001bc67            | Data Label        |
-| sound_sequence_11                       | 0001bd3b            | Data Label        |
-| sound_sequence_14                       | 0001bdc8            | Data Label        |
-| sound_sequence_16                       | 0001bfc0            | Data Label        |
-| sound_sequence_21                       | 0001c074            | Data Label        |
-| sound_sequence_2                        | 0001c0f6            | Data Label        |
-| sound_sequence_7                        | 0001c1cb            | Data Label        |
-| sound_sequence_17                       | 0001c1de            | Data Label        |
-| sound_sequence_9                        | 0001c366            | Data Label        |
-| sound_sequence_13                       | 0001c379            | Data Label        |
-| sound_sequence_22                       | 0001c44b            | Data Label        |
-| sound_sequence_3                        | 0001c53d            | Data Label        |
-| sound_sequence_5                        | 0001c5f3            | Data Label        |
-| sound_sequence_6                        | 0001c608            | Data Label        |
-| sound_sequence_15                       | 0001c62f            | Data Label        |
-| sound_sequence_19                       | 0001c73d            | Data Label        |
-| sound_sequence_23                       | 0001c7af            | Data Label        |
-| sound_sequence_4                        | 0001c86f            | Data Label        |
-| sound_sequence_10                       | 0001ca0f            | Data Label        |
-| sound_sequence_12                       | 0001ca65            | Data Label        |
-| sound_sequence_18                       | 0001cc69            | Data Label        |
-| sound_sequence_20                       | 0001cd31            | Data Label        |
-| sound_sequence_24                       | 0001cfbc            | Data Label        |
-| sound_sequence_25                       | 0001cfcc            | Data Label        |
-| sound_sequence_26                       | 0001cfd8            | Data Label        |
-| sequence_table                          | 0001cfe4            | Data Label        |
-| sound_sample_0                          | 0001d050            | Data Label        |
-| sound_sample_1                          | 0001d060            | Data Label        |
-| sound_sample_2                          | 0001d070            | Data Label        |
-| sound_sample_3                          | 0001d080            | Data Label        |
-| sound_sample_4                          | 0001d088            | Data Label        |
-| sound_sample_5                          | 0001d0a8            | Data Label        |
-| sound_sample_6                          | 0001d0c0            | Data Label        |
-| sound_sample_7                          | 0001d0c8            | Data Label        |
-| sound_sample_8                          | 0001d0d8            | Data Label        |
-| sound_sample_9                          | 0001d0f8            | Data Label        |
-| sound_sample_10                         | 0001e4ca            | Data Label        |
-| sound_sample_11                         | 0001f89e            | Data Label        |
-| sound_sample_12                         | 0001fbda            | Data Label        |
-| sound_sample_13                         | 00020694            | Data Label        |
-| sound_sample_14                         | 00021c6e            | Data Label        |
-| sound_sample_15                         | 00022730            | Data Label        |
-| sound_sample_16                         | 000231ae            | Data Label        |
-| sound_sample_17                         | 00023b56            | Data Label        |
-| sound_sample_19                         | 000244d0            | Data Label        |
-| sound_sample_18                         | 000244d0            | Data Label        |
-| sound_sample_20                         | 00026c62            | Data Label        |
-| sound_sample_21                         | 0002dada            | Data Label        |
-| sound_sample_22                         | 0002fd66            | Data Label        |
-| sound_sample_23                         | 00032160            | Data Label        |
-| sound_sample_24                         | 00034544            | Data Label        |
-| sound_sample_25                         | 0003805a            | Data Label        |
-| sound_sample_26                         | 00038876            | Data Label        |
-| sound_sample_27                         | 00038fe4            | Data Label        |
-| sound_sample_28                         | 000397d6            | Data Label        |
-| sound_sample_29                         | 0003ac62            | Data Label        |
-| sound_sample_30                         | 0003b7f6            | Data Label        |
-| sound_sample_31                         | 0003c4b4            | Data Label        |
-| sound_sample_32                         | 0003cfaa            | Data Label        |
-| sound_sample_33                         | 0003dcfc            | Data Label        |
-| sound_sample_34                         | 0003fa5a            | Data Label        |
-| sound_sample_35                         | 00041964            | Data Label        |
-| sound_sample_36                         | 000438a6            | Data Label        |
-| sound_sample_37                         | 0004587e            | Data Label        |
-| sound_sample_38                         | 000461a4            | Data Label        |
-| sound_sample_39                         | 00047b42            | Data Label        |
-| instrument_table                        | 0004940a            | Data Label        |
+Once the intro sequence is complete, the associated sounds are
+replaced with the contents of this overlay.
 
-# TODO: Intro bit. Compare and contrast w/ Megadrive
+Also includes `status_bar_base`, which I guess is a convenient
+reasonably-large piece of data not needed for the intro.
 
-| intro_presents                          | 0004963a            | Function          |
-| intro                                   | 00049650            | Function          |
-| display_text_presents                   | 00049718            | Function          |
-| display_string_and_wait_presents        | 00049738            | Function          |
-| display_text_intro                      | 0004979a            | Function          |
-| display_string_and_wait_intro           | 000497f0            | Function          |
-| display_text_credits                    | 00049846            | Function          |
-| display_string_and_wait_credits         | 00049892            | Function          |
-| draw_arena_backdrop                     | 000498e8            | Function          |
-| wait_100ms                              | 00049906            | Function          |
-| display_string                          | 00049940            | Function          |
-| display_title_font_char                 | 00049a12            | Function          |
-| mask_char_to_screen                     | 00049a36            | Function          |
-| copy_16x16_to_screen                    | 00049aaa            | Function          |
-| copy_16x16_from_screen                  | 00049ad2            | Function          |
-| fill_screen_zero                        | 00049afa            | Function          |
-| display_fade_transition_sound           | 00049b34            | Function          |
-| splash_title_screen                     | 00049e5e            | Data Label        |
-| splash_arena_backdrop                   | 00052d0e            | Data Label        |
-| sprites_title_font                      | 0005ae00            | Data Label        |
-| skip_flags                              | 0005ca20            | Data Label        |
+I have also included Overlays #27 and #28, which patch up a few
+samples within this range.
 
-# TODO: Amiga BSS & optional overlay saving
-
-| free                                    | 0005ca24            | Data Label        |
-| screen_3_buf                            | 0005fbaa            | Data Label        |
-| screen_2_buf                            | 0006a71c            | Data Label        |
-| screen_1_buf                            | 0007528e            | Data Label        |
-| stack_bottom                            | 0007fe00            | Data Label        |
-| low_ram_top                             | 00080000            | Data Label        |
-| saved_overlay_27                        | 00091a74            | Data Label        |
-| saved_overlay_28                        | 00094496            | Data Label        |
-| saved_overlay_18                        | 00097c34            | Data Label        |
-| saved_overlay_14                        | 000ad734            | Data Label        |
-| saved_overlay_12                        | 000b2df6            | Data Label        |
-| saved_overlay_17                        | 000b99f4            | Data Label        |
-| saved_overlay_16                        | 000bd984            | Data Label        |
-| saved_overlay_15                        | 000c192e            | Data Label        |
-| saved_overlay_14                        | 000c58f6            | Data Label        |
-| saved_overlay_26                        | 000c98ee            | Data Label        |
-| saved_overlay_1                         | 000d82ae            | Data Label        |
-
-TODO: Overlays should probably be incorporated into the main memory map at the point they appear.
-
-## Overlay #0: Main game sounds
-
-Megadrive's sufficiently different to not match up.
-
-| Name                     | Location           | Type       |
+| Amiga Name               | Location           | Type       |
 |--------------------------|--------------------|------------|
 | sequence_table_index_0   | overlay0::0001bc3e | Data Label |
 | instrument_table_index_0 | overlay0::0001bc42 | Data Label |
@@ -2222,12 +2197,206 @@ Megadrive's sufficiently different to not match up.
 | instrument_table_0       | overlay0::00035f7c | Data Label |
 | base_status_bar          | overlay0::000361d6 | Data Label |
 
+### Overlays #27 and #28: Sound patches
+
+Patches the sound samples between management mode and game mode.
+
+| Amiga Name | Location            | Provides                                                |
+|------------|---------------------|---------------------------------------------------------|
+| overlay27  | overlay27::00030d56 | sound_sample_0_22                                       |
+| overlay28  | overlay28::00030d56 | sound_sample_0_25, sound_sample_0_26, sound_sample_0_27 |
+
+## Megadrive sound
+
+For comparison, these are the sounds for the Megadrive. As an
+FM-synthesis-based system, there are much fewer samples, and the
+system has a certain amount of mapping from the Amiga-hardware-based
+descriptions to what's needed for the Megadrive.
+
+| Megadrive Name           | Location |
+|--------------------------|----------|
+| sound_instrument_table   | 000102a2 |
+| sound_table              | 00011a42 |
+| sound_seq_01             | 00011b22 |
+| sound_seq_02             | 00011b2d |
+| sound_seq_03             | 00011b38 |
+| sound_seq_04             | 00011b46 |
+| sound_seq_05             | 00011b57 |
+| sound_seq_06             | 00011b65 |
+| sound_seq_48             | 00011b73 |
+| sound_seq_49             | 00011b81 |
+| sound_seq_4a             | 00011b8f |
+| sound_seq_4b             | 00011b9d |
+| sound_seq_07             | 00011bab |
+| sound_seq_08             | 00011bb9 |
+| sound_seq_09             | 00011bc7 |
+| sound_seq_44             | 00011bda |
+| sound_seq_45             | 00011bed |
+| sound_seq_46             | 00011c00 |
+| sound_seq_0a             | 00011c13 |
+| sound_seq_0b             | 00011c30 |
+| sound_seq_0d             | 00011c3b |
+| sound_seq_0e             | 00011c46 |
+| sound_seq_0f             | 00011c54 |
+| sound_seq_11             | 00011c63 |
+| sound_seq_12             | 00011c76 |
+| sound_seq_13             | 00011c85 |
+| sound_seq_14             | 00011c8f |
+| sound_seq_15             | 00011c9c |
+| sound_seq_16             | 00011cb4 |
+| sound_seq_17             | 00011cb5 |
+| sound_seq_18             | 00011cc1 |
+| sound_seq_19             | 00011cd0 |
+| sound_seq_1a             | 00011cde |
+| sound_seq_1b             | 00011ced |
+| sound_seq_1c             | 00011cf6 |
+| sound_seq_1d             | 00011d04 |
+| sound_seq_47             | 00011d14 |
+| sound_seq_1e             | 00011d22 |
+| sound_seq_4c             | 00011d2e |
+| sound_seq_1f             | 00011d41 |
+| sound_seq_20             | 00011d74 |
+| sound_seq_21             | 00011d94 |
+| sound_seq_22             | 00011db4 |
+| sound_seq_23             | 00011dbe |
+| sound_seq_24             | 00011dcb |
+| sound_seq_25             | 00011dd5 |
+| sound_seq_26             | 00011deb |
+| sound_seq_27             | 00011df5 |
+| sound_seq_28             | 00011dff |
+| sound_seq_29             | 00011e15 |
+| sound_seq_4d             | 00011e2b |
+| sound_seq_2a             | 00011e32 |
+| sound_seq_2b             | 00011e42 |
+| sound_seq_2c             | 00011e55 |
+| sound_seq_2d             | 00011e65 |
+| sound_seq_2e             | 00011e75 |
+| sound_seq_2f             | 00011e8e |
+| sound_seq_30             | 00011f1b |
+| sound_seq_3e             | 00011f70 |
+| sound_seq_0c             | 00011f96 |
+| sound_seq_3f             | 00011feb |
+| sound_seq_40             | 0001202e |
+| sound_seq_31             | 00012081 |
+| sound_seq_32             | 000120a7 |
+| sound_seq_33             | 000120db |
+| sound_seq_34             | 000120fc |
+| sound_seq_35             | 00012126 |
+| sound_seq_36             | 0001212d |
+| sound_seq_37             | 00012142 |
+| sound_seq_38             | 00012158 |
+| sound_seq_39             | 0001217a |
+| sound_seq_3a             | 0001218d |
+| sound_seq_3b             | 0001219b |
+| sound_seq_3c             | 000121b4 |
+| sound_seq_4e             | 000121d0 |
+| sound_seq_3d             | 000121f1 |
+| sound_seq_41             | 000121ff |
+| sound_seq_42             | 0001220f |
+| sound_seq_43             | 00012222 |
+| sound_seq_50             | 00012234 |
+| sound_seq_57             | 0001224f |
+| sound_seq_5a             | 00012321 |
+| sound_seq_5d             | 000123ac |
+| sound_seq_5f             | 000125a2 |
+| sound_seq_64             | 00012654 |
+| sound_seq_51             | 000126d4 |
+| sound_seq_56             | 000127a9 |
+| sound_seq_60             | 000127ba |
+| sound_seq_58             | 00012940 |
+| sound_seq_5c             | 00012951 |
+| sound_seq_65             | 00012a21 |
+| sound_seq_52             | 00012b11 |
+| sound_seq_54             | 00012bc7 |
+| sound_seq_55             | 00012bda |
+| sound_seq_5e             | 00012bff |
+| sound_seq_62             | 00012d05 |
+| sound_seq_66             | 00012d6f |
+| sound_seq_53             | 00012e2b |
+| sound_seq_59             | 00012fb6 |
+| sound_seq_5b             | 0001300a |
+| sound_seq_61             | 00013203 |
+| sound_seq_63             | 000132b1 |
+| sound_seq_6a             | 00013526 |
+| sound_seq_6b             | 0001353e |
+| sound_seq_6c             | 0001354c |
+| sound_seq_6d             | 0001355b |
+| sound_seq_6e             | 0001356a |
+| sound_seq_6f             | 00013579 |
+| sound_seq_67             | 00013588 |
+| sound_seq_68             | 00013598 |
+| sound_seq_69             | 000135a4 |
+| sound_sequence_table     | 000135b0 |
+| sound_instrument_mapping | 00013770 |
+| sample_start             | 00013806 |
+| sample_start_data        | 0001386e |
+| sample_end               | 0001736e |
+| sample_end_data          | 000173d6 |
+| sample_getready          | 0001ae16 |
+| sample_getready_data     | 0001ae7e |
+| sample_replay            | 0001e392 |
+| sample_replay_data       | 0001e3fa |
+| sound_samples            | 0002246c |
+
+# Intro sequence
+
+The intro sequence code is part of the initial load on the Amiga,
+located after the sound data that is used for the intro. It's
+overwritten by the game data (both management and match) overlays. On
+the Megadrive this also lives after the sound code, although it
+obviously doesn't get overwritten.
+
+| Amiga Name                       | Location | Type       | Megadrive Name            | Location |
+|----------------------------------|----------|------------|---------------------------|----------|
+| intro_presents                   | 0004963a | Function   |                           |          |
+|                                  |          |            | show_sega_logo            | 00022494 |
+|                                  |          |            | show_publisher            | 00022582 |
+|                                  |          |            | wait_3s                   | 000225c4 |
+|                                  |          |            | splash_start1             | 0002260a |
+|                                  |          |            | splash_start2             | 00025a5c |
+|                                  |          |            | palette_sega              | 0002914e |
+|                                  |          |            | palette_sega_cycle        | 0002916e |
+|                                  |          |            | show_sega_logo_cell       | 000291ac |
+|                                  |          |            | sprites_sega_logo         | 000291da |
+|                                  |          |            | sprites_sega_logo_mapping | 000297fa |
+| intro                            | 00049650 | Function   | intro                     | 0002982a |
+| intro_break                      | 00029888 |            |                           |          |
+|                                  |          |            | show_title_with_sound     | 000298aa |
+|                                  |          |            | show_title                | 000298e0 |
+|                                  |          |            | show_arena                | 00029906 |
+| display_text_presents            | 00049718 | Function   |                           |          |
+| display_string_and_wait_presents | 00049738 | Function   |                           |          |
+| display_text_intro               | 0004979a | Function   | display_text_intro        | 00029920 |
+| display_string_and_wait_intro    | 000497f0 | Function   |                           |          |
+| display_text_credits             | 00049846 | Function   | display_text_credits      | 00029972 |
+| display_string_and_wait_credits  | 00049892 | Function   |                           |          |
+|                                  |          |            | display_string_and_wait   | 000299d8 |
+| draw_arena_backdrop              | 000498e8 | Function   |                           |          |
+| wait_100ms                       | 00049906 | Function   | wait_100ms                | 00029a12 |
+| display_string                   | 00049940 | Function   | display_string            | 00029a30 |
+| display_title_font_char          | 00049a12 | Function   | display_title_font_char   | 00029a94 |
+| mask_char_to_screen              | 00049a36 | Function   |                           |          |
+| copy_16x16_to_screen             | 00049aaa | Function   |                           |          |
+| copy_16x16_from_screen           | 00049ad2 | Function   |                           |          |
+| fill_screen_zero                 | 00049afa | Function   |                           |          |
+| display_fade_transition_sound    | 00049b34 | Function   |                           |          |
+|                                  |          |            | vdp_write_2_cells         | 00029ada |
+|                                  |          |            | display_clear_11_rows     | 00029af6 |
+|                                  |          |            | dead_checksum_rom         | 00029e20 |
+|                                  |          |            | dead_run_in_ram           | 00029e4a |
+| splash_title_screen              | 00049e5e | Data Label |                           |          |
+| splash_arena_backdrop            | 00052d0e | Data Label |                           |          |
+| sprites_title_font               | 0005ae00 | Data Label |                           |          | 
+| skip_flags                       | 0005ca20 | Data Label |                           |          |
+
 ## Overlay #1: Management graphics
 
 Megadrive has pretty much the same symbols, but different encoding to
 match the machine's hardware. The symbols are mostly in a different
 order, so I'm not going to match them up.
 
+| Amiga Name                  | Location           | Type       |
+|-----------------------------|--------------------|------------|
 | splash_backdrop             | overlay1::000361d6 | Data Label |
 | sprites_mgmt_background     | overlay1::0003d744 | Data Label |
 | sprites_font_orange         | overlay1::00044364 | Data Label |
@@ -2251,7 +2420,7 @@ order, so I'm not going to match them up.
 
 Similar to overlay #1.
 
-| Name                      | Location            | Type       |
+| Amiga Name                | Location            | Type       |
 |---------------------------|---------------------|------------|
 | sprites_players_team_mask | overlay18::000361d6 | Data Label |
 | sprites_game_misc         | overlay18::0003a2d6 | Data Label |
@@ -2261,11 +2430,55 @@ Similar to overlay #1.
 | sprites_arena_offset      | overlay26::0004fe36 | Data Label |
 | sprites_arena             | overlay26::0004fed6 | Data Label |
 
-## Overlays #27 and #28: Sound patches
+## Megadrive graphics
 
-Patches the sound samples between management mode and game mode.
+The Megadrive graphics equivalent to the last couple of sections. The
+various bits of graphics include splash screens which are loaded from
+disk (or cached) on the Amiga.
 
-| Name      | Location            | Type       |
-|-----------|---------------------|------------|
-| overlay27 | overlay27::00030d56 | Data Label |
-| overlay28 | overlay28::00030d56 | Data Label |
+| Megadrive Name              | Location | Type       |
+|-----------------------------|----------|------------|
+| sprites_title_font          | 0002e6ca | Data Label |
+| ascii_to_title_font_index   | 0002fcaa | Data Label |
+| sprites_status_bar          | 0002fd0a | Data Label |
+| sprites_score_digits        | 0003070a | Data Label |
+| sprites_monitor_goal        | 0003084a | Data Label |
+| sprites_monitor_injury      | 0003144a | Data Label |
+| sprites_monitor_final_score | 0003204a | Data Label |
+| splash_victory              | 00049bfc | Data Label |
+| splash_defeat               | 0004e66e | Data Label |
+| splash_win_league           | 00051fe0 | Data Label |
+| splash_win_promo            | 00053e1a | Data Label |
+| splash_win_cup              | 00055c34 | Data Label |
+| splash_win_knockout         | 00057a52 | Data Label |
+| splash_title                | 00059838 | Data Label |
+| splash_arena                | 0005d8ca | Data Label |
+| sprites_menu_font           | 000610c4 | Data Label |
+| sprites_font_cash           | 000734e4 | Data Label |
+| sprites_fonts_small_green   | 00073964 | Data Label |
+| sprites_fonts_white         | 00073e04 | Data Label |
+| sprites_player_faces        | 00074284 | Data Label |
+
+# Amiga BSS & optional overlay saving
+
+Various uninitialised buffers, memory areas used to stash overlays
+from disk if enough RAM.
+
+| Amiga Name       | Location | Type       |
+|------------------|----------|------------|
+| screen_3_buf     | 0005fbaa | Data Label |
+| screen_2_buf     | 0006a71c | Data Label |
+| screen_1_buf     | 0007528e | Data Label |
+| stack_bottom     | 0007fe00 | Data Label |
+| low_ram_top      | 00080000 | Data Label |
+| saved_overlay_27 | 00091a74 | Data Label |
+| saved_overlay_28 | 00094496 | Data Label |
+| saved_overlay_18 | 00097c34 | Data Label |
+| saved_overlay_14 | 000ad734 | Data Label |
+| saved_overlay_12 | 000b2df6 | Data Label |
+| saved_overlay_17 | 000b99f4 | Data Label |
+| saved_overlay_16 | 000bd984 | Data Label |
+| saved_overlay_15 | 000c192e | Data Label |
+| saved_overlay_14 | 000c58f6 | Data Label |
+| saved_overlay_26 | 000c98ee | Data Label |
+| saved_overlay_1  | 000d82ae | Data Label |
