@@ -1,10 +1,5 @@
 # Reverse engineering of Speedball 2 for Commodore Amiga
 
-**Project status: This is incomplete. I've put a decent amount of work
-into understanding the copy protection (as it is, post-crack), which I
-wanted to put up, but large chunks of the image that are different
-from the Megadrive version are still unexamined.**
-
 Following up on my reverse engineering of the [Megadrive
 version](https://github.com/simon-frankau/speedball2-re.git), I
 thought I'd have a go at the Amiga version, in order to understand the
