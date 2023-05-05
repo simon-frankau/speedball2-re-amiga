@@ -258,7 +258,7 @@ Amiga code to the Megadrive dissessembly as I am lazy.
 
 ### Symbol table comparison
 
-[symbols.md](./symbols) provides a comparison between the symbol
+[symbols.md](./symbols.md) provides a comparison between the symbol
 tables for the two versions.
 
 ### Gameplay comparison
@@ -630,3 +630,13 @@ but I don't have the energy for that right now. One thing I really
 want to note, though, is that it doesn't cheat: The AI interacts with
 the rest of the game via the controller variables, providing the same
 input a human could. Not all games are like this!
+
+## Listing
+
+As I don't really want to fully trust a (potentially-changing) binary
+format with my reverse-engineering data, I have exported the
+disassembly to [speedball2-amiga.asm](./speedball2-amiga.asm).
+
+To get decent export with working word-wrap (to avoid comments being
+truncated), I needed to hack up the word-wrap code. I have submitted
+PRs. I hust thought you'd like to know. :D
